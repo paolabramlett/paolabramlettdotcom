@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "montserrat";
+}
+
+nav {
+  background: #fff;
+  color: #0a355e;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav .mainMenu {
+  display: flex;
+  list-style: none;
+}
+
+nav .mainMenu li a {
+  display: inline-block;
+  padding: 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #0a355e;
+  font-size: 1rem;
+}
+
+nav .mainMenu li a:hover {
+  background: #f00027;
+  color: #fff;
+}
+
+nav .openMenu {
+  font-size: 2rem;
+  margin: 20px;
+  display: none;
+  cursor: pointer;
+}
+
+nav .mainMenu .closeMenu,
+.icons i {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
+.fa-facebook:hover {
+  color: #166fe0;
+}
+.fa-instagram:hover {
+  color: #ed4956;
+}
+.fa-linkedin:hover {
+  color: #0966c2;
+}
+.fa-youtube:hover {
+  color: #ff0100;
+}
+
+nav .logo {
+  margin: 6px;
+  width: 15%;
+  height: 15%;
+  cursor: pointer;
+}
+
+@media (max-width: 800px) {
+  nav .mainMenu {
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    transition: top 1s ease;
+    display: none;
+  }
+  nav .mainMenu .closeMenu {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+
+  nav .openMenu {
+    display: block;
+  }
+
+  nav .mainMenu li a:hover {
+    background: none;
+    color: #f00027;
+    font-size: 1.2rem;
+  }
+  .icons i {
+    display: inline-block;
+    padding: 12px;
+  }
+  nav .logo {
+    margin: 20px 10px;
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+  }
+}
