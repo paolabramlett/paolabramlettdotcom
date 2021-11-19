@@ -8,15 +8,17 @@
 #f0908d
 #2c337c
 #f3e5da
+#ffffff
 */
 
 body {
-  font-family: "montserrat";
+  font-family: "outfit";
+  background-color: #f3e5da;
 }
 
 nav {
-  background: #f3e5da;
-  color: #2c337c;
+  background: #2c337c;
+  color: #fff;
   display: flex;
   justify-content: space-between;
 }
@@ -31,13 +33,13 @@ nav .mainMenu li a {
   padding: 15px;
   text-decoration: none;
   text-transform: uppercase;
-  color: #2c337c;
+  color: #ffffff;
   font-size: 1rem;
 }
 
 nav .mainMenu li a:hover {
-  background: #2c337c;
-  color: #f3e5da;
+  background: #ffffff;
+  color: #2c337c;
   height: 100%;
 }
 
@@ -106,7 +108,7 @@ nav .logo {
     color: #2c337c;
     font-size: 1.2rem;
   }
-  
+
   .icons i {
     display: inline-block;
     padding: 12px;
