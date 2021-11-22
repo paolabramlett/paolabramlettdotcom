@@ -166,18 +166,121 @@ nav .logo {
     cursor: pointer;
   }
 
-  .cards .card {
-    background: #f00027;
-    min-width: 88%;
-    height: 200px;
-    align-items: center;
-    margin-top: 10px;
-  }
-  .cards {
+  .card {
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
+
+  .container-service {
+    width: auto;
+  }
+
+  .card-container {
+    width: auto;
+  }
+}
+
+.container-about {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 10px 30px 10px 30px;
+}
+
+.container-about-img {
+  width: 33%;
+  padding-left: 20px;
+}
+
+.container-about-img img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}
+
+.container-about-text {
+  width: 66%;
+}
+
+.card {
+  width: 90%;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  background-color: #ffffff;
+}
+
+.container-service {
+  width: 45%;
+  margin: auto;
+}
+
+.p-service {
+  padding: 10px 10px 10px 0;
+}
+
+.card-container {
+  width: 45%;
+  margin: 0 auto;
+  margin-top: 60px;
+  display: grid;
+  grid-template-columns: repeat(3.1fr);
+  grid-template-rows: repeat(7, 1fr);
+  gap: 20px;
+  grid-template-areas:
+    ".      card1"
+    "card2  card1"
+    "card2  card3"
+    "card4  card3"
+    "card4    .  "
+    ".        .  ";
+}
+
+.card-item {
+  padding: 20px;
+  background: #fff;
+  border-top: 5px solid #275c39;
+  box-shadow: 0 0 3px rgb(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card-img {
+  background: #275c39;
+  margin-top: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-title {
+  margin: 20px 0;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.card-par {
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.card-item:nth-last-of-type(4) {
+  grid-area: card1;
+}
+
+.card-item:nth-last-of-type(3) {
+  grid-area: card2;
+}
+
+.card-item:nth-last-of-type(2) {
+  grid-area: card3;
+}
+
+.card-item:nth-last-of-type(1) {
+  grid-area: card4;
 }
 
 .portafolio {
@@ -282,6 +385,66 @@ nav .logo {
   font-size: 12px;
 }
 
+.testimonial-box {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  padding: 30px 0 30px 0;
+}
+
+.testimonial {
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+  overflow: hidden;
+  max-width: 33%;
+  width: 400px;
+}
+
+.testimonial-body {
+  padding: 40px 40px 80px;
+}
+
+.testimonial-body p {
+  color: #555;
+  font-size: 20px;
+  line-height: 36px;
+  margin: 0;
+}
+
+.testimonial-body .fa-quote-right {
+  color: #eee;
+  font-size: 40px;
+  float: right;
+}
+
+.testimonial-footer {
+  background-color: #686de0;
+  color: #fff;
+  padding: 40px;
+  text-align: center;
+}
+
+.testimonial-footer img {
+  border-radius: 50%;
+  border: 5px solid #fff;
+  height: 120px;
+  width: 120px;
+  margin-top: -100px;
+}
+
+.testimonial-footer h3 {
+  margin: 10px 0;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.testimonial-footer h4 {
+  color: #b3b5ef;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
 /*
     Auther: Abdelrhman Said
 */
@@ -300,8 +463,7 @@ nav .logo {
   -webkit-tap-highlight-color: transparent;
 }
 
-html,
-body {
+footer {
   display: grid;
   height: 100%;
   width: 100%;
