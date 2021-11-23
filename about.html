@@ -1,12 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About Me</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="./img/icon.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.css">
 </head>
+
 <body>
+    <header class="header">
+        <nav>
+            <div class="logo"><a href="index.html"><img src="./img/Logo_2.svg" alt=""></a></div>
+            <div class="openMenu"><i class="fa fa-bars"></i></div>
+            <ul class="mainMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <div class="closeMenu"><i class="fa fa-times"></i></div>
+                <span class="icons">
+                    <a href="https://www.facebook.com/paolabramlett" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/paolabramlett/" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/paolabramlett/" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/paolabramlett" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-github"></i></a>
+                </span>
+            </ul>
+        </nav>
+        <div class="hero-text">
+            <h1>I am Paola <br /> Bramlett</h1>
+            <p>And I'm a UX/Ui Designer <br />and Community Manager</p>
+            <button class="name noselect">Contact me</button>
+        </div>
+        <div class="wave" style="height: 150px; overflow: hidden;"><svg viewBox="0 0 500 150" preserveAspectRatio="none"
+                style="height: 100%; width: 100%;">
+                <path d="M-0.84,115.95 C149.26,43.91 342.27,48.84 503.10,112.98 L500.00,150.00 L0.00,150.00 Z"
+                    style="stroke: none; fill: rgb(255, 255, 255);"></path>
+            </svg></div>
+    </header>
+
     
+
+    <footer>
+
+        <div class="wrapper">
+            <div class="icon facebook">
+                <div class="tooltip">Facebook</div>
+                <span><a href="https://www.facebook.com/paolabramlett" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a></span>
+            </div>
+            <div class="icon instagram">
+                <div class="tooltip">Instagram</div>
+                <span><a href="https://www.instagram.com/paolabramlett/" target="_blank"><i
+                            class="fab fa-instagram"></i></a></span>
+            </div>
+            <div class="icon linkedin">
+                <div class="tooltip">Linkedin</div>
+                <span><a href="https://www.linkedin.com/in/paolabramlett/" target="_blank"><i
+                            class="fab fa-linkedin"></i></a></span>
+            </div>
+
+            <div class="icon github">
+                <div class="tooltip">Github</div>
+                <span><a href="https://github.com/paolabramlett" target="_blank"><i
+                            class="fab fa-github"></i></a></span>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="./app.js"></script>
 </body>
+
 </html>
