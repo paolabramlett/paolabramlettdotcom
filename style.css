@@ -388,11 +388,8 @@ footer {
 }
 
 a {
-  color: #000000;
-}
-
-a:hover {
-  color: #ffffff;
+  text-decoration: none !important;
+  color: inherit;
 }
 
 .wrapper {
