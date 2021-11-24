@@ -1,12 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Portfolio 🗂</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="./img/icon.png" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.css">
 </head>
+
 <body>
-    
+    <header class="header-about">
+        <nav>
+            <div class="logo"><a href="index.html"><img src="./img/Logo_2.svg" alt=""></a></div>
+            <div class="openMenu"><i class="fa fa-bars"></i></div>
+            <ul class="mainMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <div class="closeMenu"><i class="fa fa-times"></i></div>
+                <span class="icons">
+                    <a href="https://www.facebook.com/paolabramlett" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/paolabramlett/" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/paolabramlett/" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/paolabramlett" target="_blank" style="color:#ffffff"><i
+                            class="fab fa-github"></i></a>
+                </span>
+            </ul>
+        </nav>
+
+
+        <h1 class="title-header">
+            About Me
+        </h1>
+        <p class="par-header">
+            Here's a little about my story
+        </p>
+
+
+    </header>
+
+    <main>
+        <section class="bio">
+            <div class="img-container">
+                <img src="./img/bio-img.png" alt="bio-img">
+            </div>
+            <div class="bio-container">
+                <h1 class="title-bio">
+                    Short Bio
+                </h1>
+                <p class="bio-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur accusamus delectus
+                    eaque nam facere doloribus saepe pariatur ad optio, fugiat ut aperiam, doloremque harum veritatis,
+                    asperiores autem! Doloremque, dolorum?
+                </p>
+                <br />
+                <p class="bio-text">
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi consequuntur accusamus delectus
+                    eaque nam facere
+                    doloribus saepe pariatur ad optio, fugiat ut aperiam, doloremque harum veritatis, asperiores autem!
+                    Doloremque,
+                    dolorum?
+                </p>
+            </div>
+        </section>
+
+        <section class="accordion">
+            <div class="container-accordion">
+                <h1>How to create an accordion without using javascript</h1>
+                <div class="accordion-wrapper">
+                    <div class="accordion">
+                        <input type="radio" name="radio-a" id="check1" checked>
+                        <label class="accordion-label" for="check1">Accordion 1</label>
+                        <div class="accordion-content">
+                            <p>Hey there, you are watching codiesbugs &#128522;</p>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <input type="radio" name="radio-a" id="check2">
+                        <label class="accordion-label" for="check2">Accordion 2</label>
+                        <div class="accordion-content">
+                            <p>I hope you are enjoing the video, don't forget to give your feedback in comment section
+                            </p>
+                        </div>
+                    </div>
+                    <div class="accordion">
+                        <input type="radio" name="radio-a" id="check3">
+                        <label class="accordion-label" for="check3">Accordion 3</label>
+                        <div class="accordion-content">
+                            <p>If you liked then don't forget to subscribe the channel for latest videos. </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="photos">
+            <div class="container-photos">
+                <div class="box">
+                    <img src="https://source.unsplash.com/1000x800">
+                    <span>CSS</span>
+                </div>
+                <div class="box">
+                    <img src="https://source.unsplash.com/1000x802">
+                    <span>Image</span>
+                </div>
+                <div class="box">
+                    <img src="https://source.unsplash.com/1000x804">
+                    <span>Hover</span>
+                </div>
+                <div class="box">
+                    <img src="https://source.unsplash.com/1000x806">
+                    <span>Effect</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer>
+
+        <div class="wrapper">
+            <div class="icon facebook">
+                <div class="tooltip">Facebook</div>
+                <span><a href="https://www.facebook.com/paolabramlett" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a></span>
+            </div>
+            <div class="icon instagram">
+                <div class="tooltip">Instagram</div>
+                <span><a href="https://www.instagram.com/paolabramlett/" target="_blank"><i
+                            class="fab fa-instagram"></i></a></span>
+            </div>
+            <div class="icon linkedin">
+                <div class="tooltip">Linkedin</div>
+                <span><a href="https://www.linkedin.com/in/paolabramlett/" target="_blank"><i
+                            class="fab fa-linkedin"></i></a></span>
+            </div>
+
+            <div class="icon github">
+                <div class="tooltip">Github</div>
+                <span><a href="https://github.com/paolabramlett" target="_blank"><i
+                            class="fab fa-github"></i></a></span>
+            </div>
+        </div>
+
+    </footer>
+
+    <script src="./app.js"></script>
 </body>
+
 </html>
