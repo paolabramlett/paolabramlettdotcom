@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact me 📬</title>
-</head>
+
 <body>
 
     <!DOCTYPE html>
@@ -15,7 +8,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>About Me 👩‍💻</title>
+        <title>Contact me 👩‍💻</title>
     
         <link rel="shortcut icon" type="image/x-icon" href="./img/icon.png" />
     
@@ -30,6 +23,8 @@
     
         <link rel="stylesheet" href="./style.css">
         <link rel="stylesheet" href="./fontawesome-free-5.15.3-web/css/all.css">
+
+        
     </head>
     
     <body>
@@ -73,32 +68,34 @@
                     <h2 class="contact-title">
                         Are you looking to collaborate?
                     </h2>
-                    <p class="contact par">
+                    <p class="contact-par">
                         Write to me! 😉 Let's create something awesome.
                     </p>
                 </div>
                 <div class="form-box">
             
-                    <form name="contact" method="POST" data-netlify="true">
-                        <p>
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" />
-                        </p>
-                        <p>
-                            <label for="email">Email</label>
-                            <input type="text" id="email" name="email" />
-                        </p>
-                        <p>
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message"></textarea>
-                        </p>
-                        <p>
-                            <button type="submit">Send</button>
-                        </p>
-                    </form>
+                <form method="post" name="Contact Form" data-netlify="true">
+                    <p>
+                        <label for="name">Name:</label>
+                        <input type="text" name="name" id="name">
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email">
+                    </p>
+                    <p>
+                        <label for="comments">Message:</label><br />
+                        <textarea name="comments" id="comments"></textarea>
+                    </p>
+                    <p>
+                        <input class="button-contact" type="submit">
+                    </p>
+                </form>
             
                 </div>
             </div>
+
+           
         </main>
         
         
