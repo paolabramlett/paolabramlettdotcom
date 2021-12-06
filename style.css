@@ -310,6 +310,11 @@ nav .logo {
   padding-top: 50px;
 }
 
+.text-index {
+  text-align: center;
+  padding: 0 50px 0 50px;
+}
+
 .gal-port {
   display: flex;
   justify-content: space-evenly;
@@ -518,7 +523,7 @@ nav .logo {
   margin: 0 auto;
   padding: 20px;
   position: relative;
-  max-width: 840px;
+  max-width: 1040px;
   background-color: #f0908d;
 }
 
@@ -703,74 +708,6 @@ a {
   background-color: #333333;
   color: #ffffff;
 }
-/* !!! Quitado!! 
-input {
-  position: absolute;
-  opacity: 0;
-  z-index: -1;
-}
-*/
-.accordion-wrapper {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
-  width: 600px;
-  margin: 0 auto;
-}
-.accordion {
-  width: 100%;
-  color: white;
-  overflow: hidden;
-  margin-bottom: 16px;
-}
-.accordion:last-child {
-  margin-bottom: 0;
-}
-.accordion-label {
-  display: flex;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  padding: 16px;
-  background: #000000;
-  font-weight: bold;
-  cursor: pointer;
-  font-size: 20px;
-}
-.accordion-label:hover {
-  background: #f0908d;
-}
-.accordion-label::after {
-  content: "\276F";
-  width: 16px;
-  height: 16px;
-  text-align: center;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.accordion-content {
-  max-height: 0;
-  padding: 0 16px;
-  color: rgba(4, 57, 94, 1);
-  background: white;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-}
-.accordion-content p {
-  margin: 0;
-  color: #000000;
-  font-size: 18px;
-}
-input:checked + .accordion-label {
-  background: #f0908d;
-}
-input:checked + .accordion-label::after {
-  -webkit-transform: rotate(90deg);
-  transform: rotate(90deg);
-}
-input:checked ~ .accordion-content {
-  max-height: 100vh;
-  padding: 16px;
-}
 
 /* ABOUT */
 
@@ -825,11 +762,13 @@ input:checked ~ .accordion-content {
 
 .resume {
   width: 100%;
-  height: 600px;
+  height: auto;
+  min-width: 300px;
   background-color: #ffffff;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  padding: 100px 0 100px 0;
 }
 
 .container-resume {
@@ -851,9 +790,20 @@ input:checked ~ .accordion-content {
 
 .skills {
   width: 100%;
-  height: 600px;
+  height: auto;
   background-color: #ffe600;
-  padding: 60px 0 60px 0;
+  padding: 60px 0 100px 0;
+}
+
+.title-skills {
+  font-size: 60px;
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.skills-par {
+  text-align: justify;
+  padding: 0 20px 0 20px;
 }
 
 .container-skills {
@@ -890,7 +840,7 @@ input:checked ~ .accordion-content {
 .diploma {
   width: 100%;
   background-color: #000000;
-  padding: 100px;
+  padding: 100px 0 100px 0;
 }
 
 .diploma-title {
@@ -905,6 +855,7 @@ input:checked ~ .accordion-content {
   max-width: 1000px;
   position: relative;
   margin: auto;
+  width: 100%;
 }
 
 /* Hide the images by default */
