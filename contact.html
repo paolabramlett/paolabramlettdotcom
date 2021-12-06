@@ -62,7 +62,7 @@
     
     
         </header>
-        <main>
+        <main class="main-contact">
             <div class="container-contact">
                 <div class="container-contact-text">
                     <h2 class="contact-title">
@@ -74,22 +74,13 @@
                 </div>
                 <div class="form-box">
             
+            
+
                 <form method="post" name="Contact Form" data-netlify="true">
-                    <p>
-                        <label for="name">Name:</label>
-                        <input type="text" name="name" id="name">
-                    </p>
-                    <p>
-                        <label for="email">Email:</label>
-                        <input type="email" name="email" id="email">
-                    </p>
-                    <p>
-                        <label for="comments">Message:</label><br />
-                        <textarea name="comments" id="comments"></textarea>
-                    </p>
-                    <p>
-                        <input class="button-contact" type="submit">
-                    </p>
+                    <input name="name" type="text" class="feedback-input" placeholder="Name" />
+                    <input name="email" type="text" class="feedback-input" placeholder="Email" />
+                    <textarea name="text" class="feedback-input" placeholder="Comment"></textarea>
+                    <input type="submit" value="SUBMIT" />
                 </form>
             
                 </div>

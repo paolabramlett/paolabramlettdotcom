@@ -231,15 +231,33 @@ nav .logo {
   .container-skills {
     flex-direction: column;
     align-items: center;
-    width: auto;
+    width: 90%;
   }
 
   .container-skill {
     width: 90%;
+    min-width: 300px;
   }
 
   .img-skill {
-    width: auto;
+    width: 90%;
+    min-width: 300px;
+  }
+
+  .header-about-contact h1 {
+    font-size: 50px;
+  }
+
+  .container-contact {
+    flex-direction: column;
+  }
+
+  .container-contact-text {
+    width: 90%;
+  }
+
+  .form-box {
+    width: 90%;
   }
 }
 
@@ -478,8 +496,13 @@ nav .logo {
 .header-about-contact {
   background-color: #f0908d;
   width: 100%;
-  height: 300px;
+  max-height: 300px;
   align-items: center;
+}
+
+.main-contact {
+  background-color: #f0908d;
+  padding-bottom: 200px;
 }
 
 .container-contact {
@@ -491,18 +514,71 @@ nav .logo {
 .container-contact {
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 30px;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  max-width: 840px;
   background-color: #f0908d;
 }
 
 .container-contact-text {
-  width: 38%;
+  min-width: 300px;
   text-align: left;
 }
 
 .form-box {
-  width: 38%;
+  min-width: 300px;
+}
+
+form {
+  max-width: 420px;
+  margin: 50px auto;
+}
+
+.feedback-input {
+  color: white;
+  font-weight: 500;
+  font-size: 18px;
+  border-radius: 5px;
+  line-height: 22px;
+  background-color: transparent;
+  border: 2px solid #000000;
+  transition: all 0.3s;
+  padding: 13px;
+  margin-bottom: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+.feedback-input:focus {
+  border: 2px solid #000000;
+}
+
+textarea {
+  height: 150px;
+  line-height: 150%;
+  resize: vertical;
+}
+
+[type="submit"] {
+  width: 100%;
+  background: #000000;
+  border-radius: 5px;
+  border: 0;
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  transition: all 0.3s;
+  margin-top: -4px;
+  font-weight: 700;
+}
+[type="submit"]:hover {
+  background: #f0908d;
+  border: 2px solid #000000;
 }
 
 .button-contact {
@@ -528,7 +604,7 @@ nav .logo {
 
 footer {
   display: grid;
-  height: 100%;
+
   width: 100%;
   font-family: "Poppins", sans-serif;
   place-items: center;
@@ -627,12 +703,13 @@ a {
   background-color: #333333;
   color: #ffffff;
 }
-
+/* !!! Quitado!! 
 input {
   position: absolute;
   opacity: 0;
   z-index: -1;
 }
+*/
 .accordion-wrapper {
   border-radius: 8px;
   overflow: hidden;
@@ -752,13 +829,13 @@ input:checked ~ .accordion-content {
   background-color: #ffffff;
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
   align-items: center;
 }
 
 .container-resume {
   width: 33%;
   height: auto;
+  padding-bottom: 50px;
 }
 
 .resume-img {
@@ -776,14 +853,15 @@ input:checked ~ .accordion-content {
   width: 100%;
   height: 600px;
   background-color: #ffe600;
-  padding-top: 60px;
+  padding: 60px 0 60px 0;
 }
 
 .container-skills {
   display: flex;
+  max-height: 480px;
   align-items: center;
   justify-content: space-evenly;
-  flex-wrap: wrap;
+  overflow: auto;
   padding-top: 60px;
 }
 
