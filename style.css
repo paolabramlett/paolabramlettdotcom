@@ -987,7 +987,7 @@ ul.breadcrumb li a:hover {
 .container-header-case {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 }
 
@@ -1014,4 +1014,27 @@ ul.breadcrumb li a:hover {
 .par-header-case {
   color: #000000;
   text-align: center;
+}
+
+.casestudy {
+  width: 75%;
+}
+
+.casestudy-2 {
+  width: 75%;
+}
+
+.title-main {
+  font-size: 30px;
+}
+
+.overview {
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  display: flex;
+}
+
+.overview-item {
+  width: 33%;
 }
