@@ -259,6 +259,58 @@ nav .logo {
   .form-box {
     width: 90%;
   }
+
+  .container-header-case {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .case-header-title {
+    width: 90%;
+    height: auto;
+  }
+
+  .case-header-img {
+    width: 90%;
+    min-width: 300px;
+  }
+
+  .case-header-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  .overview {
+    flex-direction: column;
+  }
+
+  .overview-item {
+    width: 100%;
+    min-width: 300px;
+  }
+
+  .case-img-2 {
+    width: 90%;
+  }
+
+  .case-img-2 img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: auto;
+  }
+
+  .case-img {
+    width: 90%;
+  }
+
+  .case-img img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
 }
 
 .title {
@@ -1006,8 +1058,6 @@ ul.breadcrumb li a:hover {
 
 .title-header-case {
   color: #000000;
-  font-size: 50px;
-  padding: 50px;
   text-align: center;
 }
 
@@ -1018,14 +1068,17 @@ ul.breadcrumb li a:hover {
 
 .casestudy {
   width: 75%;
+  margin: 0 auto;
 }
 
 .casestudy-2 {
   width: 75%;
+  margin: 0 auto;
 }
 
 .title-main {
   font-size: 30px;
+  padding: 50px 0 30px 0;
 }
 
 .overview {
@@ -1033,8 +1086,34 @@ ul.breadcrumb li a:hover {
   align-items: center;
   justify-content: space-evenly;
   display: flex;
+  margin: 0 auto;
+  padding: 30px;
 }
 
 .overview-item {
   width: 33%;
+  padding: 25px;
+}
+
+.overview-item img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  max-height: 500px;
+  margin: 0 auto;
+  display: block;
+}
+
+.item-subtitle {
+  font-size: 24px;
+}
+
+.case-img img {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  max-height: 800px;
+  display: block;
+  margin: 0 auto;
+  padding: 50px 0;
 }
