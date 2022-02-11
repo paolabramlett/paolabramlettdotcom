@@ -96,8 +96,8 @@ nav .mainMenu li a {
 }
 
 nav .mainMenu li a:hover {
-  background: #f0908d;
-  color: #000000;
+  background: #f4608f;
+  color: #2e0f6e;
   height: 100%;
 }
 
@@ -133,7 +133,7 @@ nav .logo {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: #f0908d;
+    background: #f4608f;
     transition: top 1s ease;
     display: none;
   }
@@ -150,7 +150,7 @@ nav .logo {
 
   nav .mainMenu li a:hover {
     background: none;
-    color: #000000;
+    color: #7f1158;
     font-size: 1.2rem;
   }
 
@@ -358,7 +358,7 @@ nav .logo {
 }
 
 .portafolio {
-  background: linear-gradient(315deg, #ffffff, #d7e1ec);
+  background: #c9dbf3;
   padding-top: 50px;
 }
 
@@ -407,7 +407,7 @@ nav .logo {
   height: 100%;
   top: 0;
   transform: scale(0);
-  background: hsla(0, 100%, 76%, 0.747);
+  background: hsla(271, 85%, 32%, 0.747);
   transition: transform 0.5s;
   display: flex;
   justify-content: center;
@@ -490,21 +490,21 @@ nav .logo {
 }
 
 .header-about {
-  background-color: #f0908d;
+  background-color: #dfd2e7;
   width: 100%;
   height: 600px;
   align-items: center;
 }
 
 .title-header {
-  color: #000000;
+  color: #342162;
   font-size: 100px;
   padding: 50px;
   text-align: center;
 }
 
 .par-header {
-  color: #000000;
+  color: #342162;
   text-align: center;
 }
 
@@ -551,14 +551,14 @@ nav .logo {
 /* Contact */
 
 .header-about-contact {
-  background-color: #f0908d;
+  background-color: #dfd2e7;
   width: 100%;
   max-height: 300px;
   align-items: center;
 }
 
 .main-contact {
-  background-color: #f0908d;
+  background-color: #dfd2e7;
   padding-bottom: 200px;
 }
 
@@ -576,7 +576,7 @@ nav .logo {
   padding: 20px;
   position: relative;
   max-width: 1040px;
-  background-color: #f0908d;
+  background-color: #dfd2e7;
 }
 
 .container-contact-text {
@@ -619,8 +619,6 @@ textarea {
   resize: vertical;
 }
 
-
-
 [type="submit"] {
   width: 100%;
   background: #000000;
@@ -636,7 +634,7 @@ textarea {
   font-weight: 700;
 }
 [type="submit"]:hover {
-  background: #f0908d;
+  background: #f4608f;
   border: 2px solid #000000;
 }
 
@@ -667,7 +665,7 @@ footer {
   width: 100%;
   font-family: "Poppins", sans-serif;
   place-items: center;
-  background: linear-gradient(315deg, #ffffff, #d7e1ec);
+  background: linear-gradient(315deg, #eff0f2, #dfd2e7);
 }
 
 a {
@@ -1061,12 +1059,12 @@ ul.breadcrumb li a:hover {
 }
 
 .title-header-case {
-  color: #000000;
+  color: #8e0a77;
   text-align: center;
 }
 
 .par-header-case {
-  color: #000000;
+  color: #8e0a77;
   text-align: center;
 }
 
