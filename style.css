@@ -19,7 +19,7 @@ body {
 .header {
   width: 100%;
   height: 800px;
-  background-image: linear-gradient(to top, #00000060 0%, #f0908d60 100%),
+  background-image: linear-gradient(to top, #dfd2e780 0%, #f4608f50 100%),
     url(header.gif);
   background-size: cover;
   background-attachment: fixed;
