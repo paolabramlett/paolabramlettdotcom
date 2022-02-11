@@ -117,8 +117,8 @@ nav .mainMenu .closeMenu,
 
 nav .logo {
   margin: 6px 6px 0 25px;
-  width: 7%;
-  height: 7%;
+  width: 5%;
+  height: 5%;
   cursor: pointer;
 }
 
@@ -161,8 +161,8 @@ nav .logo {
 
   nav .logo {
     margin: 20px 10px;
-    width: 50%;
-    height: 50%;
+    width: 30%;
+    height: 30%;
     cursor: pointer;
   }
 
@@ -618,6 +618,8 @@ textarea {
   line-height: 150%;
   resize: vertical;
 }
+
+
 
 [type="submit"] {
   width: 100%;
