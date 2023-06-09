@@ -605,21 +605,6 @@ textarea {
 
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-/* Dejar o quitar????
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-*:focus,
-*:active {
-  outline: none !important;
-  -webkit-tap-highlight-color: transparent;
-}
-*/
-
-
 
 /* ABOUT */
 
@@ -665,7 +650,7 @@ textarea {
 
 .vision {
   width: 100%;
-  height: 600px;
+  height: 400px;
   background-color: #000000;
   color: #ffffff;
   justify-content: space-evenly;
@@ -696,7 +681,7 @@ textarea {
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding: 100px 0 100px 0;
+  padding: 100px 0 50px 0;
 }
 
 .container-resume {
@@ -716,50 +701,6 @@ textarea {
   max-width: 500px;
 }
 
-.skills {
-  width: 100%;
-  height: auto;
-  background-color: #ffe600;
-  padding: 60px 0 100px 0;
-}
-
-.title-skills {
-  font-size: 60px;
-  text-align: center;
-  padding-bottom: 20px;
-}
-
-.skills-par {
-  text-align: justify;
-  padding: 0 20px 0 20px;
-}
-
-.container-skills {
-  display: flex;
-  max-height: 480px;
-  align-items: center;
-  justify-content: space-evenly;
-  overflow: auto;
-  padding-top: 60px;
-}
-
-.container-skill {
-  width: 33%;
-  height: auto;
-  align-items: center;
-}
-
-.img-skill {
-  width: 100%;
-  height: auto;
-}
-
-.img-skill img {
-  width: 100%;
-  height: auto;
-  margin: 0 auto;
-  display: block;
-}
 
 .container-resume {
   width: 50%;
@@ -770,7 +711,7 @@ textarea {
 .diploma {
   width: 100%;
   background-color: #000000;
-  padding: 100px 0 100px 0;
+  padding: 100px 0 0 0;
 }
 
 .diploma-title {
