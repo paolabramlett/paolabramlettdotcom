@@ -140,7 +140,7 @@ nav .logo {
 
   .header-portfolio {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     background-size: cover;
     background-attachment: fixed;
     position: relative;
@@ -165,6 +165,15 @@ nav .logo {
     position: absolute;
     object-fit: cover;
   }
+ .gal-port {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+ }
+
+ .img-port {
+  min-width: 100%;
+ }
 
   nav .mainMenu {
     height: 100vh;
@@ -315,12 +324,12 @@ nav .logo {
   }
 
   .case-header-title {
-    width: 90%;
+    width: 100%;
     height: auto;
   }
 
   .case-header-img {
-    width: 90%;
+    width: 100%;
     min-width: 300px;
   }
 
@@ -352,14 +361,32 @@ nav .logo {
   }
 
   .case-img {
-    width: 90%;
+    width: 100%;
   }
 
   .case-img img {
     height: 100%;
     width: 100%;
+    padding: 0;
     object-fit: contain;
   }
+
+  .text-index {
+    width: 100%;
+    padding: 16px;
+  }
+  .casestudy {
+    min-width: 85%;
+  }
+   .overview {
+    width: 100%;
+   }
+
+   .container-contact-text {
+    min-width: 100%;
+    text-align: left;
+  }
+ 
 }
 
 .title-header {
@@ -413,13 +440,19 @@ nav .logo {
 }
 
 .portafolio {
-  background: #c9dbf3;
+  height: 100%;
   padding-top: 50px;
+  
+}
+
+.container-port {
+  min-height: 100%;
+
 }
 
 .text-index {
   text-align: center;
-  padding: 0 50px 0 50px;
+  padding: 16px;
 }
 
 .gal-port {
@@ -483,18 +516,6 @@ nav .logo {
   color: #fff;
 }
 
-.clients-logos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-}
-
-.client-logo img {
-  max-width: 300px;
-  max-height: 100px;
-  margin: 20px;
-}
 
 
 .header-about {
@@ -506,7 +527,7 @@ nav .logo {
 
 .header-portfolio {
   width: 100%;
-  height: 600px;
+  height: 100%;
   align-items: center;
   overflow: cover;
 }
@@ -529,7 +550,7 @@ nav .logo {
   line-height: 0;
 }
 
-.bio
+
 
 .box > img {
   width: 200%;
@@ -565,13 +586,14 @@ nav .logo {
 
 .main-contact {
   background-color: #dfd2e7;
-  padding-bottom: 200px;
+
+
 }
 
 .container-contact {
   width: 100%;
   align-items: center;
-  height: 400px;
+  height: 100%;
 }
 
 .container-contact {
@@ -582,11 +604,12 @@ nav .logo {
   padding: 20px;
   position: relative;
   max-width: 1040px;
+  height: auto;
   background-color: #dfd2e7;
 }
 
 .container-contact-text {
-  min-width: 300px;
+  width: 40%;
   text-align: left;
 }
 
@@ -600,7 +623,7 @@ form {
 }
 
 .feedback-input {
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 500;
   font-size: 18px;
   border-radius: 5px;
@@ -898,7 +921,7 @@ ul.breadcrumb li a:hover {
 .case-header {
   background-color: #fdd235;
   width: 100%;
-  height: 600px;
+  height: 100vh;
   align-items: center;
 }
 
@@ -907,18 +930,21 @@ ul.breadcrumb li a:hover {
   align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  height: 100%;
 }
 
 .case-header-title {
-  width: 45%;
+ 
 }
 
 .case-header-img {
-  width: 45%;
+
   height: auto;
+
 }
 
 .case-header-img img {
+  width: 100%;
   max-width: 600px;
 }
 
@@ -933,12 +959,12 @@ ul.breadcrumb li a:hover {
 }
 
 .casestudy {
-  width: 75%;
+  width: 65%;
   margin: 0 auto;
 }
 
 .casestudy-2 {
-  width: 75%;
+  width: 65%;
   margin: 0 auto;
 }
 
@@ -977,11 +1003,12 @@ ul.breadcrumb li a:hover {
 .case-img img {
   width: 100%;
   height: auto;
-  max-width: 800px;
+
   max-height: 800px;
   display: block;
   margin: 0 auto;
-  padding: 50px 0;
+  padding: 20px 0;
+  
 }
 
 
@@ -990,6 +1017,7 @@ footer {
   display: grid;
 
   width: 100%;
+  height: 200px;
   font-family: "Poppins", sans-serif;
   place-items: center;
   background: linear-gradient(315deg, #eff0f2, #dfd2e7);
