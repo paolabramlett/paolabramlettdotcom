@@ -931,7 +931,7 @@ main {
 ul.breadcrumb {
   padding: 10px 16px;
   list-style: none;
-  background-color: #eee;
+  background-color: #ffffff;
 }
 
 /* Display list items side by side */
@@ -974,9 +974,7 @@ ul.breadcrumb li a:hover {
   height: 100%;
 }
 
-.case-header-title {
- 
-}
+
 
 .case-header-img {
 
