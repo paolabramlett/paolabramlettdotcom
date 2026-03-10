@@ -197,6 +197,27 @@ function simulateSend() {
   return new Promise((resolve) => setTimeout(resolve, 1200));
 }
 
+// ── NTELIFY CONTACT FORM ───────────────────────────────────────────
+
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString(),
+  })
+  .then(() => {
+    document.getElementById('formSuccess').textContent = 'Message sent! I'll be in touch soon.';
+    form.reset();
+  })
+  .catch(() => {
+    document.getElementById('formSuccess').textContent = 'Something went wrong. Please try again.';
+  });
+});
+
 // ── CARD TILT ───────────────────────────────────────────────
 // Subtle 3D tilt effect on work cards (desktop only)
 
