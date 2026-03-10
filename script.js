@@ -210,7 +210,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     body: new URLSearchParams(data).toString(),
   })
   .then(() => {
-    document.getElementById('formSuccess').textContent = 'Message sent! I'll be in touch soon.';
+    document.getElementById('formSuccess').textContent = "Message sent! I'll be in touch soon.";
     form.reset();
   })
   .catch(() => {
