@@ -604,7 +604,21 @@
         </div>
 
         <div class="contact-right reveal" data-delay="80">
-          <form class="contact-form" id="contactForm" novalidate aria-label="Contact form">
+          <form 
+  class="contact-form" 
+  id="contactForm" 
+  name="contact"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  novalidate 
+  aria-label="Contact form"
+>
+  <!-- Hidden fields required by Netlify -->
+  <input type="hidden" name="form-name" value="contact" />
+  <p class="hidden" style="display:none">
+    <label>Don't fill this out: <input name="bot-field" /></label>
+  </p>
             <div class="form-group">
               <label for="name" class="form-label">Name</label>
               <input
