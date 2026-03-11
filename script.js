@@ -129,74 +129,24 @@ function initSmoothScroll() {
 
 // ── CONTACT FORM ────────────────────────────────────────────
 
-function initContactForm() {
-  const form = document.getElementById('contactForm');
-  const successMsg = document.getElementById('formSuccess');
-  if (!form) return;
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = form.querySelector('.form-submit');
-    const formData = new FormData(form);
-
-    // Basic validation
-    const name    = formData.get('name')?.trim();
-    const email   = formData.get('email')?.trim();
-    const message = formData.get('message')?.trim();
-
-    if (!name || !email || !message) {
-      showFormError(form, 'Please fill in all required fields.');
-      return;
-    }
-
-    if (!isValidEmail(email)) {
-      showFormError(form, 'Please enter a valid email address.');
-      return;
-    }
-
-    // Loading state
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending…';
-
-    try {
-      // Simulate send (replace with actual endpoint in production)
-      await simulateSend();
-
-      form.reset();
-      if (successMsg) {
-        successMsg.textContent = 'Message sent! I\'ll be in touch soon.';
-        setTimeout(() => { successMsg.textContent = ''; }, 6000);
-      }
-    } catch {
-      if (successMsg) {
-        successMsg.textContent = 'Something went wrong. Please try again.';
-        successMsg.style.color = '#dc2626';
-      }
-    } finally {
-      submitBtn.disabled = false;
-      submitBtn.innerHTML = 'Send Message <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8l10-5-4 5 4 5-10-5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg>';
-    }
+  fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(data).toString(),
+  })
+  .then(() => {
+    document.getElementById('formSuccess').textContent = "Message sent! I'll be in touch soon.";
+    form.reset();
+  })
+  .catch(() => {
+    document.getElementById('formSuccess').textContent = 'Something went wrong. Please try again.';
   });
-}
-
-function showFormError(form, message) {
-  const successMsg = document.getElementById('formSuccess');
-  if (successMsg) {
-    successMsg.textContent = message;
-    successMsg.style.color = '#dc2626';
-    setTimeout(() => { successMsg.textContent = ''; }, 5000);
-  }
-}
-
-function isValidEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-}
-
-function simulateSend() {
-  return new Promise((resolve) => setTimeout(resolve, 1200));
-}
-
+});
 
 // ── CARD TILT ───────────────────────────────────────────────
 // Subtle 3D tilt effect on work cards (desktop only)
