@@ -11,6 +11,257 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,300;0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;1,14..32,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css?v=2" />
+
+  <!-- ── SCHEMA: ProfessionalService (LocalBusiness) ───────
+       Tells search engines and AI models who Paola is, where
+       she's based, what she does, her contact info, and hours.
+       Google uses this for Knowledge Panels and rich results.
+       AI models use it to answer "who does UX design in Oaxaca"
+       type queries.
+  ──────────────────────────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "@id": "https://www.paolabramlett.com/#business",
+    "name": "Paola Bramlett — Product Designer & Vibe Coder",
+    "alternateName": "Paola Bramlett Design",
+    "description": "I design, prototype, and ship modern digital products with clarity, speed, and strong visual taste. From UX systems to AI-powered interfaces, I help transform ideas into polished digital experiences that feel intuitive, refined, and ready to launch.",
+    "url": "https://www.paolabramlett.com",
+    "telephone": "+529514082852",
+    "priceRange": "$$",
+    "currenciesAccepted": "USD, MXN",
+    "paymentAccepted": "Bank Transfer, PayPal",
+    "logo": "https://www.paolabramlett.com/img/Logo_P.png",
+    "image": "https://www.paolabramlett.com/img/Logo_P.png",
+    "foundingDate": "2017",
+    "numberOfEmployees": { "@type": "QuantitativeValue", "value": 1 },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Oaxaca de Juárez",
+      "addressRegion": "Oaxaca",
+      "addressCountry": "MX"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 17.0669,
+      "longitude": -96.7203
+    },
+    "areaServed": [
+      { "@type": "Country", "name": "Mexico" },
+      { "@type": "Country", "name": "United States" },
+      { "@type": "Country", "name": "Canada" },
+      { "@type": "Country", "name": "United Kingdom" },
+      { "@type": "Country", "name": "Germany" },
+      { "@type": "Country", "name": "Spain" }
+    ],
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "opens": "09:00",
+        "closes": "17:00"
+      }
+    ],
+    "sameAs": [
+      "https://www.linkedin.com/in/paolabramlett",
+      "https://github.com/paolabramlett",
+      "https://www.instagram.com/paolabramlett"
+    ],
+    "knowsAbout": [
+      "UX Design", "UI Design", "Product Design", "Design Systems",
+      "Rapid Prototyping", "Vibe Coding", "AI-Assisted Development",
+      "Figma", "Web Development", "Digital Product Strategy"
+    ],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Design & Development Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UX/UI Design for Digital Products" }, "priceSpecification": { "@type": "UnitPriceSpecification", "price": "35", "priceCurrency": "USD", "unitText": "HOUR" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vibe Coding & AI-Assisted Development" }, "priceSpecification": { "@type": "UnitPriceSpecification", "price": "35", "priceCurrency": "USD", "unitText": "HOUR" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Rapid Prototyping" }, "priceSpecification": { "@type": "UnitPriceSpecification", "price": "35", "priceCurrency": "USD", "unitText": "HOUR" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Design Systems" }, "priceSpecification": { "@type": "UnitPriceSpecification", "price": "35", "priceCurrency": "USD", "unitText": "HOUR" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Modern Marketing & Product Websites" }, "priceSpecification": { "@type": "UnitPriceSpecification", "price": "35", "priceCurrency": "USD", "unitText": "HOUR" } }
+      ]
+    }
+  }
+  </script>
+
+  <!-- ── SCHEMA: Service (one block per service) ────────────
+       Each Service block gives Google and AI a standalone,
+       citable description of exactly what you offer, at what
+       price, and who it's for. Powers "services" rich results
+       and helps AI answer "how much does UX design cost" queries
+       with your name attached.
+  ──────────────────────────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Services offered by Paola Bramlett",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@type": "Service",
+          "@id": "https://www.paolabramlett.com/#service-uxui",
+          "name": "UX/UI Design for Digital Products",
+          "description": "End-to-end interface design from user research and wireframes to polished, production-ready UI. Covers information architecture, user flows, component design, and final visual polish.",
+          "provider": { "@id": "https://www.paolabramlett.com/#business" },
+          "areaServed": "Worldwide",
+          "offers": { "@type": "Offer", "price": "35", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "HOUR" } }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "item": {
+          "@type": "Service",
+          "@id": "https://www.paolabramlett.com/#service-product-interface",
+          "name": "Product Interface Design",
+          "description": "Designing core product interfaces that guide users with clarity and build lasting trust. Focused on SaaS, mobile apps, and web-based products.",
+          "provider": { "@id": "https://www.paolabramlett.com/#business" },
+          "areaServed": "Worldwide",
+          "offers": { "@type": "Offer", "price": "35", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "HOUR" } }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@type": "Service",
+          "@id": "https://www.paolabramlett.com/#service-prototyping",
+          "name": "Rapid Prototyping",
+          "description": "Fast, high-fidelity prototypes in Figma or code that validate ideas and test user flows before committing to full development.",
+          "provider": { "@id": "https://www.paolabramlett.com/#business" },
+          "areaServed": "Worldwide",
+          "offers": { "@type": "Offer", "price": "35", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "HOUR" } }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
+        "item": {
+          "@type": "Service",
+          "@id": "https://www.paolabramlett.com/#service-design-systems",
+          "name": "Design Systems",
+          "description": "Scalable, token-based component libraries that keep product teams consistent and fast. Delivered in Figma, with documentation and handoff specs.",
+          "provider": { "@id": "https://www.paolabramlett.com/#business" },
+          "areaServed": "Worldwide",
+          "offers": { "@type": "Offer", "price": "35", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "HOUR" } }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 5,
+        "item": {
+          "@type": "Service",
+          "@id": "https://www.paolabramlett.com/#service-vibe-coding",
+          "name": "Vibe Coding & AI-Assisted Development",
+          "description": "Using AI-powered workflows (Claude Code, Cursor, and similar tools) to design and build functional interfaces significantly faster than traditional design-to-dev handoffs.",
+          "provider": { "@id": "https://www.paolabramlett.com/#business" },
+          "areaServed": "Worldwide",
+          "offers": { "@type": "Offer", "price": "35", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "HOUR" } }
+        }
+      },
+      {
+        "@type": "ListItem",
+        "position": 6,
+        "item": {
+          "@type": "Service",
+          "@id": "https://www.paolabramlett.com/#service-websites",
+          "name": "Modern Marketing & Product Websites",
+          "description": "High-conversion marketing sites and product landing pages with premium visual design, refined micro-interactions, and clean front-end code.",
+          "provider": { "@id": "https://www.paolabramlett.com/#business" },
+          "areaServed": "Worldwide",
+          "offers": { "@type": "Offer", "price": "35", "priceCurrency": "USD", "priceSpecification": { "@type": "UnitPriceSpecification", "unitText": "HOUR" } }
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- ── SCHEMA: FAQPage ────────────────────────────────────
+       FAQ schema unlocks Google's accordion rich result that
+       appears directly in search — expanding your SERP footprint
+       without a click. AI models also pull from FAQ pairs when
+       answering "how much does Paola charge" or "is she available
+       remotely" style questions.
+  ──────────────────────────────────────────────────────────── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much does Paola Bramlett charge for design work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All services are priced at $35 USD per hour. This covers UX/UI design, product interface design, rapid prototyping, design systems, vibe coding, and website development. Project-based flat-rate quotes are available on request."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Paola Bramlett work with clients outside Mexico?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Paola works remotely with clients in the United States, Canada, Europe, and across Latin America. All communication and project delivery happens online. She is fluent in both English and Spanish."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is Vibe Coding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Vibe Coding is an AI-assisted development workflow that combines design thinking with tools like Claude Code and Cursor to build functional interfaces faster than traditional development. The result is production-quality code delivered at design speed."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long does a typical project take?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A landing page or marketing site typically takes 3–7 days. A full UX/UI design for an app takes 2–6 weeks depending on scope and complexity. Rapid prototypes can be turned around in as little as 1–3 days."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Paola do development or only design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both. Paola designs in Figma and also builds functional interfaces using HTML, CSS, JavaScript, and AI-assisted coding tools. She can deliver Figma design files, interactive prototypes, or fully coded front-end pages."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What tools does Paola use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Paola's primary tools are Figma for design and prototyping, Claude Code and Cursor for AI-assisted development, Adobe Illustrator for brand and visual work, and standard web technologies (HTML, CSS, JavaScript) for front-end builds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is Paola Bramlett available for ongoing retainer work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. In addition to one-off projects, Paola is available for ongoing design partnerships and monthly retainers. This suits startups and product teams that need consistent design support without hiring a full-time designer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I start working with Paola Bramlett?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Send a message through the contact form at www.paolabramlett.com or call +52 951 408 2852. Describe your project or idea and expect a reply within 24 hours. Initial consultations are free."
+        }
+      }
+    ]
+  }
+  </script>
+
 </head>
 <body>
 
