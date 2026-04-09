@@ -271,18 +271,214 @@ function initCounters() {
   // Placeholder for numeric stats if added in the future
 }
 
+// ── i18N / LANGUAGE SWITCH ──────────────────────────────────
+
+const translations = {
+  en: {
+    'nav-work': 'Work', 'nav-labs': 'Labs', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-cta': "Let's Build",
+    'hero-badge': 'Available for select projects',
+    'hero-title-html': 'Product Designer<br /><em>&amp; Vibe Coder</em>',
+    'hero-subheadline-html': 'I design, prototype, and ship modern digital products<br class="br-desktop" /> with clarity, speed, and strong visual taste.',
+    'hero-body': 'From UX systems to AI-powered interfaces, I help transform ideas into polished digital experiences that feel intuitive, refined, and ready to launch.',
+    'hero-view-work': 'View Work', 'hero-explore-labs': 'Explore Labs',
+    'hero-caption': 'Designing across UX, UI, product thinking, rapid prototyping, and AI-assisted development.',
+    'hero-scroll': 'Scroll',
+    'value-label': 'What I bring',
+    'value-heading-html': 'Built for founders,<br />teams, and ambitious<br />products.',
+    'value-body-1': 'I work at the intersection of product thinking, interface design, and rapid prototyping. That means I can help shape the experience, design the interface, and bring ideas closer to launch. Not just make things look good.',
+    'value-body-2': 'My work focuses on creating digital products that feel clear, intentional, and visually refined.',
+    'cap-uxui': 'UX/UI Design', 'cap-product': 'Product Thinking', 'cap-proto': 'Rapid Prototyping',
+    'cap-systems': 'Design Systems', 'cap-vibe': 'Vibe Coding', 'cap-web': 'Modern Web Interfaces',
+    'work-label': 'Selected Work', 'work-heading': 'Case Studies',
+    'work-body': 'A curated selection of product design, UX/UI, and digital experiences focused on usability, clarity, and modern interface design. Each case study shows the thinking behind the interface — from research and structure to final product experience.',
+    'card1-type': 'UX/UI · Mobile Platform', 'card1-title': 'ExploreTogether',
+    'card1-desc': 'A crowdsourced travel platform designed to help users discover authentic destinations through community-driven recommendations.',
+    'card-cta': 'View Case Study',
+    'card2-type': 'Product Design · Mobile/Web', 'card2-title': 'Event Planning & RSVP Platform',
+    'card2-desc': 'A digital product focused on simplifying event coordination and improving guest interactions from invitation to attendance.',
+    'card3-type': 'UX Design · Concept', 'card3-title': 'Mental Health Support Platform',
+    'card3-desc': 'A concept platform designed to make emotional support tools more accessible, structured, and easy to navigate for people seeking help.',
+    'labs-label': 'Labs', 'labs-heading': 'Experiments',
+    'labs-body': 'The Lab is where I explore new interface ideas, rapid product prototypes, and AI-assisted workflows. Some experiments begin as design explorations. Others evolve into functional prototypes and product concepts.',
+    'lab1-title': 'AI Interface Experiments',
+    'lab1-desc': 'Exploring how AI-native interactions reshape the visual language of interfaces and user flows.',
+    'lab2-title': 'Product Prototypes',
+    'lab2-desc': 'Rapid product concepts built to explore feasibility, flow, and first-impression experience.',
+    'labs-explore': 'Explore the Lab',
+    'lab3-title': 'Interaction Experiments',
+    'lab3-desc': 'Micro-interactions, transitions, and motion design studies pushing the edges of UI behavior.',
+    'lab4-title': 'Design + Code Explorations',
+    'lab4-desc': 'Projects where Figma and code blur together — vibe-coded interfaces brought to life with AI-assisted development.',
+    'phil-label': 'Design Philosophy', 'phil-quote': 'Good design creates momentum.',
+    'phil-body-1': 'Strong digital products are built through clarity, not noise. The best interfaces simplify complexity, guide users naturally, and create trust through thoughtful details.',
+    'phil-body-2': 'My approach combines visual restraint, product logic, and fast iteration — allowing ideas to move from concept to usable interface quickly.',
+    'about-label': 'About',
+    'about-heading-html': 'Designing at the edge of<br />design and development.',
+    'stat-location': 'Mexico', 'stat-location-label': 'Based in',
+    'stat-focus': 'UX + UI', 'stat-focus-label': 'Primary focus',
+    'stat-workflow': 'AI-first', 'stat-workflow-label': 'Workflow',
+    'about-p1': "I'm a Product Designer and UX/UI designer based in Mexico, focused on building digital products that feel modern, intuitive, and visually elevated.",
+    'about-p2': 'My work combines product thinking, interface design, and rapid prototyping to transform ideas into experiences that are both usable and memorable.',
+    'about-p3': "I'm particularly interested in the space where design and development start to merge — where designers can think through systems, prototype interactions quickly, and bring ideas closer to real products.",
+    'about-p4': 'Through vibe coding and AI-assisted workflows, I explore faster ways of shaping and building digital experiences.',
+    'services-label': 'Collaboration', 'services-heading': 'How I Can Help',
+    'services-body': 'I collaborate with founders, startups, and teams that want to move quickly from idea to product.',
+    'svc1-title': 'UX/UI Design for Digital Products',
+    'svc1-desc': 'End-to-end interface design from research and wireframes to polished, production-ready UI.',
+    'svc2-title': 'Product Interface Design',
+    'svc2-desc': 'Designing core product interfaces that guide users with clarity and build lasting trust.',
+    'svc3-title': 'Rapid Prototyping',
+    'svc3-desc': 'Fast, high-fidelity prototypes that validate ideas before a single line of production code is written.',
+    'svc4-title': 'Design Systems',
+    'svc4-desc': 'Scalable component libraries and token-based design systems that keep teams moving in sync.',
+    'svc5-title': 'Vibe Coding & AI-Assisted Development',
+    'svc5-desc': 'Using AI-powered workflows to prototype and build functional interfaces faster than traditional design-dev handoffs allow.',
+    'svc6-title': 'Modern Marketing & Product Websites',
+    'svc6-desc': 'High-conversion marketing sites and product landing pages with premium visual design and refined interactions.',
+    'cta-heading-html': "Let's build something<br />people remember.",
+    'cta-body': "If you're working on a product and need help shaping the experience, refining the interface, or building modern digital interactions, I'd love to hear about it.",
+    'cta-btn': 'Get in Touch',
+    'cta-caption': 'Available for select freelance projects, collaborations, and in-house opportunities.',
+    'contact-label': 'Contact',
+    'contact-heading-html': 'Start a<br />conversation.',
+    'contact-body-html': "Have a project, role, or collaboration in mind?<br />Send a message and let's talk.",
+    'form-name-label': 'Name', 'form-name-placeholder': 'Your name',
+    'form-email-label': 'Email',
+    'form-project-label': 'Project', 'form-project-placeholder': 'What are you working on?',
+    'form-message-label': 'Message', 'form-message-placeholder': 'Tell me about your project or opportunity...',
+    'form-submit': 'Send Message',
+    'footer-role': 'Product Designer & Vibe Coder',
+    'footer-tagline': 'Designing modern digital experiences with clarity and taste.',
+    'footer-copy': '© 2026 Paola Bramlett. All rights reserved.',
+  },
+  es: {
+    'nav-work': 'Trabajo', 'nav-labs': 'Labs', 'nav-about': 'Sobre mí', 'nav-contact': 'Contacto', 'nav-cta': 'Construyamos',
+    'hero-badge': 'Disponible para proyectos selectos',
+    'hero-title-html': 'Diseñadora de Producto<br /><em>&amp; Vibe Coder</em>',
+    'hero-subheadline-html': 'Diseño, prototipo y construyo productos digitales modernos<br class="br-desktop" /> con claridad, velocidad y gusto visual.',
+    'hero-body': 'Desde sistemas de UX hasta interfaces con IA, ayudo a transformar ideas en experiencias digitales pulidas que se sienten intuitivas, refinadas y listas para lanzar.',
+    'hero-view-work': 'Ver Trabajo', 'hero-explore-labs': 'Explorar Labs',
+    'hero-caption': 'Diseñando en UX, UI, pensamiento de producto, prototipado rápido y desarrollo asistido por IA.',
+    'hero-scroll': 'Scroll',
+    'value-label': 'Lo que aporto',
+    'value-heading-html': 'Hecho para founders,<br />equipos y productos<br />ambiciosos.',
+    'value-body-1': 'Trabajo en la intersección del pensamiento de producto, el diseño de interfaces y el prototipado rápido. Eso significa que puedo ayudar a dar forma a la experiencia, diseñar la interfaz y acercar las ideas al lanzamiento. No solo hacer que las cosas se vean bien.',
+    'value-body-2': 'Mi trabajo se centra en crear productos digitales que se sientan claros, intencionales y visualmente refinados.',
+    'cap-uxui': 'Diseño UX/UI', 'cap-product': 'Pensamiento de Producto', 'cap-proto': 'Prototipado Rápido',
+    'cap-systems': 'Sistemas de Diseño', 'cap-vibe': 'Vibe Coding', 'cap-web': 'Interfaces Web Modernas',
+    'work-label': 'Trabajo Selecto', 'work-heading': 'Casos de Estudio',
+    'work-body': 'Una selección de diseño de producto, UX/UI y experiencias digitales enfocadas en usabilidad, claridad y diseño de interfaces modernas. Cada caso de estudio muestra el pensamiento detrás de la interfaz — desde la investigación y la estructura hasta la experiencia final del producto.',
+    'card1-type': 'UX/UI · Plataforma Móvil', 'card1-title': 'ExploreTogether',
+    'card1-desc': 'Una plataforma de viajes colaborativa diseñada para ayudar a los usuarios a descubrir destinos auténticos a través de recomendaciones impulsadas por la comunidad.',
+    'card-cta': 'Ver Caso de Estudio',
+    'card2-type': 'Diseño de Producto · Móvil/Web', 'card2-title': 'Plataforma de Eventos y RSVP',
+    'card2-desc': 'Un producto digital enfocado en simplificar la coordinación de eventos y mejorar las interacciones de los invitados desde la invitación hasta la asistencia.',
+    'card3-type': 'Diseño UX · Concepto', 'card3-title': 'Plataforma de Apoyo en Salud Mental',
+    'card3-desc': 'Una plataforma conceptual diseñada para hacer que las herramientas de apoyo emocional sean más accesibles, estructuradas y fáciles de navegar para personas que buscan ayuda.',
+    'labs-label': 'Labs', 'labs-heading': 'Experimentos',
+    'labs-body': 'El Lab es donde exploro nuevas ideas de interfaces, prototipos de productos rápidos y flujos de trabajo asistidos por IA. Algunos experimentos comienzan como exploraciones de diseño. Otros evolucionan en prototipos funcionales y conceptos de producto.',
+    'lab1-title': 'Experimentos de Interfaces con IA',
+    'lab1-desc': 'Explorando cómo las interacciones nativas de IA reconfiguran el lenguaje visual de las interfaces y los flujos de usuario.',
+    'lab2-title': 'Prototipos de Producto',
+    'lab2-desc': 'Conceptos de producto rápidos construidos para explorar viabilidad, flujo y experiencia de primera impresión.',
+    'labs-explore': 'Explorar el Lab',
+    'lab3-title': 'Experimentos de Interacción',
+    'lab3-desc': 'Micro-interacciones, transiciones y estudios de diseño en movimiento que empujan los límites del comportamiento de UI.',
+    'lab4-title': 'Exploraciones de Diseño + Código',
+    'lab4-desc': 'Proyectos donde Figma y el código se fusionan — interfaces vibe-coded cobradas vida con desarrollo asistido por IA.',
+    'phil-label': 'Filosofía de Diseño', 'phil-quote': 'El buen diseño crea impulso.',
+    'phil-body-1': 'Los productos digitales sólidos se construyen con claridad, no con ruido. Las mejores interfaces simplifican la complejidad, guían a los usuarios de forma natural y generan confianza a través de detalles reflexivos.',
+    'phil-body-2': 'Mi enfoque combina sobriedad visual, lógica de producto e iteración rápida — permitiendo que las ideas pasen del concepto a una interfaz utilizable rápidamente.',
+    'about-label': 'Sobre mí',
+    'about-heading-html': 'Diseñando en la frontera<br />del diseño y el desarrollo.',
+    'stat-location': 'México', 'stat-location-label': 'Ubicada en',
+    'stat-focus': 'UX + UI', 'stat-focus-label': 'Enfoque principal',
+    'stat-workflow': 'IA primero', 'stat-workflow-label': 'Flujo de trabajo',
+    'about-p1': 'Soy Diseñadora de Producto y diseñadora UX/UI basada en México, enfocada en construir productos digitales que se sientan modernos, intuitivos y visualmente elevados.',
+    'about-p2': 'Mi trabajo combina pensamiento de producto, diseño de interfaces y prototipado rápido para transformar ideas en experiencias que son tanto utilizables como memorables.',
+    'about-p3': 'Me interesa especialmente el espacio donde el diseño y el desarrollo comienzan a fusionarse — donde los diseñadores pueden pensar en sistemas, prototipar interacciones rápidamente y acercar las ideas a productos reales.',
+    'about-p4': 'A través del vibe coding y los flujos de trabajo asistidos por IA, exploro formas más rápidas de dar forma y construir experiencias digitales.',
+    'services-label': 'Colaboración', 'services-heading': 'Cómo Puedo Ayudar',
+    'services-body': 'Colaboro con founders, startups y equipos que quieren pasar rápidamente de la idea al producto.',
+    'svc1-title': 'Diseño UX/UI para Productos Digitales',
+    'svc1-desc': 'Diseño de interfaz de extremo a extremo, desde investigación y wireframes hasta una UI pulida y lista para producción.',
+    'svc2-title': 'Diseño de Interfaz de Producto',
+    'svc2-desc': 'Diseño de interfaces de producto principales que guían a los usuarios con claridad y generan confianza duradera.',
+    'svc3-title': 'Prototipado Rápido',
+    'svc3-desc': 'Prototipos rápidos y de alta fidelidad que validan ideas antes de escribir una sola línea de código de producción.',
+    'svc4-title': 'Sistemas de Diseño',
+    'svc4-desc': 'Bibliotecas de componentes escalables y sistemas de diseño basados en tokens que mantienen a los equipos sincronizados.',
+    'svc5-title': 'Vibe Coding y Desarrollo Asistido por IA',
+    'svc5-desc': 'Usando flujos de trabajo impulsados por IA para prototipar y construir interfaces funcionales más rápido que los handoffs tradicionales de diseño y desarrollo.',
+    'svc6-title': 'Sitios Web de Marketing y Producto Modernos',
+    'svc6-desc': 'Sitios de marketing de alta conversión y landing pages de producto con diseño visual premium e interacciones refinadas.',
+    'cta-heading-html': 'Construyamos algo que<br />la gente recuerde.',
+    'cta-body': 'Si estás trabajando en un producto y necesitas ayuda para dar forma a la experiencia, refinar la interfaz o construir interacciones digitales modernas, me encantaría escuchar sobre ello.',
+    'cta-btn': 'Ponte en Contacto',
+    'cta-caption': 'Disponible para proyectos freelance selectos, colaboraciones y oportunidades en empresa.',
+    'contact-label': 'Contacto',
+    'contact-heading-html': 'Inicia una<br />conversación.',
+    'contact-body-html': '¿Tienes un proyecto, rol o colaboración en mente?<br />Envía un mensaje y hablemos.',
+    'form-name-label': 'Nombre', 'form-name-placeholder': 'Tu nombre',
+    'form-email-label': 'Correo electrónico',
+    'form-project-label': 'Proyecto', 'form-project-placeholder': '¿En qué estás trabajando?',
+    'form-message-label': 'Mensaje', 'form-message-placeholder': 'Cuéntame sobre tu proyecto u oportunidad...',
+    'form-submit': 'Enviar Mensaje',
+    'footer-role': 'Diseñadora de Producto & Vibe Coder',
+    'footer-tagline': 'Diseñando experiencias digitales modernas con claridad y gusto.',
+    'footer-copy': '© 2026 Paola Bramlett. Todos los derechos reservados.',
+  }
+};
+
+function applyLanguage(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (t[key] !== undefined) el.textContent = t[key];
+  });
+
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    const key = el.dataset.i18nHtml;
+    if (t[key] !== undefined) el.innerHTML = t[key];
+  });
+
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (t[key] !== undefined) el.placeholder = t[key];
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  localStorage.setItem('lang', lang);
+}
+
+function initLanguageSwitch() {
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
+  });
+
+  const saved = localStorage.getItem('lang');
+  if (saved && translations[saved]) applyLanguage(saved);
+}
+
 // ── INIT ────────────────────────────────────────────────────
 
 document.addEventListener('DOMContentLoaded', () => {
   initNavbar();
   initScrollReveal();
   initSmoothScroll();
-  initContactForm();
   initCardTilt();
   initActiveNavLink();
   initHeroEntrance();
   initCursorGlow();
   initCounters();
+  initLanguageSwitch();
 });
 
 // Expose for potential external use
