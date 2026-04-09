@@ -21,24 +21,28 @@
         Paola Bramlett
       </a>
       <ul class="nav-links" role="list">
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#labs" class="nav-link">Labs</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#work" class="nav-link" data-i18n="nav-work">Work</a></li>
+        <li><a href="#labs" class="nav-link" data-i18n="nav-labs">Labs</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav-about">About</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a></li>
       </ul>
-      <a href="#contact" class="btn btn-primary btn-sm nav-cta">Let's Build</a>
+      <a href="#contact" class="btn btn-primary btn-sm nav-cta" data-i18n="nav-cta">Let's Build</a>
+      <div class="lang-toggle" role="group" aria-label="Language selection">
+        <button class="lang-btn active" data-lang="en">EN</button>
+        <button class="lang-btn" data-lang="es">ES</button>
+      </div>
       <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <div class="nav-mobile-menu" id="mobileMenu" aria-hidden="true">
       <ul role="list">
-        <li><a href="#work" class="nav-link">Work</a></li>
-        <li><a href="#labs" class="nav-link">Labs</a></li>
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><a href="#work" class="nav-link" data-i18n="nav-work">Work</a></li>
+        <li><a href="#labs" class="nav-link" data-i18n="nav-labs">Labs</a></li>
+        <li><a href="#about" class="nav-link" data-i18n="nav-about">About</a></li>
+        <li><a href="#contact" class="nav-link" data-i18n="nav-contact">Contact</a></li>
       </ul>
-      <a href="#contact" class="btn btn-primary">Let's Build</a>
+      <a href="#contact" class="btn btn-primary" data-i18n="nav-cta">Let's Build</a>
     </div>
   </nav>
 
@@ -49,36 +53,36 @@
       <div class="hero-content">
         <div class="hero-badge reveal" data-delay="0">
           <span class="badge-dot"></span>
-          <span>Available for select projects</span>
+          <span data-i18n="hero-badge">Available for select projects</span>
         </div>
 
         <h1 class="hero-heading reveal" data-delay="80" id="hero-heading">
           <span class="hero-name">Paola Bramlett</span>
-          <span class="hero-title">Product Designer<br /><em>&amp; Vibe Coder</em></span>
+          <span class="hero-title" data-i18n-html="hero-title-html">Product Designer<br /><em>&amp; Vibe Coder</em></span>
         </h1>
 
-        <p class="hero-subheadline reveal" data-delay="160">
+        <p class="hero-subheadline reveal" data-delay="160" data-i18n-html="hero-subheadline-html">
           I design, prototype, and ship modern digital products<br class="br-desktop" /> with clarity, speed, and strong visual taste.
         </p>
 
-        <p class="hero-body reveal" data-delay="200">
+        <p class="hero-body reveal" data-delay="200" data-i18n="hero-body">
           From UX systems to AI-powered interfaces, I help transform ideas into polished
           digital experiences that feel intuitive, refined, and ready to launch.
         </p>
 
         <div class="hero-actions reveal" data-delay="260">
-          <a href="#work" class="btn btn-primary btn-lg">View Work</a>
-          <a href="#labs" class="btn btn-ghost btn-lg">Explore Labs</a>
+          <a href="#work" class="btn btn-primary btn-lg" data-i18n="hero-view-work">View Work</a>
+          <a href="#labs" class="btn btn-ghost btn-lg" data-i18n="hero-explore-labs">Explore Labs</a>
         </div>
 
-        <p class="hero-caption reveal" data-delay="320">
+        <p class="hero-caption reveal" data-delay="320" data-i18n="hero-caption">
           Designing across UX, UI, product thinking, rapid prototyping, and AI-assisted development.
         </p>
       </div>
     </div>
 
     <div class="hero-scroll-indicator reveal" data-delay="400" aria-hidden="true">
-      <span>Scroll</span>
+      <span data-i18n="hero-scroll">Scroll</span>
       <div class="scroll-line"></div>
     </div>
   </section>
@@ -88,32 +92,32 @@
     <div class="container">
       <div class="section-label reveal">
         <span class="label-line"></span>
-        <span>What I bring</span>
+        <span data-i18n="value-label">What I bring</span>
       </div>
 
       <div class="value-grid">
         <div class="value-text">
-          <h2 class="section-heading reveal" id="value-heading">
+          <h2 class="section-heading reveal" id="value-heading" data-i18n-html="value-heading-html">
             Built for founders,<br />teams, and ambitious<br />products.
           </h2>
         </div>
         <div class="value-body reveal" data-delay="80">
-          <p>
+          <p data-i18n="value-body-1">
             I work at the intersection of product thinking, interface design, and rapid prototyping.
             That means I can help shape the experience, design the interface, and bring ideas closer
             to launch. Not just make things look good.
           </p>
-          <p>
+          <p data-i18n="value-body-2">
             My work focuses on creating digital products that feel clear, intentional, and visually refined.
           </p>
 
           <ul class="capabilities-list" role="list" aria-label="Capabilities">
-            <li class="capability-tag">UX/UI Design</li>
-            <li class="capability-tag">Product Thinking</li>
-            <li class="capability-tag">Rapid Prototyping</li>
-            <li class="capability-tag">Design Systems</li>
-            <li class="capability-tag accent-tag">Vibe Coding</li>
-            <li class="capability-tag">Modern Web Interfaces</li>
+            <li class="capability-tag" data-i18n="cap-uxui">UX/UI Design</li>
+            <li class="capability-tag" data-i18n="cap-product">Product Thinking</li>
+            <li class="capability-tag" data-i18n="cap-proto">Rapid Prototyping</li>
+            <li class="capability-tag" data-i18n="cap-systems">Design Systems</li>
+            <li class="capability-tag accent-tag" data-i18n="cap-vibe">Vibe Coding</li>
+            <li class="capability-tag" data-i18n="cap-web">Modern Web Interfaces</li>
           </ul>
         </div>
       </div>
@@ -126,10 +130,10 @@
       <div class="section-header reveal">
         <div class="section-label">
           <span class="label-line"></span>
-          <span>Selected Work</span>
+          <span data-i18n="work-label">Selected Work</span>
         </div>
-        <h2 class="section-heading" id="work-heading">Case Studies</h2>
-        <p class="section-body">
+        <h2 class="section-heading" id="work-heading" data-i18n="work-heading">Case Studies</h2>
+        <p class="section-body" data-i18n="work-body">
           A curated selection of product design, UX/UI, and digital experiences focused on
           usability, clarity, and modern interface design. Each case study shows the thinking
           behind the interface — from research and structure to final product experience.
@@ -161,9 +165,9 @@
               />
           </div>
           <div class="work-card-body">
-            <span class="work-card-type">UX/UI · Mobile Platform</span>
-            <h3 class="work-card-title">ExploreTogether</h3>
-            <p class="work-card-desc">
+            <span class="work-card-type" data-i18n="card1-type">UX/UI · Mobile Platform</span>
+            <h3 class="work-card-title" data-i18n="card1-title">ExploreTogether</h3>
+            <p class="work-card-desc" data-i18n="card1-desc">
               A crowdsourced travel platform designed to help users discover authentic destinations
               through community-driven recommendations.
             </p>
@@ -171,7 +175,7 @@
           <div class="work-card-footer">
             <!-- UPDATE: Reemplaza con el link real al case study (Behance, Notion, página interna, etc.) -->
             <a href="https://bony-eggplant-acc.notion.site/ExploreTogether-UX-UI-Case-Study-072f431d588d45b183e47c799b5f86dc?source=copy_link" class="work-card-cta" aria-label="View ExploreTogether case study" target="_blank">
-              View Case Study
+              <span data-i18n="card-cta">View Case Study</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -202,9 +206,9 @@
               />
           </div>
           <div class="work-card-body">
-            <span class="work-card-type">Product Design · Mobile/Web</span>
-            <h3 class="work-card-title">Event Planning &amp; RSVP Platform</h3>
-            <p class="work-card-desc">
+            <span class="work-card-type" data-i18n="card2-type">Product Design · Mobile/Web</span>
+            <h3 class="work-card-title" data-i18n="card2-title">Event Planning &amp; RSVP Platform</h3>
+            <p class="work-card-desc" data-i18n="card2-desc">
               A digital product focused on simplifying event coordination and improving
               guest interactions from invitation to attendance.
             </p>
@@ -212,7 +216,7 @@
           <div class="work-card-footer">
             <!-- UPDATE: Reemplaza con el link real al case study (Behance, Notion, página interna, etc.) -->
             <a href="https://bony-eggplant-acc.notion.site/EventFlow-Event-Planning-RSVP-Platform-072f431d588d45b183e47c799b5f86dc" class="work-card-cta" aria-label="View Event Planning case study" target="_blank">
-              View Case Study
+              <span data-i18n="card-cta">View Case Study</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -243,9 +247,9 @@
               />
           </div>
           <div class="work-card-body">
-            <span class="work-card-type">UX Design · Concept</span>
-            <h3 class="work-card-title">Mental Health Support Platform</h3>
-            <p class="work-card-desc">
+            <span class="work-card-type" data-i18n="card3-type">UX Design · Concept</span>
+            <h3 class="work-card-title" data-i18n="card3-title">Mental Health Support Platform</h3>
+            <p class="work-card-desc" data-i18n="card3-desc">
               A concept platform designed to make emotional support tools more accessible,
               structured, and easy to navigate for people seeking help.
             </p>
@@ -253,7 +257,7 @@
           <div class="work-card-footer">
             <!-- UPDATE: Reemplaza con el link real al case study (Behance, Notion, página interna, etc.) -->
             <a href="https://bony-eggplant-acc.notion.site/MindSpace-Mental-Health-Support-Platform-3207bc9ee119804e9837d9d5e20fc34f?source=copy_link" class="work-card-cta" aria-label="View Mental Health Platform case study" target="_blank">
-              View Case Study
+              <span data-i18n="card-cta">View Case Study</span>
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
@@ -271,10 +275,10 @@
       <div class="section-header reveal">
         <div class="section-label">
           <span class="label-line"></span>
-          <span>Labs</span>
+          <span data-i18n="labs-label">Labs</span>
         </div>
-        <h2 class="section-heading" id="labs-heading">Experiments</h2>
-        <p class="section-body">
+        <h2 class="section-heading" id="labs-heading" data-i18n="labs-heading">Experiments</h2>
+        <p class="section-body" data-i18n="labs-body">
           The Lab is where I explore new interface ideas, rapid product prototypes, and
           AI-assisted workflows. Some experiments begin as design explorations. Others
           evolve into functional prototypes and product concepts.
@@ -292,8 +296,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="lab-card-title">AI Interface Experiments</h3>
-          <p class="lab-card-desc">Exploring how AI-native interactions reshape the visual language of interfaces and user flows.</p>
+          <h3 class="lab-card-title" data-i18n="lab1-title">AI Interface Experiments</h3>
+          <p class="lab-card-desc" data-i18n="lab1-desc">Exploring how AI-native interactions reshape the visual language of interfaces and user flows.</p>
         </article>
 
         <article class="lab-card reveal" data-delay="60">
@@ -306,8 +310,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="lab-card-title">Product Prototypes</h3>
-          <p class="lab-card-desc">Rapid product concepts built to explore feasibility, flow, and first-impression experience.</p>
+          <h3 class="lab-card-title" data-i18n="lab2-title">Product Prototypes</h3>
+          <p class="lab-card-desc" data-i18n="lab2-desc">Rapid product concepts built to explore feasibility, flow, and first-impression experience.</p>
           <br/>
           <a class="work-card-cta" href="https://situationship-clarity-score.netlify.app/" target="_blank"> Explore -> </a>
         </article>
@@ -323,8 +327,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="lab-card-title">Interaction Experiments</h3>
-          <p class="lab-card-desc">Micro-interactions, transitions, and motion design studies pushing the edges of UI behavior.</p>
+          <h3 class="lab-card-title" data-i18n="lab3-title">Interaction Experiments</h3>
+          <p class="lab-card-desc" data-i18n="lab3-desc">Micro-interactions, transitions, and motion design studies pushing the edges of UI behavior.</p>
         </article>
 
         <article class="lab-card reveal" data-delay="180">
@@ -337,8 +341,8 @@
               </svg>
             </div>
           </div>
-          <h3 class="lab-card-title">Design + Code Explorations</h3>
-          <p class="lab-card-desc">Projects where Figma and code blur together — vibe-coded interfaces brought to life with AI-assisted development.</p>
+          <h3 class="lab-card-title" data-i18n="lab4-title">Design + Code Explorations</h3>
+          <p class="lab-card-desc" data-i18n="lab4-desc">Projects where Figma and code blur together — vibe-coded interfaces brought to life with AI-assisted development.</p>
         </article>
 
       </div>
@@ -346,7 +350,7 @@
       <div class="labs-cta reveal">
         <!-- UPDATE: Cambia a la URL de tu página de labs completa, o deja #contact si prefieres -->
         <a href="#contact" class="btn btn-outline">
-          Explore the Lab
+          <span data-i18n="labs-explore">Explore the Lab</span>
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
@@ -361,17 +365,17 @@
       <div class="philosophy-inner reveal">
         <div class="section-label">
           <span class="label-line"></span>
-          <span>Design Philosophy</span>
+          <span data-i18n="phil-label">Design Philosophy</span>
         </div>
-        <blockquote class="philosophy-quote" id="philosophy-heading">
+        <blockquote class="philosophy-quote" id="philosophy-heading" data-i18n="phil-quote">
           Good design creates momentum.
         </blockquote>
         <div class="philosophy-body">
-          <p>
+          <p data-i18n="phil-body-1">
             Strong digital products are built through clarity, not noise. The best interfaces
             simplify complexity, guide users naturally, and create trust through thoughtful details.
           </p>
-          <p>
+          <p data-i18n="phil-body-2">
             My approach combines visual restraint, product logic, and fast iteration — allowing
             ideas to move from concept to usable interface quickly.
           </p>
@@ -407,42 +411,42 @@
 
           <div class="section-label reveal">
             <span class="label-line"></span>
-            <span>About</span>
+            <span data-i18n="about-label">About</span>
           </div>
-          <h2 class="section-heading reveal" id="about-heading">
+          <h2 class="section-heading reveal" id="about-heading" data-i18n-html="about-heading-html">
             Designing at the edge of<br />design and development.
           </h2>
           <div class="about-details reveal" data-delay="60">
             <div class="about-stat">
-              <span class="stat-value">Mexico</span>
-              <span class="stat-label">Based in</span>
+              <span class="stat-value" data-i18n="stat-location">Mexico</span>
+              <span class="stat-label" data-i18n="stat-location-label">Based in</span>
             </div>
             <div class="about-stat">
-              <span class="stat-value">UX + UI</span>
-              <span class="stat-label">Primary focus</span>
+              <span class="stat-value" data-i18n="stat-focus">UX + UI</span>
+              <span class="stat-label" data-i18n="stat-focus-label">Primary focus</span>
             </div>
             <div class="about-stat">
-              <span class="stat-value">AI-first</span>
-              <span class="stat-label">Workflow</span>
+              <span class="stat-value" data-i18n="stat-workflow">AI-first</span>
+              <span class="stat-label" data-i18n="stat-workflow-label">Workflow</span>
             </div>
           </div>
         </div>
 
         <div class="about-right reveal" data-delay="80">
-          <p>
+          <p data-i18n="about-p1">
             I'm a Product Designer and UX/UI designer based in Mexico, focused on building
             digital products that feel modern, intuitive, and visually elevated.
           </p>
-          <p>
+          <p data-i18n="about-p2">
             My work combines product thinking, interface design, and rapid prototyping to
             transform ideas into experiences that are both usable and memorable.
           </p>
-          <p>
+          <p data-i18n="about-p3">
             I'm particularly interested in the space where design and development start to
             merge — where designers can think through systems, prototype interactions quickly,
             and bring ideas closer to real products.
           </p>
-          <p>
+          <p data-i18n="about-p4">
             Through vibe coding and AI-assisted workflows, I explore faster ways of shaping
             and building digital experiences.
           </p>
@@ -457,10 +461,10 @@
       <div class="section-header reveal">
         <div class="section-label">
           <span class="label-line"></span>
-          <span>Collaboration</span>
+          <span data-i18n="services-label">Collaboration</span>
         </div>
-        <h2 class="section-heading" id="services-heading">How I Can Help</h2>
-        <p class="section-body">
+        <h2 class="section-heading" id="services-heading" data-i18n="services-heading">How I Can Help</h2>
+        <p class="section-body" data-i18n="services-body">
           I collaborate with founders, startups, and teams that want to move quickly from idea to product.
         </p>
       </div>
@@ -469,8 +473,8 @@
         <li class="service-item reveal" data-delay="0">
           <span class="service-number" aria-hidden="true">01</span>
           <div class="service-content">
-            <h3 class="service-title">UX/UI Design for Digital Products</h3>
-            <p class="service-desc">End-to-end interface design from research and wireframes to polished, production-ready UI.</p>
+            <h3 class="service-title" data-i18n="svc1-title">UX/UI Design for Digital Products</h3>
+            <p class="service-desc" data-i18n="svc1-desc">End-to-end interface design from research and wireframes to polished, production-ready UI.</p>
           </div>
           <div class="service-arrow" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -481,8 +485,8 @@
         <li class="service-item reveal" data-delay="40">
           <span class="service-number" aria-hidden="true">02</span>
           <div class="service-content">
-            <h3 class="service-title">Product Interface Design</h3>
-            <p class="service-desc">Designing core product interfaces that guide users with clarity and build lasting trust.</p>
+            <h3 class="service-title" data-i18n="svc2-title">Product Interface Design</h3>
+            <p class="service-desc" data-i18n="svc2-desc">Designing core product interfaces that guide users with clarity and build lasting trust.</p>
           </div>
           <div class="service-arrow" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -493,8 +497,8 @@
         <li class="service-item reveal" data-delay="80">
           <span class="service-number" aria-hidden="true">03</span>
           <div class="service-content">
-            <h3 class="service-title">Rapid Prototyping</h3>
-            <p class="service-desc">Fast, high-fidelity prototypes that validate ideas before a single line of production code is written.</p>
+            <h3 class="service-title" data-i18n="svc3-title">Rapid Prototyping</h3>
+            <p class="service-desc" data-i18n="svc3-desc">Fast, high-fidelity prototypes that validate ideas before a single line of production code is written.</p>
           </div>
           <div class="service-arrow" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -505,8 +509,8 @@
         <li class="service-item reveal" data-delay="120">
           <span class="service-number" aria-hidden="true">04</span>
           <div class="service-content">
-            <h3 class="service-title">Design Systems</h3>
-            <p class="service-desc">Scalable component libraries and token-based design systems that keep teams moving in sync.</p>
+            <h3 class="service-title" data-i18n="svc4-title">Design Systems</h3>
+            <p class="service-desc" data-i18n="svc4-desc">Scalable component libraries and token-based design systems that keep teams moving in sync.</p>
           </div>
           <div class="service-arrow" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -517,8 +521,8 @@
         <li class="service-item reveal" data-delay="160">
           <span class="service-number" aria-hidden="true">05</span>
           <div class="service-content">
-            <h3 class="service-title">Vibe Coding &amp; AI-Assisted Development</h3>
-            <p class="service-desc">Using AI-powered workflows to prototype and build functional interfaces faster than traditional design-dev handoffs allow.</p>
+            <h3 class="service-title" data-i18n="svc5-title">Vibe Coding &amp; AI-Assisted Development</h3>
+            <p class="service-desc" data-i18n="svc5-desc">Using AI-powered workflows to prototype and build functional interfaces faster than traditional design-dev handoffs allow.</p>
           </div>
           <div class="service-arrow" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -529,8 +533,8 @@
         <li class="service-item reveal" data-delay="200">
           <span class="service-number" aria-hidden="true">06</span>
           <div class="service-content">
-            <h3 class="service-title">Modern Marketing &amp; Product Websites</h3>
-            <p class="service-desc">High-conversion marketing sites and product landing pages with premium visual design and refined interactions.</p>
+            <h3 class="service-title" data-i18n="svc6-title">Modern Marketing &amp; Product Websites</h3>
+            <p class="service-desc" data-i18n="svc6-desc">High-conversion marketing sites and product landing pages with premium visual design and refined interactions.</p>
           </div>
           <div class="service-arrow" aria-hidden="true">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -547,15 +551,15 @@
     <div class="cta-bg-glow" aria-hidden="true"></div>
     <div class="container">
       <div class="cta-inner reveal">
-        <h2 class="cta-heading" id="cta-heading">
+        <h2 class="cta-heading" id="cta-heading" data-i18n-html="cta-heading-html">
           Let's build something<br />people remember.
         </h2>
-        <p class="cta-body">
+        <p class="cta-body" data-i18n="cta-body">
           If you're working on a product and need help shaping the experience, refining the
           interface, or building modern digital interactions, I'd love to hear about it.
         </p>
-        <a href="#contact" class="btn btn-primary btn-lg cta-btn">Get in Touch</a>
-        <p class="cta-caption">
+        <a href="#contact" class="btn btn-primary btn-lg cta-btn" data-i18n="cta-btn">Get in Touch</a>
+        <p class="cta-caption" data-i18n="cta-caption">
           Available for select freelance projects, collaborations, and in-house opportunities.
         </p>
       </div>
@@ -570,12 +574,12 @@
         <div class="contact-left">
           <div class="section-label reveal">
             <span class="label-line"></span>
-            <span>Contact</span>
+            <span data-i18n="contact-label">Contact</span>
           </div>
-          <h2 class="section-heading reveal" id="contact-heading">
+          <h2 class="section-heading reveal" id="contact-heading" data-i18n-html="contact-heading-html">
             Start a<br />conversation.
           </h2>
-          <p class="contact-body reveal" data-delay="60">
+          <p class="contact-body reveal" data-delay="60" data-i18n-html="contact-body-html">
             Have a project, role, or collaboration in mind?<br />
             Send a message and let's talk.
           </p>
@@ -624,20 +628,21 @@
     <label>Don't fill this out: <input name="bot-field" /></label>
   </p>
             <div class="form-group">
-              <label for="name" class="form-label">Name</label>
+              <label for="name" class="form-label" data-i18n="form-name-label">Name</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 class="form-input"
                 placeholder="Your name"
+                data-i18n-placeholder="form-name-placeholder"
                 autocomplete="name"
                 required
                 aria-required="true"
               />
             </div>
             <div class="form-group">
-              <label for="email" class="form-label">Email</label>
+              <label for="email" class="form-label" data-i18n="form-email-label">Email</label>
               <input
                 type="email"
                 id="email"
@@ -650,28 +655,30 @@
               />
             </div>
             <div class="form-group">
-              <label for="project" class="form-label">Project</label>
+              <label for="project" class="form-label" data-i18n="form-project-label">Project</label>
               <input
                 type="text"
                 id="project"
                 name="project"
                 class="form-input"
                 placeholder="What are you working on?"
+                data-i18n-placeholder="form-project-placeholder"
               />
             </div>
             <div class="form-group">
-              <label for="message" class="form-label">Message</label>
+              <label for="message" class="form-label" data-i18n="form-message-label">Message</label>
               <textarea
                 id="message"
                 name="message"
                 class="form-input form-textarea"
                 placeholder="Tell me about your project or opportunity..."
+                data-i18n-placeholder="form-message-placeholder"
                 rows="5"
                 required
                 aria-required="true"
               ></textarea>
             </div>
-            <button type="submit" class="btn btn-primary btn-lg form-submit">
+            <button type="submit" class="btn btn-primary btn-lg form-submit" data-i18n="form-submit">
               Send Message
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
                 <path d="M2 8l10-5-4 5 4 5-10-5z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
@@ -691,14 +698,14 @@
       <div class="footer-inner">
         <div class="footer-brand">
           <span class="footer-name">Paola Bramlett</span>
-          <span class="footer-role">Product Designer &amp; Vibe Coder</span>
-          <p class="footer-tagline">Designing modern digital experiences with clarity and taste.</p>
+          <span class="footer-role" data-i18n="footer-role">Product Designer &amp; Vibe Coder</span>
+          <p class="footer-tagline" data-i18n="footer-tagline">Designing modern digital experiences with clarity and taste.</p>
         </div>
         <nav class="footer-nav" aria-label="Footer navigation">
-          <a href="#work" class="footer-link">Work</a>
-          <a href="#labs" class="footer-link">Labs</a>
-          <a href="#about" class="footer-link">About</a>
-          <a href="#contact" class="footer-link">Contact</a>
+          <a href="#work" class="footer-link" data-i18n="nav-work">Work</a>
+          <a href="#labs" class="footer-link" data-i18n="nav-labs">Labs</a>
+          <a href="#about" class="footer-link" data-i18n="nav-about">About</a>
+          <a href="#contact" class="footer-link" data-i18n="nav-contact">Contact</a>
         </nav>
         <div class="footer-social">
           <!-- UPDATE: Reemplaza YOUR_USERNAME con tu usuario real en cada red social -->
@@ -724,7 +731,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 Paola Bramlett. All rights reserved.</p>
+        <p class="footer-copy" data-i18n="footer-copy">&copy; 2026 Paola Bramlett. All rights reserved.</p>
       </div>
     </div>
   </footer>
