@@ -183,11 +183,11 @@
   </script>
 
   <!-- ── SCHEMA: FAQPage ────────────────────────────────────
-       FAQ schema unlocks Google's accordion rich result that
-       appears directly in search — expanding your SERP footprint
-       without a click. AI models also pull from FAQ pairs when
-       answering "how much does Paola charge" or "is she available
-       remotely" style questions.
+       Mirrors the FAQ section on the page exactly. Google uses
+       this for expandable accordion rich results in search.
+       AI models (ChatGPT, Claude, Perplexity) pull these Q&A
+       pairs when answering queries about pricing, timelines,
+       services, and availability.
   ──────────────────────────────────────────────────────────── -->
   <script type="application/ld+json">
   {
@@ -196,26 +196,10 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "How much does Paola Bramlett charge for design work?",
+        "name": "How much do you charge for design and development work?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "All services are priced at $35 USD per hour. This covers UX/UI design, product interface design, rapid prototyping, design systems, vibe coding, and website development. Project-based flat-rate quotes are available on request."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does Paola Bramlett work with clients outside Mexico?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. Paola works remotely with clients in the United States, Canada, Europe, and across Latin America. All communication and project delivery happens online. She is fluent in both English and Spanish."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is Vibe Coding?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Vibe Coding is an AI-assisted development workflow that combines design thinking with tools like Claude Code and Cursor to build functional interfaces faster than traditional development. The result is production-quality code delivered at design speed."
+          "text": "Hourly rates run $35–$45 USD depending on the type of work. Most projects land between $1,000–$5,000 USD total. Flat-rate project quotes are available on request."
         }
       },
       {
@@ -223,39 +207,71 @@
         "name": "How long does a typical project take?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "A landing page or marketing site typically takes 3–7 days. A full UX/UI design for an app takes 2–6 weeks depending on scope and complexity. Rapid prototypes can be turned around in as little as 1–3 days."
+          "text": "A landing page or simple prototype takes 3–7 days. A full UX/UI design for an app typically runs 2–6 weeks. Timeline depends on scope and whether development is included."
         }
       },
       {
         "@type": "Question",
-        "name": "Does Paola do development or only design?",
+        "name": "Do you work with clients outside Mexico?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Both. Paola designs in Figma and also builds functional interfaces using HTML, CSS, JavaScript, and AI-assisted coding tools. She can deliver Figma design files, interactive prototypes, or fully coded front-end pages."
+          "text": "Yes. Most clients are in the US, Canada, and Europe. All work is done remotely. Communication in English or Spanish, across any time zone."
         }
       },
       {
         "@type": "Question",
-        "name": "What tools does Paola use?",
+        "name": "What makes you different from other designers?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Paola's primary tools are Figma for design and prototyping, Claude Code and Cursor for AI-assisted development, Adobe Illustrator for brand and visual work, and standard web technologies (HTML, CSS, JavaScript) for front-end builds."
+          "text": "I cover strategy, design, and development. Most designers hand off to a developer — I can take a project from wireframe to working front-end, removing the gap between design and launch."
         }
       },
       {
         "@type": "Question",
-        "name": "Is Paola Bramlett available for ongoing retainer work?",
+        "name": "What is Vibe Coding and how does it help my project?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. In addition to one-off projects, Paola is available for ongoing design partnerships and monthly retainers. This suits startups and product teams that need consistent design support without hiring a full-time designer."
+          "text": "Vibe Coding is an AI-assisted workflow using tools like Claude Code to build functional interfaces faster than traditional development. The output is real, production-quality code — not a mockup. It's how I can deliver in days what normally takes weeks."
         }
       },
       {
         "@type": "Question",
-        "name": "How do I start working with Paola Bramlett?",
+        "name": "What kinds of projects do you take on?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Send a message through the contact form at www.paolabramlett.com or call +52 951 408 2852. Describe your project or idea and expect a reply within 24 hours. Initial consultations are free."
+          "text": "Startups building a first product, founders launching a website or app, and teams that need a design system or rapid prototype. I work best on projects where both design quality and delivery speed matter."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you handle development or just design?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Both. I design in Figma and build using HTML, CSS, JavaScript, and AI-assisted tools. You can get design files, a working prototype, or production-ready front-end code — or all three."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What tools do you use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Figma for design and prototyping, Claude Code for AI-assisted development, Adobe Illustrator for brand and visual work, and HTML, CSS, and JavaScript for front-end builds."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is the right time to bring you into a project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As early as possible. Design decisions made before development starts prevent expensive rework later. I can join at the idea stage, mid-project, or as an ongoing design partner for an existing team."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I get started?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Send a message through the contact form at www.paolabramlett.com or call +52 951 408 2852. Describe your project in a few sentences. Expect a reply within 24 hours. Initial consultations are free."
         }
       }
     ]
@@ -794,6 +810,147 @@
           </div>
         </li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ── FAQ ──────────────────────────────────────────────── -->
+  <section class="faq" id="faq" aria-labelledby="faq-heading">
+    <div class="container">
+
+      <div class="section-header reveal">
+        <div class="section-label">
+          <span class="label-line"></span>
+          <span data-i18n="faq-label">FAQ</span>
+        </div>
+        <h2 class="section-heading" id="faq-heading" data-i18n="faq-heading">Common Questions</h2>
+        <p class="section-body" data-i18n="faq-sub">
+          Straight answers to the questions people ask before reaching out.
+        </p>
+      </div>
+
+      <dl class="faq-list">
+
+        <div class="faq-item reveal" data-delay="0">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+              <span data-i18n="faq-q1">How much do you charge for design and development work?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a1" hidden>
+            <p data-i18n="faq-a1">Hourly rates run $35–$45 USD depending on the type of work. Most projects land between $1,000–$5,000 USD total. Flat-rate project quotes are available on request.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="40">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+              <span data-i18n="faq-q2">How long does a typical project take?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a2" hidden>
+            <p data-i18n="faq-a2">A landing page or simple prototype takes 3–7 days. A full UX/UI design for an app typically runs 2–6 weeks. Timeline depends on scope and whether development is included.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="80">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+              <span data-i18n="faq-q3">Do you work with clients outside Mexico?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a3" hidden>
+            <p data-i18n="faq-a3">Yes. Most clients are in the US, Canada, and Europe. All work is done remotely. Communication in English or Spanish, across any time zone.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="120">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+              <span data-i18n="faq-q4">What makes you different from other designers?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a4" hidden>
+            <p data-i18n="faq-a4">I cover strategy, design, and development. Most designers hand off to a developer — I can take a project from wireframe to working front-end, removing the gap between design and launch.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="160">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+              <span data-i18n="faq-q5">What is Vibe Coding and how does it help my project?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a5" hidden>
+            <p data-i18n="faq-a5">Vibe Coding is an AI-assisted workflow using tools like Claude Code to build functional interfaces faster than traditional development. The output is real, production-quality code — not a mockup. It's how I can deliver in days what normally takes weeks.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="200">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+              <span data-i18n="faq-q6">What kinds of projects do you take on?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a6" hidden>
+            <p data-i18n="faq-a6">Startups building a first product, founders launching a website or app, and teams that need a design system or rapid prototype. I work best on projects where both design quality and delivery speed matter.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="240">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a7">
+              <span data-i18n="faq-q7">Do you handle development or just design?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a7" hidden>
+            <p data-i18n="faq-a7">Both. I design in Figma and build using HTML, CSS, JavaScript, and AI-assisted tools. You can get design files, a working prototype, or production-ready front-end code — or all three.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="280">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a8">
+              <span data-i18n="faq-q8">What tools do you use?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a8" hidden>
+            <p data-i18n="faq-a8">Figma for design and prototyping, Claude Code for AI-assisted development, Adobe Illustrator for brand and visual work, and HTML, CSS, and JavaScript for front-end builds.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="320">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a9">
+              <span data-i18n="faq-q9">When is the right time to bring you into a project?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a9" hidden>
+            <p data-i18n="faq-a9">As early as possible. Design decisions made before development starts prevent expensive rework later. I can join at the idea stage, mid-project, or as an ongoing design partner for an existing team.</p>
+          </dd>
+        </div>
+
+        <div class="faq-item reveal" data-delay="360">
+          <dt>
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a10">
+              <span data-i18n="faq-q10">How do I get started?</span>
+              <svg class="faq-chevron" width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M4 7l5 5 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </dt>
+          <dd class="faq-answer" id="faq-a10" hidden>
+            <p data-i18n="faq-a10">Send a message through the contact form or call +52 951 408 2852. Describe your project in a few sentences. Expect a reply within 24 hours. Initial consultations are free.</p>
+          </dd>
+        </div>
+
+      </dl>
     </div>
   </section>
 

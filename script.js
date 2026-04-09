@@ -271,6 +271,31 @@ function initCounters() {
   // Placeholder for numeric stats if added in the future
 }
 
+// ── FAQ ACCORDION ───────────────────────────────────────────
+
+function initFAQ() {
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answerId = btn.getAttribute('aria-controls');
+      const answer   = document.getElementById(answerId);
+
+      // Close all others
+      document.querySelectorAll('.faq-question').forEach(other => {
+        if (other !== btn) {
+          other.setAttribute('aria-expanded', 'false');
+          const otherAnswer = document.getElementById(other.getAttribute('aria-controls'));
+          if (otherAnswer) otherAnswer.hidden = true;
+        }
+      });
+
+      // Toggle current
+      btn.setAttribute('aria-expanded', String(!expanded));
+      if (answer) answer.hidden = expanded;
+    });
+  });
+}
+
 // ── i18N / LANGUAGE SWITCH ──────────────────────────────────
 
 const translations = {
@@ -350,6 +375,30 @@ const translations = {
     'footer-role': 'Product Designer & Vibe Coder',
     'footer-tagline': 'Designing modern digital experiences with clarity and taste.',
     'footer-copy': '© 2026 Paola Bramlett. All rights reserved.',
+    // FAQ
+    'faq-label': 'FAQ',
+    'faq-heading': 'Common Questions',
+    'faq-sub': 'Straight answers to the questions people ask before reaching out.',
+    'faq-q1': 'How much do you charge for design and development work?',
+    'faq-a1': 'Hourly rates run $35–$45 USD depending on the type of work. Most projects land between $1,000–$5,000 USD total. Flat-rate project quotes are available on request.',
+    'faq-q2': 'How long does a typical project take?',
+    'faq-a2': 'A landing page or simple prototype takes 3–7 days. A full UX/UI design for an app typically runs 2–6 weeks. Timeline depends on scope and whether development is included.',
+    'faq-q3': 'Do you work with clients outside Mexico?',
+    'faq-a3': 'Yes. Most clients are in the US, Canada, and Europe. All work is done remotely. Communication in English or Spanish, across any time zone.',
+    'faq-q4': 'What makes you different from other designers?',
+    'faq-a4': 'I cover strategy, design, and development. Most designers hand off to a developer — I can take a project from wireframe to working front-end, removing the gap between design and launch.',
+    'faq-q5': 'What is Vibe Coding and how does it help my project?',
+    'faq-a5': "Vibe Coding is an AI-assisted workflow using tools like Claude Code to build functional interfaces faster than traditional development. The output is real, production-quality code — not a mockup. It's how I can deliver in days what normally takes weeks.",
+    'faq-q6': 'What kinds of projects do you take on?',
+    'faq-a6': 'Startups building a first product, founders launching a website or app, and teams that need a design system or rapid prototype. I work best on projects where both design quality and delivery speed matter.',
+    'faq-q7': 'Do you handle development or just design?',
+    'faq-a7': 'Both. I design in Figma and build using HTML, CSS, JavaScript, and AI-assisted tools. You can get design files, a working prototype, or production-ready front-end code — or all three.',
+    'faq-q8': 'What tools do you use?',
+    'faq-a8': 'Figma for design and prototyping, Claude Code for AI-assisted development, Adobe Illustrator for brand and visual work, and HTML, CSS, and JavaScript for front-end builds.',
+    'faq-q9': 'When is the right time to bring you into a project?',
+    'faq-a9': 'As early as possible. Design decisions made before development starts prevent expensive rework later. I can join at the idea stage, mid-project, or as an ongoing design partner for an existing team.',
+    'faq-q10': 'How do I get started?',
+    'faq-a10': 'Send a message through the contact form or call +52 951 408 2852. Describe your project in a few sentences. Expect a reply within 24 hours. Initial consultations are free.',
   },
   es: {
     'nav-work': 'Trabajo', 'nav-labs': 'Labs', 'nav-about': 'Sobre mí', 'nav-contact': 'Contacto', 'nav-cta': 'Construyamos',
@@ -427,6 +476,30 @@ const translations = {
     'footer-role': 'Diseñadora de Producto & Vibe Coder',
     'footer-tagline': 'Diseñando experiencias digitales modernas con claridad y gusto.',
     'footer-copy': '© 2026 Paola Bramlett. Todos los derechos reservados.',
+    // FAQ
+    'faq-label': 'Preguntas',
+    'faq-heading': 'Preguntas Frecuentes',
+    'faq-sub': 'Respuestas directas a las preguntas que la gente hace antes de contactarme.',
+    'faq-q1': '¿Cuánto cobras por trabajo de diseño y desarrollo?',
+    'faq-a1': 'Las tarifas por hora van de $35 a $45 USD según el tipo de trabajo. La mayoría de proyectos están entre $1,000 y $5,000 USD en total. Se pueden hacer cotizaciones a precio fijo bajo pedido.',
+    'faq-q2': '¿Cuánto tarda un proyecto típico?',
+    'faq-a2': 'Una landing page o prototipo sencillo tarda 3–7 días. Un diseño UX/UI completo para una app normalmente toma 2–6 semanas. El tiempo depende del alcance y de si se incluye desarrollo.',
+    'faq-q3': '¿Trabajas con clientes fuera de México?',
+    'faq-a3': 'Sí. La mayoría de mis clientes están en EE.UU., Canadá y Europa. Todo el trabajo se hace de forma remota. Me comunico en inglés o español, en cualquier zona horaria.',
+    'faq-q4': '¿Qué te diferencia de otros diseñadores?',
+    'faq-a4': 'Cubro estrategia, diseño y desarrollo. La mayoría de los diseñadores entregan a un desarrollador — yo puedo llevar un proyecto desde wireframe hasta front-end funcional, eliminando la brecha entre diseño y lanzamiento.',
+    'faq-q5': '¿Qué es el Vibe Coding y cómo ayuda a mi proyecto?',
+    'faq-a5': 'El Vibe Coding es un flujo de trabajo asistido por IA usando herramientas como Claude Code para construir interfaces funcionales más rápido que el desarrollo tradicional. El resultado es código real y de calidad, no una maqueta. Así puedo entregar en días lo que normalmente toma semanas.',
+    'faq-q6': '¿Qué tipo de proyectos aceptas?',
+    'faq-a6': 'Startups construyendo su primer producto, founders lanzando un sitio o app, y equipos que necesitan un sistema de diseño o prototipo rápido. Trabajo mejor en proyectos donde importan tanto la calidad del diseño como la velocidad de entrega.',
+    'faq-q7': '¿Te encargas del desarrollo o solo del diseño?',
+    'faq-a7': 'Ambos. Diseño en Figma y construyo con HTML, CSS, JavaScript y herramientas asistidas por IA. Puedes obtener archivos de diseño, un prototipo funcional o código front-end listo para producción — o los tres.',
+    'faq-q8': '¿Qué herramientas usas?',
+    'faq-a8': 'Figma para diseño y prototipado, Claude Code para desarrollo asistido por IA, Adobe Illustrator para trabajo de marca y visual, y HTML, CSS y JavaScript para desarrollo front-end.',
+    'faq-q9': '¿Cuándo es el momento ideal para incorporarte a un proyecto?',
+    'faq-a9': 'Lo antes posible. Las decisiones de diseño tomadas antes del desarrollo evitan retrabajos costosos más adelante. Puedo unirme en la etapa de idea, a mitad del proyecto, o como socia de diseño continua para un equipo existente.',
+    'faq-q10': '¿Cómo empiezo?',
+    'faq-a10': 'Envía un mensaje por el formulario de contacto o llama al +52 951 408 2852. Describe tu proyecto en pocas frases. Recibirás una respuesta en 24 horas. Las consultas iniciales son gratuitas.',
   }
 };
 
@@ -478,6 +551,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initHeroEntrance();
   initCursorGlow();
   initCounters();
+  initFAQ();
   initLanguageSwitch();
 });
 
