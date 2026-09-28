@@ -7,7 +7,7 @@
   <meta name="description" content="UX/UI case study for EventFlow, an event planning and RSVP platform that centralizes invitations, guest tracking and updates for hosts and guests." data-es-content="Caso de estudio UX/UI de EventFlow, una plataforma de eventos y RSVP que centraliza invitaciones, seguimiento de invitados y avisos para anfitriones e invitados." />
   <link rel="canonical" href="https://www.paolabramlett.com/work/eventflow/" />
   <meta name="author" content="Paola Bramlett" />
-  <meta name="theme-color" content="#fbfbfd" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <meta property="og:type" content="article" />
@@ -31,9 +31,10 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=3" />
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" /></noscript>
+  <link rel="stylesheet" href="/styles.css?v=4" />
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__pb)document.documentElement.classList.remove('js')},4000)</script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -128,10 +129,11 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- chrome:nav -->
+  <a class="skip-link" href="#main" data-es="Saltar al contenido">Skip to content</a>
   <header class="nav">
     <nav class="wrap nav__inner" aria-label="Main">
-      <a class="nav__logo" href="/" aria-label="Paola Bramlett, home"><img class="nav__logo-mark" src="/assets/icon-32.png" alt="" width="22" height="22" />Paola Bramlett</a>
+      <a class="nav__logo" href="/" aria-label="Paola Bramlett, home" data-es-aria="Paola Bramlett, inicio"><img src="/img/logo-p.webp" alt="" width="125" height="96" />Paola Bramlett</a>
       <ul class="nav__links">
         <li><a href="/#work" data-es="Proyectos">Work</a></li>
         <li><a href="/#services" data-es="Servicios">Services</a></li>
@@ -139,118 +141,169 @@
         <li><a href="/#about" data-es="Sobre mí">About</a></li>
         <li><a href="/#faq" data-es="FAQ">FAQ</a></li>
       </ul>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language" data-es-aria="Idioma">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang__sep" aria-hidden="true">/</span><button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a class="btn btn--primary btn--sm" href="/#contact" data-palette-open><span class="dot dot--signal" aria-hidden="true"></span><span data-es="Empezar un proyecto">Start a project</span></a>
+        <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu" data-es-aria="Menú"><span></span><span></span></button>
       </div>
-      <a class="btn btn--accent btn--sm nav__cta" href="/#contact" data-es="Empezar un proyecto">Start a project</a>
-      <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu"><span></span><span></span></button>
     </nav>
   </header>
   <div class="nav__sheet" id="nav-sheet">
-    <a href="/#work" data-es="Proyectos">Work</a>
-    <a href="/#services" data-es="Servicios">Services</a>
-    <a href="/#process" data-es="Proceso">Process</a>
-    <a href="/#about" data-es="Sobre mí">About</a>
-    <a href="/#faq" data-es="FAQ">FAQ</a>
-    <a href="/#contact" data-es="Empezar un proyecto">Start a project</a>
+    <a href="/#work" style="--i:0" data-es="Proyectos">Work</a>
+    <a href="/#services" style="--i:1" data-es="Servicios">Services</a>
+    <a href="/#process" style="--i:2" data-es="Proceso">Process</a>
+    <a href="/#about" style="--i:3" data-es="Sobre mí">About</a>
+    <a href="/#faq" style="--i:4" data-es="FAQ">FAQ</a>
+    <a class="btn btn--primary" href="/#contact" style="--i:5"><span data-es="Empezar un proyecto">Start a project</span><span class="arrow" aria-hidden="true">→</span></a>
   </div>
+  <!-- /chrome:nav -->
 
   <main id="main">
+    <div class="reading-progress" aria-hidden="true"></div>
     <section class="case-hero">
+      <div class="aurora" aria-hidden="true"><div class="aurora__layer"><i class="aurora__glow"></i><i class="aurora__glow"></i></div></div>
       <div class="wrap">
-        <nav class="crumbs reveal" aria-label="Breadcrumb"><a href="/" data-es="Inicio">Home</a> <span aria-hidden="true">/</span> <a href="/#more-work" data-es="Trabajo anterior">Earlier work</a></nav>
-        <p class="eyebrow reveal"><span data-es="Trabajo anterior · Eventos">Earlier work · Events</span></p>
-        <h1 class="reveal" style="--d:80" data-es="Planear eventos cuando el producto es la comunicación.">Event planning where communication is the product.</h1>
+        <div class="case-hero__top reveal"><nav data-es-aria="Ruta" aria-label="Breadcrumb" class="crumbs"><a href="/" data-es="Inicio">Home</a><span aria-hidden="true" class="sep">/</span><a href="/#more-work" data-es="Trabajo anterior">Earlier work</a><span aria-hidden="true" class="sep">/</span><span aria-current="page">AR-02</span></nav><p class="chip-status chip-status--neutral"><span data-es="Trabajo anterior · Eventos">Earlier work · Events</span></p></div>
+        
+        <h1 class="rise"><span class="line"><span data-es="Planear eventos cuando el producto es la comunicación.">Event planning where communication is the product.</span></span></h1>
         <p class="lead reveal" style="--d:160" data-es="EventFlow centraliza invitaciones, RSVPs, comunicación con invitados y avisos del evento en un solo lugar — menos fricción para quien organiza y menos confusión para quien asiste, desde la invitación hasta el día del evento.">EventFlow centralizes invitations, RSVPs, guest communication and event updates in one place — reducing friction for hosts and confusion for guests, from invitation to attendance.</p>
         
         <dl class="case-meta reveal" style="--d:240"><div><dt data-es="Rol">Role</dt><dd data-es="Diseñadora UX/UI">UX/UI Designer</dd></div><div><dt data-es="Duración">Timeline</dt><dd data-es="10 semanas">10 weeks</dd></div><div><dt data-es="Plataformas">Platforms</dt><dd data-es="Móvil y Web">Mobile &amp; Web</dd></div><div><dt data-es="Alcance">Scope</dt><dd data-es="Investigación, UX, UI, design system">Research, UX, UI, design system</dd></div></dl>
       </div>
-    </section>
-    <div class="case-cover">
-      <div class="stage__frame" data-fx="stage"><img src="/img/work/eventflow-hero-1600.webp" srcset="/img/work/eventflow-hero-800.webp 800w, /img/work/eventflow-hero-1600.webp 1600w" sizes="(max-width: 1440px) 100vw, 1440px" alt="EventFlow event planning screens on mobile and desktop" width="1600" height="974" fetchpriority="high" /></div>
-    </div>
+    <div class="case-cover wrap">
+      <div class="window fade">
+        <div class="window-bar"><span class="window-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="window-bar__title" aria-hidden="true" data-es="~/work/eventflow  —  pantallas del producto">~/work/eventflow  —  product screens</span><span class="window-bar__end" aria-hidden="true">AR-02</span></div>
+        <img src="/img/work/eventflow-hero-1600.webp" srcset="/img/work/eventflow-hero-800.webp 800w, /img/work/eventflow-hero-1600.webp 1600w" sizes="(max-width: 1440px) 100vw, 1440px" alt="EventFlow event planning screens on mobile and desktop" width="1600" height="974" fetchpriority="high">
+      </div>
+    </div></section>
+    
     <div class="wrap case-body">
       <section class="case-section">
-        <h2 class="reveal" data-es="El problema">The problem</h2>
-        <div class="prose reveal" style="--d:80" data-es-html="&lt;p&gt;Los eventos se organizan entre grupos de WhatsApp, Google Forms, páginas de eventos y cadenas de correo. &lt;strong&gt;Quien organiza&lt;/strong&gt; batalla para dar seguimiento a los RSVPs, compartir avisos y manejar cambios de último minuto. &lt;strong&gt;Los invitados&lt;/strong&gt; se confunden con horarios, ubicaciones y hasta con si ya confirmaron.&lt;/p&gt;"><p>Events get planned across WhatsApp groups, Google Forms, event pages and email threads. <strong>Hosts</strong> struggle to track RSVPs, share updates and handle last-minute changes. <strong>Guests</strong> get confused about times, locations and whether they even confirmed.</p></div>
+        <div class="case-label reveal"><span class="case-label__n">§01</span><h2 data-es="El problema">The problem</h2></div>
+        <div class="prose reveal" style="--d:80" data-es-html="<p>Los eventos se organizan entre grupos de WhatsApp, Google Forms, páginas de eventos y cadenas de correo. <strong>Quien organiza</strong> batalla para dar seguimiento a los RSVPs, compartir avisos y manejar cambios de último minuto. <strong>Los invitados</strong> se confunden con horarios, ubicaciones y hasta con si ya confirmaron.</p>"><p>Events get planned across WhatsApp groups, Google Forms, event pages and email threads. <strong>Hosts</strong> struggle to track RSVPs, share updates and handle last-minute changes. <strong>Guests</strong> get confused about times, locations and whether they even confirmed.</p></div>
       </section>
       <section class="case-section">
-        <h2 class="reveal" data-es="Investigación">Research</h2>
-        <div class="prose reveal" style="--d:80" data-es-html="&lt;p&gt;10 entrevistas con personas que organizaron eventos en el último año, 38 respuestas de encuesta y un análisis competitivo de Eventbrite, Evite, Paperless Post y Facebook Events. Tres problemas se repetían:&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;strong&gt;El seguimiento de RSVPs se vuelve un caos&lt;/strong&gt; — quien organiza persigue a los invitados uno por uno.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;Los detalles se pierden&lt;/strong&gt; — los invitados preguntan a qué hora, qué llevar y dónde exactamente.&lt;/li&gt;&lt;li&gt;&lt;strong&gt;La comunicación está fragmentada&lt;/strong&gt; — los cambios de último minuto solo le llegan a algunos.&lt;/li&gt;&lt;/ul&gt;"><p>10 interviews with people who had hosted events in the last year, 38 survey responses, and a competitive analysis of Eventbrite, Evite, Paperless Post and Facebook Events. Three problems kept coming up:</p><ul><li><strong>RSVP tracking becomes chaotic</strong> — hosts chase guests one by one.</li><li><strong>Event details get lost</strong> — guests keep asking what time, what to bring, where exactly.</li><li><strong>Communication is fragmented</strong> — last-minute changes reach only some guests.</li></ul></div>
+        <div class="case-label reveal"><span class="case-label__n">§02</span><h2 data-es="Investigación">Research</h2></div>
+        <div class="prose reveal" style="--d:80" data-es-html="<p>10 entrevistas con personas que organizaron eventos en el último año, 38 respuestas de encuesta y un análisis competitivo de Eventbrite, Evite, Paperless Post y Facebook Events. Tres problemas se repetían:</p><ul><li><strong>El seguimiento de RSVPs se vuelve un caos</strong> — quien organiza persigue a los invitados uno por uno.</li><li><strong>Los detalles se pierden</strong> — los invitados preguntan a qué hora, qué llevar y dónde exactamente.</li><li><strong>La comunicación está fragmentada</strong> — los cambios de último minuto solo le llegan a algunos.</li></ul>"><p>10 interviews with people who had hosted events in the last year, 38 survey responses, and a competitive analysis of Eventbrite, Evite, Paperless Post and Facebook Events. Three problems kept coming up:</p><ul><li><strong>RSVP tracking becomes chaotic</strong> — hosts chase guests one by one.</li><li><strong>Event details get lost</strong> — guests keep asking what time, what to bring, where exactly.</li><li><strong>Communication is fragmented</strong> — last-minute changes reach only some guests.</li></ul></div>
       </section>
       <section class="case-section">
-        <h2 class="reveal" data-es="Restricciones y prioridades">Constraints &amp; priorities</h2>
-        <div class="prose reveal" style="--d:80" data-es-html="&lt;p&gt;Un equipo pequeño, recursos de desarrollo limitados y un MVP en 10 semanas. Eso significó &lt;strong&gt;lanzar primero los flujos esenciales del evento&lt;/strong&gt; y dejar para después el acomodo de mesas y la venta de boletos.&lt;/p&gt;"><p>A small team, limited development resources and a 10-week MVP timeline. That meant <strong>shipping the core event flows first</strong> and leaving seating charts and ticketing for later.</p></div>
+        <div class="case-label reveal"><span class="case-label__n">§03</span><h2 data-es="Restricciones y prioridades">Constraints &amp; priorities</h2></div>
+        <div class="prose reveal" style="--d:80" data-es-html="<p>Un equipo pequeño, recursos de desarrollo limitados y un MVP en 10 semanas. Eso significó <strong>lanzar primero los flujos esenciales del evento</strong> y dejar para después el acomodo de mesas y la venta de boletos.</p>"><p>A small team, limited development resources and a 10-week MVP timeline. That meant <strong>shipping the core event flows first</strong> and leaving seating charts and ticketing for later.</p></div>
       </section>
       <section class="case-section">
-        <h2 class="reveal" data-es="La solución">The solution</h2>
+        <div class="case-label reveal"><span class="case-label__n">§04</span><h2 data-es="La solución">The solution</h2></div>
         <div class="decisions">
           <article class="decision reveal" style="--d:0">
-            <span class="decision__n">01</span>
+            <span class="decision__n">D-01</span>
             <h3 data-es="Invitaciones digitales">Digital invitations</h3>
             <p data-es="Crea y envía invitaciones atractivas en minutos.">Hosts create and send visually engaging invitations in minutes.</p>
           </article>
-          <article class="decision reveal" style="--d:60">
-            <span class="decision__n">02</span>
+          <article class="decision reveal" style="--d:80">
+            <span class="decision__n">D-02</span>
             <h3 data-es="RSVP en tiempo real">Real-time RSVP tracking</h3>
             <p data-es="Confirmados, cancelados y pendientes de un vistazo — sin perseguir a nadie.">Confirmed, declined and pending guests at a glance — no more chasing.</p>
           </article>
-          <article class="decision reveal" style="--d:120">
-            <span class="decision__n">03</span>
+          <article class="decision reveal" style="--d:160">
+            <span class="decision__n">D-03</span>
             <h3 data-es="Una sola página del evento">One event page</h3>
             <p data-es="Ubicación, horario, código de vestimenta y notas de quien organiza, siempre en un solo lugar.">Location, schedule, dress code and host notes, always in one place.</p>
           </article>
-          <article class="decision reveal" style="--d:180">
-            <span class="decision__n">04</span>
+          <article class="decision reveal" style="--d:240">
+            <span class="decision__n">D-04</span>
             <h3 data-es="Avisos a invitados">Guest updates</h3>
             <p data-es="Avisos y recordatorios a todos los invitados al instante.">Hosts send updates or reminders to every guest instantly.</p>
           </article>
         </div>
       </section>
-      <section class="case-section" style="grid-template-columns:1fr">
+      <section class="case-section case-section--full">
         <div class="gallery gallery--2">
-          <figure class="reveal" style="--d:0"><img src="/img/work/eventflow-mobile-1600.webp" srcset="/img/work/eventflow-mobile-800.webp 800w, /img/work/eventflow-mobile-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw" alt="Event creation and upcoming events on mobile" width="1600" height="974" loading="lazy" /><figcaption data-es="Creación de eventos y próximos eventos en móvil">Event creation and upcoming events on mobile</figcaption></figure>
-          <figure class="reveal" style="--d:80"><img src="/img/work/eventflow-rsvp-1600.webp" srcset="/img/work/eventflow-rsvp-800.webp 800w, /img/work/eventflow-rsvp-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw" alt="The event page with RSVP" width="1600" height="974" loading="lazy" /><figcaption data-es="La página del evento con RSVP">The event page with RSVP</figcaption></figure>
+          <figure class="reveal" style="--d:0"><img src="/img/work/eventflow-mobile-1600.webp" srcset="/img/work/eventflow-mobile-800.webp 800w, /img/work/eventflow-mobile-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw" alt="Event creation and upcoming events on mobile" width="1600" height="974" loading="lazy"><figcaption data-es="Creación de eventos y próximos eventos en móvil">Event creation and upcoming events on mobile</figcaption></figure>
+          <figure class="reveal" style="--d:80"><img src="/img/work/eventflow-rsvp-1600.webp" srcset="/img/work/eventflow-rsvp-800.webp 800w, /img/work/eventflow-rsvp-1600.webp 1600w" sizes="(max-width: 700px) 100vw, 50vw" alt="The event page with RSVP" width="1600" height="974" loading="lazy"><figcaption data-es="La página del evento con RSVP">The event page with RSVP</figcaption></figure>
         </div>
       </section>
       <section class="case-section">
-        <h2 class="reveal" data-es="Validación y aprendizajes">Validation &amp; learnings</h2>
-        <div class="prose reveal" style="--d:80" data-es-html="&lt;p&gt;Las pruebas de usabilidad con 7 usuarios confirmaron que el RSVP rápido funcionaba, que quien organiza quería resúmenes más claros de la lista de invitados y que los recordatorios mejoraban la asistencia. Las iteraciones simplificaron el RSVP, agregaron analítica de respuestas y mejoraron la vista previa de invitaciones.&lt;/p&gt;&lt;p&gt;&lt;strong&gt;El aprendizaje más grande: el problema central es la comunicación, no las invitaciones.&lt;/strong&gt;&lt;/p&gt;"><p>Usability testing with 7 users confirmed that quick RSVPs worked, that hosts wanted clearer guest-list summaries, and that reminders improved attendance. Iterations simplified the RSVP interface, added guest response analytics and improved invitation previews.</p><p><strong>The biggest lesson: communication is the core problem, not invitations.</strong></p></div>
+        <div class="case-label reveal"><span class="case-label__n">§05</span><h2 data-es="Validación y aprendizajes">Validation &amp; learnings</h2></div>
+        <div class="prose reveal" style="--d:80" data-es-html="<p>Las pruebas de usabilidad con 7 usuarios confirmaron que el RSVP rápido funcionaba, que quien organiza quería resúmenes más claros de la lista de invitados y que los recordatorios mejoraban la asistencia. Las iteraciones simplificaron el RSVP, agregaron analítica de respuestas y mejoraron la vista previa de invitaciones.</p><p><strong>El aprendizaje más grande: el problema central es la comunicación, no las invitaciones.</strong></p>"><p>Usability testing with 7 users confirmed that quick RSVPs worked, that hosts wanted clearer guest-list summaries, and that reminders improved attendance. Iterations simplified the RSVP interface, added guest response analytics and improved invitation previews.</p><p><strong>The biggest lesson: communication is the core problem, not invitations.</strong></p></div>
       </section>
       <a class="next-case reveal" href="/work/mindspace/">
-        <div><small data-es="Siguiente caso">Next case study</small><strong data-es="De “me siento raro” al apoyo correcto.">From “I feel off” to the right kind of support.</strong></div>
-        <span class="next-case__arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div><small data-es="Siguiente · AR-03">Next · AR-03</small><strong data-es="De “me siento raro” al apoyo correcto.">From “I feel off” to the right kind of support.</strong></div>
+        <span class="next-case__arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
       </a>
     </div>
 
-    <section class="section section--dark" style="text-align:center">
+    <section class="section cta-band">
       <div class="wrap">
         <h2 class="h2 reveal" data-es="¿Estás construyendo algo complejo?">Building something complex?</h2>
-        <p class="lead reveal" style="--d:80;margin:1.25rem auto 2rem" data-es="Hagámoslo claro. La primera llamada es gratis.">Let’s make it clear. The first call is free.</p>
-        <div class="reveal" style="--d:160"><a class="btn btn--primary" href="/#contact" data-es="Empezar un proyecto">Start a project</a></div>
+        <p class="lead reveal" style="--d:80" data-es="Hagámoslo claro. La primera llamada es gratis.">Let’s make it clear. The first call is free.</p>
+        <div class="reveal" style="--d:160"><a data-palette-open="" class="btn btn--primary" href="/#contact"><span data-es="Empezar un proyecto">Start a project</span><span class="arrow" aria-hidden="true">→</span></a></div>
       </div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <strong style="color:var(--ink);font-weight:600">Paola Bramlett <span data-es="· Senior Product Designer">· Senior Product Designer</span></strong>
-      <nav aria-label="Footer">
+  <!-- chrome:footer -->
+  <footer class="footer" data-footer>
+    <div class="wrap footer__top">
+      <div class="footer__brand">
+        <strong>Paola Bramlett</strong>
+        <span data-es="Senior Product Designer · Oaxaca, MX">Senior Product Designer · Oaxaca, MX</span>
+      </div>
+      <nav class="footer__links" aria-label="Footer" data-es-aria="Pie de página">
         <a href="/#work" data-es="Proyectos">Work</a>
         <a href="/#services" data-es="Servicios">Services</a>
         <a href="/#contact" data-es="Contacto">Contact</a>
-        <a href="https://www.linkedin.com/in/paolabramlett" rel="me noopener" target="_blank">LinkedIn</a>
-        <a href="https://github.com/paolabramlett" rel="me noopener" target="_blank">GitHub</a>
-        <a href="https://www.instagram.com/paolabramlett" rel="me noopener" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com/in/paolabramlett" rel="me noopener" target="_blank">LinkedIn ↗</a>
+        <a href="https://github.com/paolabramlett" rel="me noopener" target="_blank">GitHub ↗</a>
+        <a href="https://www.instagram.com/paolabramlett" rel="me noopener" target="_blank">Instagram ↗</a>
       </nav>
-      <div class="footer__legal">
-        <span>© <span data-year>2026</span> Paola Bramlett. <span data-es="Todos los derechos reservados.">All rights reserved.</span></span>
-        <span data-es="Oaxaca, México · Trabajo con clientes de todo el mundo">Oaxaca, Mexico · Working worldwide</span>
-      </div>
+    </div>
+    <div class="footer__mark" aria-hidden="true"><span class="footer__word">BRAMLETT</span></div>
+    <div class="wrap footer__bottom">
+      <span>© <span data-year>2026</span> Paola Bramlett</span>
+      <span data-es="Hecho con Figma + Claude Code">Built with Figma + Claude Code</span>
+      <span class="footer__status">Oaxaca <time data-clock>GMT-6</time> · <span class="dot" aria-hidden="true"></span> <span data-presence>Online</span></span>
     </div>
   </footer>
+  <dialog class="palette-modal" id="palette-modal" aria-modal="true" aria-labelledby="palette-title"></dialog>
+  <!-- /chrome:footer -->
+  <template id="palette-tpl">
+        <form class="palette" id="pm-contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/" novalidate aria-labelledby="pm-palette-title" data-palette>
+          <input type="hidden" name="form-name" value="contact" />
+          <input type="hidden" name="needs" value="" data-needs />
+          <p class="hp" aria-hidden="true"><label>Don’t fill this out: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+          <div class="palette__head">
+            <span class="palette__prompt" aria-hidden="true">›</span>
+            <span id="pm-palette-title" data-es="empezar un proyecto">start a project</span>
+            <span class="palette__caret" aria-hidden="true"></span>
+            <span class="kbd" aria-hidden="true" data-kbd>⌘ K</span>
+            <button type="button" class="palette__close" data-palette-close aria-label="Close" data-es-aria="Cerrar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          </div>
+          <div class="palette__body">
+            <div class="field"><label for="pm-name" data-es="Nombre">Name</label><input id="pm-name" name="name" type="text" autocomplete="name" required placeholder="Your name" data-es-placeholder="Tu nombre" /></div>
+            <div class="field"><label for="pm-email" data-es="Correo">Email</label><input id="pm-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" data-es-placeholder="tu@empresa.com" /></div>
+            <div class="field"><label for="pm-project" data-es="Proyecto">Project</label><input id="pm-project" name="project" type="text" placeholder="e.g. MVP for an AI health app" data-es-placeholder="Ej. MVP para una app de salud con IA" /></div>
+            <fieldset class="chips">
+              <legend class="palette__legend" data-es="¿Qué necesitas?">What do you need?</legend>
+              <button type="button" class="chip" aria-pressed="false" data-value="0→1 product" data-es="Producto 0→1">0→1 product</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Redesign" data-es="Rediseño">Redesign</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Design system">Design system</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Front-end">Front-end</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Not sure yet" data-es="Aún no sé">Not sure yet</button>
+            </fieldset>
+            <div class="field field--area"><label class="sr-only" for="pm-message" data-es="Mensaje">Message</label><textarea id="pm-message" name="message" required rows="4" placeholder="Where are you now, and what do you need?" data-es-placeholder="¿En qué punto estás y qué necesitas?"></textarea></div>
+            <p class="form__note" role="status" aria-live="polite"></p>
+          </div>
+          <div class="palette__foot">
+            <p class="palette__hints" aria-hidden="true" data-es="↑↓ navegar   ⇥ siguiente   esc borrar">↑↓ navigate   ⇥ next field   esc clear</p>
+            <button class="btn btn--primary send-btn" type="submit">
+              <span class="send-btn__idle"><span data-es="Enviar mensaje">Send message</span> <span class="kbd" aria-hidden="true">⏎</span></span>
+              <span class="send-btn__done"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Mensaje enviado">Message sent</span></span>
+            </button>
+          </div>
+        </form>
+  </template>
 
-  <script src="/script.js?v=3" defer></script>
+  <script src="/script.js?v=4" defer></script>
 </body>
 </html>
