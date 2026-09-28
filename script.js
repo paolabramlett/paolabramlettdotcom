@@ -1,561 +1,684 @@
 /**
- * Paola Bramlett — Portfolio
- * Interactions, animations, and UI behavior
+ * Paola Bramlett — site behavior (v4)
+ * Vanilla JS, no dependencies. One requestAnimationFrame loop drives every
+ * scroll/pointer-linked effect; IntersectionObserver handles reveals.
+ * Everything is readable without JS, and prefers-reduced-motion disables
+ * pinning, parallax and autoplay.
  */
+(() => {
+  'use strict';
+  window.__pb = true;
 
-'use strict';
+  const root = document.documentElement;
+  const mqReduce = matchMedia('(prefers-reduced-motion: reduce)');
+  const mqFine = matchMedia('(hover: hover) and (pointer: fine)');
+  const mqDesktop = matchMedia('(min-width: 901px)');
+  const reduced = () => mqReduce.matches;
+  const fine = () => mqFine.matches && !reduced();
+  const desktop = () => mqDesktop.matches;
 
-// ── UTILITIES ──────────────────────────────────────────────
-
-/**
- * Debounce: limit how often a function fires
- */
-function debounce(fn, wait = 100) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => fn(...args), wait);
+  const $ = (s, c = document) => c.querySelector(s);
+  const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+  const clamp = (v, min = 0, max = 1) => Math.min(max, Math.max(min, v));
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch { /* storage unavailable */ } },
   };
-}
+  const isMac = /Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent);
 
-// ── NAVBAR ─────────────────────────────────────────────────
+  /* ── Frame scheduler: the single rAF loop ────────────── */
+  // Tasks run on the next frame after any scroll/resize/pointer event.
+  // A task returns true to ask for another frame (e.g. while easing).
+  const tasks = new Set();
+  let queued = false;
+  const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(tick); } };
+  function tick(t) {
+    queued = false;
+    let again = false;
+    tasks.forEach(fn => { if (fn(t) === true) again = true; });
+    if (again) schedule();
+  }
+  addEventListener('scroll', schedule, { passive: true });
+  addEventListener('resize', schedule);
+  const vh = () => window.innerHeight;
 
-function initNavbar() {
-  const navbar = document.getElementById('navbar');
-  const toggle = document.querySelector('.nav-toggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const mobileLinks = mobileMenu?.querySelectorAll('.nav-link, .btn');
+  /* ── i18n: English in the HTML, Spanish in data-es* ──── */
+  const ATTRS = [
+    ['es', 'text'], ['esHtml', 'html'], ['esPlaceholder', 'placeholder'],
+    ['esAria', 'aria-label'], ['esContent', 'content'], ['esAlt', 'alt'],
+  ];
+  const langHooks = [];
+  let lang = 'en';
+  const t = (en, es) => (lang === 'es' ? es : en);
 
-  if (!navbar) return;
-
-  // Scroll behavior: add glass effect when scrolled
-  const handleScroll = () => {
-    const scrolled = window.scrollY > 20;
-    navbar.classList.toggle('scrolled', scrolled);
-  };
-
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll(); // Run on init
-
-  // Mobile toggle
-  if (toggle && mobileMenu) {
-    toggle.addEventListener('click', () => {
-      const isOpen = toggle.classList.toggle('open');
-      mobileMenu.classList.toggle('open', isOpen);
-      toggle.setAttribute('aria-expanded', String(isOpen));
-      mobileMenu.setAttribute('aria-hidden', String(!isOpen));
-    });
-
-    // Close on link click
-    mobileLinks?.forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
+  function applyLanguage(next) {
+    if (next !== 'en' && next !== 'es') return;
+    lang = next;
+    root.lang = next;
+    ATTRS.forEach(([key, kind]) => {
+      const attr = 'data-' + key.replace(/[A-Z]/g, m => '-' + m.toLowerCase());
+      $$('[' + attr + ']').forEach(el => {
+        const enKey = 'en' + key.slice(2);
+        if (el.dataset[enKey] === undefined) {
+          el.dataset[enKey] = kind === 'text' ? el.textContent : kind === 'html' ? el.innerHTML : (el.getAttribute(kind) || '');
+        }
+        const value = next === 'es' ? el.dataset[key] : el.dataset[enKey];
+        if (kind === 'text') el.textContent = value;
+        else if (kind === 'html') el.innerHTML = value;
+        else el.setAttribute(kind, value);
       });
     });
+    $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === next)));
+    langHooks.forEach(fn => fn());
+    store.set('lang', next);
+    schedule();
+  }
 
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!navbar.contains(e.target) && mobileMenu.classList.contains('open')) {
-        toggle.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
+  function initLanguage() {
+    document.addEventListener('click', e => {
+      const b = e.target.closest('.lang button[data-lang]');
+      if (b) applyLanguage(b.dataset.lang);
+    });
+    const param = new URLSearchParams(location.search).get('lang');
+    if ((param || store.get('lang')) === 'es') applyLanguage('es');
+  }
+
+  /* ── Nav: glass after 20px, hides down / returns up ──── */
+  function initNav() {
+    const nav = $('.nav');
+    if (!nav) return;
+    const btn = $('.nav__menu-btn', nav);
+    const sheet = $('#nav-sheet');
+    let lastY = scrollY;
+    const isOpen = () => btn && btn.getAttribute('aria-expanded') === 'true';
+
+    tasks.add(() => {
+      const y = scrollY;
+      nav.classList.toggle('is-scrolled', y > 20);
+      if (!isOpen() && !reduced()) {
+        if (y > 160 && y > lastY + 4) nav.classList.add('is-hidden');
+        else if (y < lastY - 4 || y < 160) nav.classList.remove('is-hidden');
+      }
+      lastY = y;
+    });
+    nav.addEventListener('focusin', () => nav.classList.remove('is-hidden'));
+
+    if (btn && sheet) {
+      sheet.setAttribute('inert', '');
+      const setOpen = open => {
+        btn.setAttribute('aria-expanded', String(open));
+        sheet.classList.toggle('is-open', open);
+        sheet.toggleAttribute('inert', !open);
+        root.style.overflow = open ? 'hidden' : '';
+        if (open) nav.classList.remove('is-hidden');
+      };
+      btn.addEventListener('click', () => setOpen(!isOpen()));
+      $$('a', sheet).forEach(a => a.addEventListener('click', () => setOpen(false)));
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && isOpen()) { setOpen(false); btn.focus(); } });
+      mqDesktop.addEventListener('change', () => setOpen(false));
+    }
+
+    // Current section in the nav (home only)
+    const links = $$('.nav__links a').filter(a => a.hash && a.pathname === location.pathname);
+    const targets = links.map(a => document.getElementById(a.hash.slice(1))).filter(Boolean);
+    if (targets.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        links.forEach(a => a.setAttribute('aria-current', String(a.hash === '#' + entry.target.id)));
+      }), { rootMargin: '-45% 0px -50% 0px' });
+      targets.forEach(el => io.observe(el));
+      tasks.add(() => {
+        if (targets[0].getBoundingClientRect().top > vh() * 0.55) links.forEach(a => a.setAttribute('aria-current', 'false'));
+      });
+    }
+  }
+
+  /* ── Reveals (IntersectionObserver) ──────────────────── */
+  function initReveal() {
+    const els = $$('.reveal, .fade, .rise:not([data-rise]), [data-scramble-group]');
+    if (reduced() || !('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('is-in')); return; }
+    const io = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('is-in');
+      entry.target.dispatchEvent(new CustomEvent('reveal'));
+      io.unobserve(entry.target);
+    }), { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+    els.forEach(el => io.observe(el));
+  }
+
+  /* ── Hero: load sequence, grid spotlight, aurora parallax */
+  function initHero() {
+    const typed = $$('[data-typed]');
+    const setCount = () => typed.forEach(el => el.style.setProperty('--n', el.textContent.replace(/\s+/g, ' ').trim().length));
+    setCount();
+    langHooks.push(setCount);
+
+    const start = () => requestAnimationFrame(() => {
+      $$('[data-rise], [data-typed]').forEach(el => el.classList.add('is-in'));
+    });
+    // Wait (briefly) for web fonts so lines don't reflow mid-animation
+    if (document.fonts && document.fonts.ready && !reduced()) {
+      Promise.race([document.fonts.ready, new Promise(r => setTimeout(r, 600))]).then(start);
+    } else start();
+
+    const hero = $('[data-hero]');
+    const aurora = $('[data-aurora]');
+    if (!hero || !aurora) return;
+    let tx = 0, ty = 0, cx = 0, cy = 0;
+    hero.addEventListener('pointermove', e => {
+      if (!fine()) return;
+      const r = hero.getBoundingClientRect();
+      hero.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      hero.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      hero.classList.add('is-lit');
+      tx = ((e.clientX - r.left) / r.width - 0.5) * 24; // ±12px
+      ty = ((e.clientY - r.top) / r.height - 0.5) * 24;
+      schedule();
+    });
+    hero.addEventListener('pointerleave', () => { hero.classList.remove('is-lit'); tx = ty = 0; schedule(); });
+    tasks.add(() => {
+      if (reduced()) return false;
+      cx = lerp(cx, tx, 0.08); cy = lerp(cy, ty, 0.08);
+      aurora.style.setProperty('--px', cx.toFixed(2) + 'px');
+      aurora.style.setProperty('--py', cy.toFixed(2) + 'px');
+      return Math.abs(cx - tx) > 0.05 || Math.abs(cy - ty) > 0.05;
+    });
+  }
+
+  /* ── Work console: autoplay, progress, crossfade ─────── */
+  function initConsole() {
+    const con = $('[data-console]');
+    if (!con) return;
+    const items = $$('[data-console-item]', con);
+    const slides = $$('[data-console-slide]', con);
+    const dots = $$('[data-console-dots] button', con);
+    const stage = $('[data-console-stage]', con);
+    const pauseBtn = $('[data-console-pause]', con);
+    let idx = 0;
+    const why = new Set();   // reasons the autoplay is paused
+
+    const autoplay = () => desktop() && !reduced();
+    const syncPaused = () => {
+      con.classList.toggle('is-paused', why.size > 0);
+      if (pauseBtn) {
+        const user = why.has('user');
+        pauseBtn.setAttribute('aria-pressed', String(user));
+        pauseBtn.firstElementChild.textContent = user ? t('Play', 'Reproducir') : t('Pause', 'Pausa');
+      }
+    };
+    const show = i => {
+      idx = (i + items.length) % items.length;
+      items.forEach((el, n) => el.classList.toggle('is-active', n === idx));
+      slides.forEach((el, n) => el.classList.toggle('is-active', n === idx));
+      const bar = $('.console__progress i', items[idx]);
+      if (bar) { bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = ''; }
+    };
+    const setMode = () => {
+      con.classList.toggle('is-autoplay', autoplay());
+      if (pauseBtn) pauseBtn.hidden = !autoplay();
+      show(idx);
+    };
+    setMode();
+    mqDesktop.addEventListener('change', setMode);
+    mqReduce.addEventListener('change', setMode);
+
+    con.addEventListener('animationend', e => {
+      if (e.animationName === 'progress' && autoplay() && !why.size) show(idx + 1);
+    });
+    items.forEach((el, n) => {
+      el.addEventListener('mouseenter', () => { if (n !== idx) show(n); });
+      el.addEventListener('focus', () => { if (n !== idx) show(n); });
+    });
+    con.addEventListener('mouseenter', () => { why.add('hover'); syncPaused(); });
+    con.addEventListener('mouseleave', () => { why.delete('hover'); syncPaused(); });
+    con.addEventListener('focusin', () => { why.add('focus'); syncPaused(); });
+    con.addEventListener('focusout', e => { if (!con.contains(e.relatedTarget)) { why.delete('focus'); syncPaused(); } });
+    if (pauseBtn) pauseBtn.addEventListener('click', () => { why.has('user') ? why.delete('user') : why.add('user'); syncPaused(); });
+    document.addEventListener('visibilitychange', () => { document.hidden ? why.add('hidden') : why.delete('hidden'); syncPaused(); });
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(([en]) => { en.isIntersecting ? why.delete('offscreen') : why.add('offscreen'); syncPaused(); }).observe(con);
+    }
+    langHooks.push(syncPaused);
+
+    // Scroll-linked entrance: scale .92 → 1, translateY 60 → 0
+    tasks.add(() => {
+      if (!desktop() || reduced()) { con.style.removeProperty('--p'); return; }
+      const r = con.getBoundingClientRect();
+      con.style.setProperty('--p', clamp((vh() - r.top) / (vh() * 0.75)).toFixed(4));
+    });
+
+    // Mobile: swipe carousel with snap + pagination dots
+    if (stage && dots.length) {
+      const current = () => {
+        const w = slides[0].getBoundingClientRect().width + 12;
+        return clamp(Math.round(stage.scrollLeft / w), 0, slides.length - 1);
+      };
+      stage.addEventListener('scroll', () => {
+        if (desktop()) return;
+        const c = current();
+        dots.forEach((d, n) => d.setAttribute('aria-current', String(n === c)));
+      }, { passive: true });
+      dots.forEach((d, n) => d.addEventListener('click', () => {
+        stage.scrollTo({ left: slides[n].offsetLeft - slides[0].offsetLeft, behavior: reduced() ? 'auto' : 'smooth' });
+      }));
+    }
+  }
+
+  /* ── Marquee: speed follows scroll velocity ──────────── */
+  function initMarquee() {
+    const track = $('[data-marquee] .marquee__track');
+    if (!track || !track.getAnimations) return;
+    let lastY = scrollY, rate = 1;
+    tasks.add(() => {
+      const anim = track.getAnimations()[0];
+      const v = Math.abs(scrollY - lastY);
+      lastY = scrollY;
+      if (!anim || reduced()) return false;
+      const target = 1 + Math.min(v / 6, 5);
+      rate = target > rate ? lerp(rate, target, 0.3) : lerp(rate, 1, 0.06);
+      anim.playbackRate = rate;
+      return rate > 1.01;
+    });
+  }
+
+  /* ── Scroll-lit words (statement + case quote bands) ─── */
+  function splitWords(el) {
+    if (el.dataset.en === undefined) el.dataset.en = el.textContent;
+    const accent = (el.dataset.accent || '').toLowerCase().split('|').filter(Boolean);
+    const text = el.textContent.replace(/\s+/g, ' ').trim();
+    const words = text.split(' ').map(w => {
+      const bare = w.toLowerCase().replace(/[^\p{L}\p{N}]/gu, '');
+      return `<span class="w${accent.includes(bare) ? ' is-accent' : ''}">${w}</span>`;
+    }).join(' ');
+    el.innerHTML = `<span class="sr-only">${text}</span><span aria-hidden="true">${words}</span>`;
+  }
+
+  function initWords() {
+    if (reduced()) return;
+    $$('[data-words]').forEach(el => {
+      const section = el.closest('[data-statement]');
+      const pinned = () => section && section.classList.contains('statement--pinned') && desktop();
+      const bar = section && $('[data-statement-bar]', section);
+      const meter = section && $('[data-statement-meter]', section);
+      const pct = section && $('[data-statement-pct]', section);
+      const host = section || el;
+      let words = [];
+      let armed = false;
+      const split = () => { splitWords(el); words = $$('.w', el); };
+      split();
+      langHooks.push(split);
+
+      tasks.add(() => {
+        let p;
+        if (pinned()) {
+          const r = section.getBoundingClientRect();
+          p = clamp(-r.top / ((r.height - vh()) * 0.85));
+        } else {
+          const r = el.getBoundingClientRect();
+          p = clamp((vh() * 0.85 - r.top) / (r.height + vh() * 0.35));
+        }
+        const r = host.getBoundingClientRect();
+        if (!armed && r.top < vh() && r.bottom > 0) {
+          armed = true;
+          host.classList.add('is-armed', 'is-instant');
+          requestAnimationFrame(() => requestAnimationFrame(() => host.classList.remove('is-instant')));
+        }
+        const lit = Math.round(p * words.length);
+        words.forEach((w, n) => w.classList.toggle('is-lit', n < lit));
+        if (bar) bar.style.setProperty('--p', p.toFixed(4));
+        if (meter) meter.style.setProperty('--p', p.toFixed(4));
+        if (pct) pct.textContent = Math.round(p * 100) + '%';
+      });
+    });
+  }
+
+  /* ── Sticky stack: covered card scales to .94, dims 25% ─ */
+  function initStack() {
+    const cards = $$('[data-stack-card]');
+    cards.forEach((card, i) => {
+      const next = cards[i + 1];
+      if (!next) return;
+      tasks.add(() => {
+        if (!desktop() || reduced()) { card.style.setProperty('--p', 0); return; }
+        const top = parseFloat(getComputedStyle(card).top) || 96;
+        const p = clamp(1 - (next.getBoundingClientRect().top - top) / (vh() - top));
+        card.style.setProperty('--p', p.toFixed(4));
+      });
+    });
+  }
+
+  /* ── Cursor spotlight on card borders ────────────────── */
+  function initSpotlight() {
+    $$('.spot').forEach(el => el.addEventListener('pointermove', e => {
+      if (!fine()) return;
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      el.style.setProperty('--my', (e.clientY - r.top) + 'px');
+    }));
+  }
+
+  /* ── Process: pinned timeline (desktop) / vertical (mobile) */
+  function initProcess() {
+    const sec = $('[data-process]');
+    if (!sec || reduced()) return;
+    const steps = $$('.step', sec);
+    const nodes = $$('.timeline__nodes i', sec);
+    const fill = $('[data-process-fill]', sec);
+    const list = $('[data-process-steps]', sec);
+    let armed = false;
+    tasks.add(() => {
+      const r = sec.getBoundingClientRect();
+      if (!armed && r.top < vh() && r.bottom > 0) { armed = true; sec.classList.add('is-armed'); }
+      let p, active;
+      if (desktop()) {
+        p = clamp(-r.top / (r.height - vh()));
+        active = Math.min(steps.length - 1, Math.floor(p * steps.length));
+        if (fill) fill.style.setProperty('--p', p.toFixed(4));
+      } else {
+        const lr = list.getBoundingClientRect();
+        p = clamp((vh() * 0.6 - lr.top) / lr.height);
+        active = -1;
+        steps.forEach((s, n) => { if (s.getBoundingClientRect().top < vh() * 0.6) active = n; });
+        list.style.setProperty('--p', p.toFixed(4));
+      }
+      steps.forEach((s, n) => { s.classList.toggle('is-reached', n <= active); s.classList.toggle('is-current', n === active); });
+      nodes.forEach((d, n) => { d.classList.toggle('is-done', n < active); d.classList.toggle('is-current', n === active); });
+    });
+  }
+
+  /* ── Rail: buttons, drag with inertia, DRAG cursor ───── */
+  function initRail() {
+    const rail = $('[data-rail]');
+    if (!rail) return;
+    const sec = rail.closest('[data-rail-section]');
+    const prev = sec && $('[data-rail-prev]', sec);
+    const next = sec && $('[data-rail-next]', sec);
+    const step = () => ($('.rail-card', rail)?.getBoundingClientRect().width || 400) + 20;
+    const update = () => {
+      if (prev) prev.disabled = rail.scrollLeft < 8;
+      if (next) next.disabled = rail.scrollLeft + rail.clientWidth > rail.scrollWidth - 8;
+    };
+    prev && prev.addEventListener('click', () => rail.scrollBy({ left: -step(), behavior: reduced() ? 'auto' : 'smooth' }));
+    next && next.addEventListener('click', () => rail.scrollBy({ left: step(), behavior: reduced() ? 'auto' : 'smooth' }));
+    rail.addEventListener('scroll', update, { passive: true });
+    addEventListener('resize', update);
+    update();
+
+    // Drag with inertia (mouse only — touch scrolls natively)
+    let down = false, moved = 0, lastX = 0, v = 0, gliding = false;
+    rail.addEventListener('pointerdown', e => {
+      if (e.pointerType !== 'mouse' || e.button !== 0) return;
+      down = true; moved = 0; lastX = e.clientX; v = 0; gliding = false;
+    });
+    addEventListener('pointermove', e => {
+      if (!down) return;
+      const dx = e.clientX - lastX;
+      lastX = e.clientX;
+      moved += Math.abs(dx);
+      if (moved > 4) rail.classList.add('is-dragging');
+      rail.scrollLeft -= dx;
+      v = dx;
+    });
+    addEventListener('pointerup', () => {
+      if (!down) return;
+      down = false;
+      if (!rail.classList.contains('is-dragging')) return;
+      if (reduced()) { rail.classList.remove('is-dragging'); return; }
+      gliding = true; schedule();
+    });
+    rail.addEventListener('click', e => { if (moved > 4) { e.preventDefault(); e.stopPropagation(); moved = 0; } }, true);
+    tasks.add(() => {
+      if (!gliding) return false;
+      v *= 0.94;
+      rail.scrollLeft -= v;
+      if (Math.abs(v) < 0.4) { gliding = false; rail.classList.remove('is-dragging'); return false; }
+      return true;
+    });
+
+    // Custom cursor
+    const cursor = document.createElement('div');
+    cursor.className = 'drag-cursor';
+    cursor.setAttribute('aria-hidden', 'true');
+    cursor.textContent = 'DRAG';
+    document.body.appendChild(cursor);
+    rail.addEventListener('pointermove', e => {
+      if (!fine()) return;
+      cursor.style.setProperty('--x', e.clientX + 'px');
+      cursor.style.setProperty('--y', e.clientY + 'px');
+      cursor.style.setProperty('--s', 1);
+    });
+    rail.addEventListener('pointerleave', () => cursor.style.setProperty('--s', 0));
+    langHooks.push(() => { cursor.textContent = t('DRAG', 'ARRASTRA'); });
+  }
+
+  /* ── Clock (Oaxaca, America/Mexico_City) + presence ──── */
+  function initClock() {
+    const clocks = $$('[data-clock]');
+    const presence = $$('[data-presence]');
+    if (!clocks.length && !presence.length) return;
+    const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'America/Mexico_City', hour: '2-digit', minute: '2-digit', hour12: false });
+    const dayFmt = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Mexico_City', weekday: 'short' });
+    const render = () => {
+      const now = new Date();
+      const hm = fmt.format(now);
+      clocks.forEach(c => { c.textContent = hm; c.dateTime = hm; });
+      const h = parseInt(hm, 10);
+      const weekend = /Sat|Sun/.test(dayFmt.format(now));
+      const online = !weekend && h >= 9 && h < 19;
+      presence.forEach(p => { p.textContent = online ? t('Online', 'En línea') : t('Away · replies in 24h', 'Fuera · respondo en 24 h'); });
+    };
+    render();
+    setInterval(render, 15000);
+    langHooks.push(render);
+  }
+
+  /* ── HUD: characters decode when the portrait enters ─── */
+  function initScramble() {
+    const portrait = $('[data-portrait]');
+    if (!portrait || reduced()) return;
+    const glyphs = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789·/';
+    const run = () => $$('[data-scramble]', portrait).forEach(el => {
+      const final = el.textContent;
+      const start = performance.now();
+      const dur = 500 + Math.random() * 300;
+      const step = now => {
+        const k = clamp((now - start) / dur);
+        const fixed = Math.floor(final.length * k);
+        el.textContent = final.slice(0, fixed) + final.slice(fixed).replace(/[^\s·]/g, () => glyphs[Math.floor(Math.random() * glyphs.length)]);
+        if (k < 1) requestAnimationFrame(step); else el.textContent = final;
+      };
+      requestAnimationFrame(step);
+    });
+    portrait.addEventListener('reveal', run, { once: true });
+  }
+
+  /* ── FAQ: one open at a time (fallback for details[name]) */
+  function initFaq() {
+    const all = $$('.faq details');
+    all.forEach(d => d.addEventListener('toggle', () => {
+      if (d.open) all.forEach(o => { if (o !== d && o.open) o.open = false; });
+    }));
+  }
+
+  /* ── Contact palette (inline + ⌘K modal) ─────────────── */
+  const MSG = {
+    en: { sending: 'Sending…', ok: "Thanks — your message is in. I'll reply within 24 hours.", err: 'Something went wrong. Please email me directly at paolabramlett@gmail.com.', invalid: 'Please add your name, a valid email, and a short message.' },
+    es: { sending: 'Enviando…', ok: 'Gracias, recibí tu mensaje. Te respondo en menos de 24 horas.', err: 'Algo salió mal. Escríbeme directo a paolabramlett@gmail.com.', invalid: 'Agrega tu nombre, un correo válido y un mensaje breve.' },
+  };
+
+  function initForm(form) {
+    if (!form || form.dataset.ready) return;
+    form.dataset.ready = '1';
+    const note = $('.form__note', form);
+    const needs = $('[data-needs]', form);
+    const chips = $$('.chip', form);
+    const btn = $('button[type="submit"]', form);
+    const fields = () => $$('input:not([type="hidden"]):not([name="bot-field"]), textarea', form);
+    const kbd = $('[data-kbd]', form);
+    if (kbd && !isMac) kbd.textContent = 'Ctrl K';
+
+    const syncNeeds = () => { needs.value = chips.filter(c => c.getAttribute('aria-pressed') === 'true').map(c => c.dataset.value).join(', '); };
+    chips.forEach(c => c.addEventListener('click', () => {
+      c.setAttribute('aria-pressed', String(c.getAttribute('aria-pressed') !== 'true'));
+      syncNeeds();
+    }));
+
+    form.addEventListener('input', e => {
+      e.target.closest('.field')?.classList.remove('is-invalid');
+      btn.classList.remove('is-sent');
+    });
+
+    form.addEventListener('keydown', e => {
+      const f = fields();
+      const i = f.indexOf(e.target);
+      if (i === -1) return;
+      const isArea = e.target.tagName === 'TEXTAREA';
+      if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') { e.preventDefault(); form.requestSubmit(); return; }
+      if (!isArea && e.key === 'ArrowDown' && f[i + 1]) { e.preventDefault(); f[i + 1].focus(); }
+      if (!isArea && e.key === 'ArrowUp' && f[i - 1]) { e.preventDefault(); f[i - 1].focus(); }
+      if (e.key === 'Escape' && !form.closest('dialog') && e.target.value) { e.preventDefault(); e.target.value = ''; }
+    });
+
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      const m = MSG[lang] || MSG.en;
+      note.className = 'form__note';
+      const bad = fields().filter(f => !f.checkValidity());
+      bad.forEach(f => f.closest('.field')?.classList.add('is-invalid'));
+      if (bad.length) { note.textContent = m.invalid; note.classList.add('is-err'); bad[0].focus(); return; }
+      note.textContent = m.sending;
+      btn.disabled = true;
+      try {
+        const res = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(new FormData(form)).toString(),
+        });
+        if (!res.ok) throw new Error(String(res.status));
+        note.textContent = m.ok; note.classList.add('is-ok');
+        btn.classList.add('is-sent');
+        form.reset();
+        chips.forEach(c => c.setAttribute('aria-pressed', 'false'));
+        syncNeeds();
+      } catch {
+        note.textContent = m.err; note.classList.add('is-err');
+      } finally {
+        btn.disabled = false;
       }
     });
   }
-}
 
-// ── SCROLL REVEAL ───────────────────────────────────────────
+  function initPalette() {
+    $$('form[data-palette]').forEach(initForm);
+    const dialog = $('#palette-modal');
+    if (!dialog || !dialog.showModal) return;
+    const home = $('[data-palette-home]');
+    const tpl = $('#palette-tpl');
+    let opener = null;
 
-function initScrollReveal() {
-  const elements = document.querySelectorAll('.reveal');
+    const open = () => {
+      if (dialog.open) return;
+      opener = document.activeElement;
+      if (home) {
+        const form = $('form[data-palette]', home);
+        if (form) dialog.appendChild(form);
+      } else if (!dialog.firstElementChild && tpl) {
+        dialog.appendChild(tpl.content.cloneNode(true));
+        if (lang === 'es') applyLanguage('es');
+        initForm($('form[data-palette]', dialog));
+      }
+      const form = $('form[data-palette]', dialog);
+      if (!form) return;
+      form.classList.add('is-in');
+      const title = $('[id$="palette-title"]', form);
+      if (title) dialog.setAttribute('aria-labelledby', title.id);
+      dialog.showModal();
+      $('input:not([type="hidden"]):not([name="bot-field"])', form)?.focus();
+    };
+    const close = () => { if (dialog.open) dialog.close(); };
 
-  if (!elements.length) return;
-
-  // Respect prefers-reduced-motion
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) {
-    elements.forEach(el => el.classList.add('visible'));
-    return;
+    dialog.addEventListener('close', () => {
+      if (home) { const form = $('form[data-palette]', dialog); if (form) home.appendChild(form); }
+      if (opener && opener.focus) opener.focus();
+    });
+    dialog.addEventListener('click', e => {
+      if (e.target === dialog) close();
+      if (e.target.closest('[data-palette-close]')) close();
+    });
+    // Focus trap (the native modal also makes the page inert)
+    dialog.addEventListener('keydown', e => {
+      if (e.key !== 'Tab') return;
+      const f = $$('a[href], button:not([disabled]), input:not([type="hidden"]):not([tabindex="-1"]), textarea', dialog).filter(el => el.offsetParent !== null);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    document.addEventListener('keydown', e => {
+      if ((e.metaKey || e.ctrlKey) && !e.altKey && e.key.toLowerCase() === 'k') {
+        e.preventDefault();
+        dialog.open ? close() : open();
+      }
+    });
+    // "Start a project" opens the palette in place on inner pages (desktop)
+    if (!home) {
+      $$('[data-palette-open]').forEach(a => a.addEventListener('click', e => {
+        if (!desktop() || !tpl) return;
+        e.preventDefault();
+        open();
+      }));
+    }
   }
 
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-
-        const el = entry.target;
-        const delay = parseInt(el.dataset.delay || '0', 10);
-
-        setTimeout(() => {
-          el.classList.add('visible');
-        }, delay);
-
-        observer.unobserve(el);
-      });
-    },
-    {
-      threshold: 0.12,
-      rootMargin: '0px 0px -40px 0px',
-    }
-  );
-
-  elements.forEach(el => observer.observe(el));
-}
-
-// ── SMOOTH SCROLL ───────────────────────────────────────────
-
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-
-      const navHeight = parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue('--nav-height'),
-        10
-      ) || 64;
-
-      const top = target.getBoundingClientRect().top + window.scrollY - navHeight - 16;
-
-      window.scrollTo({ top, behavior: 'smooth' });
+  /* ── Footer: giant wordmark rises from a mask ────────── */
+  function initFooter() {
+    const footer = $('[data-footer]');
+    const word = footer && $('.footer__word', footer);
+    if (!word) return;
+    tasks.add(() => {
+      if (reduced()) { word.style.removeProperty('--p'); return; }
+      const r = footer.getBoundingClientRect();
+      word.style.setProperty('--p', clamp((vh() - r.top) / (r.height * 0.85)).toFixed(4));
     });
-  });
-}
-
-// ── CONTACT FORM ────────────────────────────────────────────
-
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const form = e.target;
-  const data = new FormData(form);
-
-  fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(data).toString(),
-  })
-  .then(() => {
-    document.getElementById('formSuccess').textContent = "Message sent! I'll be in touch soon.";
-    form.reset();
-  })
-  .catch(() => {
-    document.getElementById('formSuccess').textContent = 'Something went wrong. Please try again.';
-  });
-});
-
-// ── CARD TILT ───────────────────────────────────────────────
-// Subtle 3D tilt effect on work cards (desktop only)
-
-function initCardTilt() {
-  if (window.matchMedia('(max-width: 768px)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const cards = document.querySelectorAll('.work-card, .lab-card');
-
-  cards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const cx = rect.width  / 2;
-      const cy = rect.height / 2;
-      const dx = (x - cx) / cx;
-      const dy = (y - cy) / cy;
-      const maxTilt = 3;
-
-      card.style.transform = `
-        translateY(-3px)
-        rotateX(${-dy * maxTilt}deg)
-        rotateY(${dx * maxTilt}deg)
-      `;
-      card.style.transition = 'transform 0.1s ease-out';
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-      card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-    });
-  });
-}
-
-// ── ACTIVE NAV LINK ─────────────────────────────────────────
-
-function initActiveNavLink() {
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-links .nav-link');
-
-  if (!sections.length || !navLinks.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        const id = entry.target.id;
-        navLinks.forEach(link => {
-          const href = link.getAttribute('href');
-          link.classList.toggle('active', href === `#${id}`);
-        });
-      });
-    },
-    {
-      threshold: 0.4,
-      rootMargin: `-${64}px 0px -40% 0px`,
-    }
-  );
-
-  sections.forEach(s => observer.observe(s));
-}
-
-// ── HERO TEXT ENTRANCE ──────────────────────────────────────
-// Staggered character-level animation for hero name
-
-function initHeroEntrance() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  // Hero elements animate via CSS .reveal — no extra work needed.
-  // This function is a hook for future enhancements.
-}
-
-// ── CURSOR TRAIL (subtle, premium) ──────────────────────────
-
-function initCursorGlow() {
-  if (window.matchMedia('(max-width: 768px)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const glow = document.createElement('div');
-  glow.style.cssText = `
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(79,70,229,0.04) 0%, transparent 70%);
-    transform: translate(-50%, -50%);
-    transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1), top 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    will-change: left, top;
-    opacity: 0;
-  `;
-  document.body.appendChild(glow);
-
-  let visible = false;
-  let raf;
-
-  document.addEventListener('mousemove', (e) => {
-    if (!visible) {
-      glow.style.opacity = '1';
-      visible = true;
-    }
-    cancelAnimationFrame(raf);
-    raf = requestAnimationFrame(() => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-    });
-  });
-
-  document.addEventListener('mouseleave', () => {
-    glow.style.opacity = '0';
-    visible = false;
-  });
-}
-
-// ── NUMBER COUNTER ──────────────────────────────────────────
-// Animate stat numbers when they come into view
-
-function initCounters() {
-  // Placeholder for numeric stats if added in the future
-}
-
-// ── FAQ ACCORDION ───────────────────────────────────────────
-
-function initFAQ() {
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const expanded = btn.getAttribute('aria-expanded') === 'true';
-      const answerId = btn.getAttribute('aria-controls');
-      const answer   = document.getElementById(answerId);
-
-      // Close all others
-      document.querySelectorAll('.faq-question').forEach(other => {
-        if (other !== btn) {
-          other.setAttribute('aria-expanded', 'false');
-          const otherAnswer = document.getElementById(other.getAttribute('aria-controls'));
-          if (otherAnswer) otherAnswer.hidden = true;
-        }
-      });
-
-      // Toggle current
-      btn.setAttribute('aria-expanded', String(!expanded));
-      if (answer) answer.hidden = expanded;
-    });
-  });
-}
-
-// ── i18N / LANGUAGE SWITCH ──────────────────────────────────
-
-const translations = {
-  en: {
-    'nav-work': 'Work', 'nav-labs': 'Labs', 'nav-about': 'About', 'nav-contact': 'Contact', 'nav-cta': "Let's Build",
-    'hero-badge': 'Available for select projects',
-    'hero-title-html': 'Product Designer<br /><em>&amp; Vibe Coder</em>',
-    'hero-subheadline-html': 'I design, prototype, and ship modern digital products<br class="br-desktop" /> with clarity, speed, and strong visual taste.',
-    'hero-body': 'From UX systems to AI-powered interfaces, I help transform ideas into polished digital experiences that feel intuitive, refined, and ready to launch.',
-    'hero-view-work': 'View Work', 'hero-explore-labs': 'Explore Labs',
-    'hero-caption': 'Designing across UX, UI, product thinking, rapid prototyping, and AI-assisted development.',
-    'hero-scroll': 'Scroll',
-    'value-label': 'What I bring',
-    'value-heading-html': 'Built for founders,<br />teams, and ambitious<br />products.',
-    'value-body-1': 'I work at the intersection of product thinking, interface design, and rapid prototyping. That means I can help shape the experience, design the interface, and bring ideas closer to launch. Not just make things look good.',
-    'value-body-2': 'My work focuses on creating digital products that feel clear, intentional, and visually refined.',
-    'cap-uxui': 'UX/UI Design', 'cap-product': 'Product Thinking', 'cap-proto': 'Rapid Prototyping',
-    'cap-systems': 'Design Systems', 'cap-vibe': 'Vibe Coding', 'cap-web': 'Modern Web Interfaces',
-    'work-label': 'Selected Work', 'work-heading': 'Case Studies',
-    'work-body': 'A curated selection of product design, UX/UI, and digital experiences focused on usability, clarity, and modern interface design. Each case study shows the thinking behind the interface — from research and structure to final product experience.',
-    'card1-type': 'UX/UI · Mobile Platform', 'card1-title': 'ExploreTogether',
-    'card1-desc': 'A crowdsourced travel platform designed to help users discover authentic destinations through community-driven recommendations.',
-    'card-cta': 'View Case Study',
-    'card2-type': 'Product Design · Mobile/Web', 'card2-title': 'Event Planning & RSVP Platform',
-    'card2-desc': 'A digital product focused on simplifying event coordination and improving guest interactions from invitation to attendance.',
-    'card3-type': 'UX Design · Concept', 'card3-title': 'Mental Health Support Platform',
-    'card3-desc': 'A concept platform designed to make emotional support tools more accessible, structured, and easy to navigate for people seeking help.',
-    'labs-label': 'Labs', 'labs-heading': 'Experiments',
-    'labs-body': 'The Lab is where I explore new interface ideas, rapid product prototypes, and AI-assisted workflows. Some experiments begin as design explorations. Others evolve into functional prototypes and product concepts.',
-    'lab1-title': 'AI Interface Experiments',
-    'lab1-desc': 'Exploring how AI-native interactions reshape the visual language of interfaces and user flows.',
-    'lab2-title': 'Product Prototypes',
-    'lab2-desc': 'Rapid product concepts built to explore feasibility, flow, and first-impression experience.',
-    'labs-explore': 'Explore the Lab',
-    'lab3-title': 'Interaction Experiments',
-    'lab3-desc': 'Micro-interactions, transitions, and motion design studies pushing the edges of UI behavior.',
-    'lab4-title': 'Design + Code Explorations',
-    'lab4-desc': 'Projects where Figma and code blur together — vibe-coded interfaces brought to life with AI-assisted development.',
-    'phil-label': 'Design Philosophy', 'phil-quote': 'Good design creates momentum.',
-    'phil-body-1': 'Strong digital products are built through clarity, not noise. The best interfaces simplify complexity, guide users naturally, and create trust through thoughtful details.',
-    'phil-body-2': 'My approach combines visual restraint, product logic, and fast iteration — allowing ideas to move from concept to usable interface quickly.',
-    'about-label': 'About',
-    'about-heading-html': 'Designing at the edge of<br />design and development.',
-    'stat-location': 'Mexico', 'stat-location-label': 'Based in',
-    'stat-focus': 'UX + UI', 'stat-focus-label': 'Primary focus',
-    'stat-workflow': 'AI-first', 'stat-workflow-label': 'Workflow',
-    'about-p1': "I'm a Product Designer and UX/UI designer based in Mexico, focused on building digital products that feel modern, intuitive, and visually elevated.",
-    'about-p2': 'My work combines product thinking, interface design, and rapid prototyping to transform ideas into experiences that are both usable and memorable.',
-    'about-p3': "I'm particularly interested in the space where design and development start to merge — where designers can think through systems, prototype interactions quickly, and bring ideas closer to real products.",
-    'about-p4': 'Through vibe coding and AI-assisted workflows, I explore faster ways of shaping and building digital experiences.',
-    'services-label': 'Collaboration', 'services-heading': 'How I Can Help',
-    'services-body': 'I collaborate with founders, startups, and teams that want to move quickly from idea to product.',
-    'svc1-title': 'UX/UI Design for Digital Products',
-    'svc1-desc': 'End-to-end interface design from research and wireframes to polished, production-ready UI.',
-    'svc2-title': 'Product Interface Design',
-    'svc2-desc': 'Designing core product interfaces that guide users with clarity and build lasting trust.',
-    'svc3-title': 'Rapid Prototyping',
-    'svc3-desc': 'Fast, high-fidelity prototypes that validate ideas before a single line of production code is written.',
-    'svc4-title': 'Design Systems',
-    'svc4-desc': 'Scalable component libraries and token-based design systems that keep teams moving in sync.',
-    'svc5-title': 'Vibe Coding & AI-Assisted Development',
-    'svc5-desc': 'Using AI-powered workflows to prototype and build functional interfaces faster than traditional design-dev handoffs allow.',
-    'svc6-title': 'Modern Marketing & Product Websites',
-    'svc6-desc': 'High-conversion marketing sites and product landing pages with premium visual design and refined interactions.',
-    'cta-heading-html': "Let's build something<br />people remember.",
-    'cta-body': "If you're working on a product and need help shaping the experience, refining the interface, or building modern digital interactions, I'd love to hear about it.",
-    'cta-btn': 'Get in Touch',
-    'cta-caption': 'Available for select freelance projects, collaborations, and in-house opportunities.',
-    'contact-label': 'Contact',
-    'contact-heading-html': 'Start a<br />conversation.',
-    'contact-body-html': "Have a project, role, or collaboration in mind?<br />Send a message and let's talk.",
-    'form-name-label': 'Name', 'form-name-placeholder': 'Your name',
-    'form-email-label': 'Email',
-    'form-project-label': 'Project', 'form-project-placeholder': 'What are you working on?',
-    'form-message-label': 'Message', 'form-message-placeholder': 'Tell me about your project or opportunity...',
-    'form-submit': 'Send Message',
-    'footer-role': 'Product Designer & Vibe Coder',
-    'footer-tagline': 'Designing modern digital experiences with clarity and taste.',
-    'footer-copy': '© 2026 Paola Bramlett. All rights reserved.',
-    // FAQ
-    'faq-label': 'FAQ',
-    'faq-heading': 'Common Questions',
-    'faq-sub': 'Straight answers to the questions people ask before reaching out.',
-    'faq-q1': 'How much do you charge for design and development work?',
-    'faq-a1': 'Hourly rates run $35–$45 USD depending on the type of work. Most projects land between $1,000–$5,000 USD total. Flat-rate project quotes are available on request.',
-    'faq-q2': 'How long does a typical project take?',
-    'faq-a2': 'A landing page or simple prototype takes 3–7 days. A full UX/UI design for an app typically runs 2–6 weeks. Timeline depends on scope and whether development is included.',
-    'faq-q3': 'Do you work with clients outside Mexico?',
-    'faq-a3': 'Yes. Most clients are in the US, Canada, and Europe. All work is done remotely. Communication in English or Spanish, across any time zone.',
-    'faq-q4': 'What makes you different from other designers?',
-    'faq-a4': 'I cover strategy, design, and development. Most designers hand off to a developer — I can take a project from wireframe to working front-end, removing the gap between design and launch.',
-    'faq-q5': 'What is Vibe Coding and how does it help my project?',
-    'faq-a5': "Vibe Coding is an AI-assisted workflow using tools like Claude Code to build functional interfaces faster than traditional development. The output is real, production-quality code — not a mockup. It's how I can deliver in days what normally takes weeks.",
-    'faq-q6': 'What kinds of projects do you take on?',
-    'faq-a6': 'Startups building a first product, founders launching a website or app, and teams that need a design system or rapid prototype. I work best on projects where both design quality and delivery speed matter.',
-    'faq-q7': 'Do you handle development or just design?',
-    'faq-a7': 'Both. I design in Figma and build using HTML, CSS, JavaScript, and AI-assisted tools. You can get design files, a working prototype, or production-ready front-end code — or all three.',
-    'faq-q8': 'What tools do you use?',
-    'faq-a8': 'Figma for design and prototyping, Claude Code for AI-assisted development, Adobe Illustrator for brand and visual work, and HTML, CSS, and JavaScript for front-end builds.',
-    'faq-q9': 'When is the right time to bring you into a project?',
-    'faq-a9': 'As early as possible. Design decisions made before development starts prevent expensive rework later. I can join at the idea stage, mid-project, or as an ongoing design partner for an existing team.',
-    'faq-q10': 'How do I get started?',
-    'faq-a10': 'Send a message through the contact form or call +52 951 408 2852. Describe your project in a few sentences. Expect a reply within 24 hours. Initial consultations are free.',
-  },
-  es: {
-    'nav-work': 'Trabajo', 'nav-labs': 'Labs', 'nav-about': 'Sobre mí', 'nav-contact': 'Contacto', 'nav-cta': 'Construyamos',
-    'hero-badge': 'Disponible para proyectos selectos',
-    'hero-title-html': 'Diseñadora de Producto<br /><em>&amp; Vibe Coder</em>',
-    'hero-subheadline-html': 'Diseño, prototipo y construyo productos digitales modernos<br class="br-desktop" /> con claridad, velocidad y gusto visual.',
-    'hero-body': 'Desde sistemas de UX hasta interfaces con IA, ayudo a transformar ideas en experiencias digitales pulidas que se sienten intuitivas, refinadas y listas para lanzar.',
-    'hero-view-work': 'Ver Trabajo', 'hero-explore-labs': 'Explorar Labs',
-    'hero-caption': 'Diseñando en UX, UI, pensamiento de producto, prototipado rápido y desarrollo asistido por IA.',
-    'hero-scroll': 'Scroll',
-    'value-label': 'Lo que aporto',
-    'value-heading-html': 'Hecho para founders,<br />equipos y productos<br />ambiciosos.',
-    'value-body-1': 'Trabajo en la intersección del pensamiento de producto, el diseño de interfaces y el prototipado rápido. Eso significa que puedo ayudar a dar forma a la experiencia, diseñar la interfaz y acercar las ideas al lanzamiento. No solo hacer que las cosas se vean bien.',
-    'value-body-2': 'Mi trabajo se centra en crear productos digitales que se sientan claros, intencionales y visualmente refinados.',
-    'cap-uxui': 'Diseño UX/UI', 'cap-product': 'Pensamiento de Producto', 'cap-proto': 'Prototipado Rápido',
-    'cap-systems': 'Sistemas de Diseño', 'cap-vibe': 'Vibe Coding', 'cap-web': 'Interfaces Web Modernas',
-    'work-label': 'Trabajo Selecto', 'work-heading': 'Casos de Estudio',
-    'work-body': 'Una selección de diseño de producto, UX/UI y experiencias digitales enfocadas en usabilidad, claridad y diseño de interfaces modernas. Cada caso de estudio muestra el pensamiento detrás de la interfaz — desde la investigación y la estructura hasta la experiencia final del producto.',
-    'card1-type': 'UX/UI · Plataforma Móvil', 'card1-title': 'ExploreTogether',
-    'card1-desc': 'Una plataforma de viajes colaborativa diseñada para ayudar a los usuarios a descubrir destinos auténticos a través de recomendaciones impulsadas por la comunidad.',
-    'card-cta': 'Ver Caso de Estudio',
-    'card2-type': 'Diseño de Producto · Móvil/Web', 'card2-title': 'Plataforma de Eventos y RSVP',
-    'card2-desc': 'Un producto digital enfocado en simplificar la coordinación de eventos y mejorar las interacciones de los invitados desde la invitación hasta la asistencia.',
-    'card3-type': 'Diseño UX · Concepto', 'card3-title': 'Plataforma de Apoyo en Salud Mental',
-    'card3-desc': 'Una plataforma conceptual diseñada para hacer que las herramientas de apoyo emocional sean más accesibles, estructuradas y fáciles de navegar para personas que buscan ayuda.',
-    'labs-label': 'Labs', 'labs-heading': 'Experimentos',
-    'labs-body': 'El Lab es donde exploro nuevas ideas de interfaces, prototipos de productos rápidos y flujos de trabajo asistidos por IA. Algunos experimentos comienzan como exploraciones de diseño. Otros evolucionan en prototipos funcionales y conceptos de producto.',
-    'lab1-title': 'Experimentos de Interfaces con IA',
-    'lab1-desc': 'Explorando cómo las interacciones nativas de IA reconfiguran el lenguaje visual de las interfaces y los flujos de usuario.',
-    'lab2-title': 'Prototipos de Producto',
-    'lab2-desc': 'Conceptos de producto rápidos construidos para explorar viabilidad, flujo y experiencia de primera impresión.',
-    'labs-explore': 'Explorar el Lab',
-    'lab3-title': 'Experimentos de Interacción',
-    'lab3-desc': 'Micro-interacciones, transiciones y estudios de diseño en movimiento que empujan los límites del comportamiento de UI.',
-    'lab4-title': 'Exploraciones de Diseño + Código',
-    'lab4-desc': 'Proyectos donde Figma y el código se fusionan — interfaces vibe-coded cobradas vida con desarrollo asistido por IA.',
-    'phil-label': 'Filosofía de Diseño', 'phil-quote': 'El buen diseño crea impulso.',
-    'phil-body-1': 'Los productos digitales sólidos se construyen con claridad, no con ruido. Las mejores interfaces simplifican la complejidad, guían a los usuarios de forma natural y generan confianza a través de detalles reflexivos.',
-    'phil-body-2': 'Mi enfoque combina sobriedad visual, lógica de producto e iteración rápida — permitiendo que las ideas pasen del concepto a una interfaz utilizable rápidamente.',
-    'about-label': 'Sobre mí',
-    'about-heading-html': 'Diseñando en la frontera<br />del diseño y el desarrollo.',
-    'stat-location': 'México', 'stat-location-label': 'Ubicada en',
-    'stat-focus': 'UX + UI', 'stat-focus-label': 'Enfoque principal',
-    'stat-workflow': 'IA primero', 'stat-workflow-label': 'Flujo de trabajo',
-    'about-p1': 'Soy Diseñadora de Producto y diseñadora UX/UI basada en México, enfocada en construir productos digitales que se sientan modernos, intuitivos y visualmente elevados.',
-    'about-p2': 'Mi trabajo combina pensamiento de producto, diseño de interfaces y prototipado rápido para transformar ideas en experiencias que son tanto utilizables como memorables.',
-    'about-p3': 'Me interesa especialmente el espacio donde el diseño y el desarrollo comienzan a fusionarse — donde los diseñadores pueden pensar en sistemas, prototipar interacciones rápidamente y acercar las ideas a productos reales.',
-    'about-p4': 'A través del vibe coding y los flujos de trabajo asistidos por IA, exploro formas más rápidas de dar forma y construir experiencias digitales.',
-    'services-label': 'Colaboración', 'services-heading': 'Cómo Puedo Ayudar',
-    'services-body': 'Colaboro con founders, startups y equipos que quieren pasar rápidamente de la idea al producto.',
-    'svc1-title': 'Diseño UX/UI para Productos Digitales',
-    'svc1-desc': 'Diseño de interfaz de extremo a extremo, desde investigación y wireframes hasta una UI pulida y lista para producción.',
-    'svc2-title': 'Diseño de Interfaz de Producto',
-    'svc2-desc': 'Diseño de interfaces de producto principales que guían a los usuarios con claridad y generan confianza duradera.',
-    'svc3-title': 'Prototipado Rápido',
-    'svc3-desc': 'Prototipos rápidos y de alta fidelidad que validan ideas antes de escribir una sola línea de código de producción.',
-    'svc4-title': 'Sistemas de Diseño',
-    'svc4-desc': 'Bibliotecas de componentes escalables y sistemas de diseño basados en tokens que mantienen a los equipos sincronizados.',
-    'svc5-title': 'Vibe Coding y Desarrollo Asistido por IA',
-    'svc5-desc': 'Usando flujos de trabajo impulsados por IA para prototipar y construir interfaces funcionales más rápido que los handoffs tradicionales de diseño y desarrollo.',
-    'svc6-title': 'Sitios Web de Marketing y Producto Modernos',
-    'svc6-desc': 'Sitios de marketing de alta conversión y landing pages de producto con diseño visual premium e interacciones refinadas.',
-    'cta-heading-html': 'Construyamos algo que<br />la gente recuerde.',
-    'cta-body': 'Si estás trabajando en un producto y necesitas ayuda para dar forma a la experiencia, refinar la interfaz o construir interacciones digitales modernas, me encantaría escuchar sobre ello.',
-    'cta-btn': 'Ponte en Contacto',
-    'cta-caption': 'Disponible para proyectos freelance selectos, colaboraciones y oportunidades en empresa.',
-    'contact-label': 'Contacto',
-    'contact-heading-html': 'Inicia una<br />conversación.',
-    'contact-body-html': '¿Tienes un proyecto, rol o colaboración en mente?<br />Envía un mensaje y hablemos.',
-    'form-name-label': 'Nombre', 'form-name-placeholder': 'Tu nombre',
-    'form-email-label': 'Correo electrónico',
-    'form-project-label': 'Proyecto', 'form-project-placeholder': '¿En qué estás trabajando?',
-    'form-message-label': 'Mensaje', 'form-message-placeholder': 'Cuéntame sobre tu proyecto u oportunidad...',
-    'form-submit': 'Enviar Mensaje',
-    'footer-role': 'Diseñadora de Producto & Vibe Coder',
-    'footer-tagline': 'Diseñando experiencias digitales modernas con claridad y gusto.',
-    'footer-copy': '© 2026 Paola Bramlett. Todos los derechos reservados.',
-    // FAQ
-    'faq-label': 'Preguntas',
-    'faq-heading': 'Preguntas Frecuentes',
-    'faq-sub': 'Respuestas directas a las preguntas que la gente hace antes de contactarme.',
-    'faq-q1': '¿Cuánto cobras por trabajo de diseño y desarrollo?',
-    'faq-a1': 'Las tarifas por hora van de $35 a $45 USD según el tipo de trabajo. La mayoría de proyectos están entre $1,000 y $5,000 USD en total. Se pueden hacer cotizaciones a precio fijo bajo pedido.',
-    'faq-q2': '¿Cuánto tarda un proyecto típico?',
-    'faq-a2': 'Una landing page o prototipo sencillo tarda 3–7 días. Un diseño UX/UI completo para una app normalmente toma 2–6 semanas. El tiempo depende del alcance y de si se incluye desarrollo.',
-    'faq-q3': '¿Trabajas con clientes fuera de México?',
-    'faq-a3': 'Sí. La mayoría de mis clientes están en EE.UU., Canadá y Europa. Todo el trabajo se hace de forma remota. Me comunico en inglés o español, en cualquier zona horaria.',
-    'faq-q4': '¿Qué te diferencia de otros diseñadores?',
-    'faq-a4': 'Cubro estrategia, diseño y desarrollo. La mayoría de los diseñadores entregan a un desarrollador — yo puedo llevar un proyecto desde wireframe hasta front-end funcional, eliminando la brecha entre diseño y lanzamiento.',
-    'faq-q5': '¿Qué es el Vibe Coding y cómo ayuda a mi proyecto?',
-    'faq-a5': 'El Vibe Coding es un flujo de trabajo asistido por IA usando herramientas como Claude Code para construir interfaces funcionales más rápido que el desarrollo tradicional. El resultado es código real y de calidad, no una maqueta. Así puedo entregar en días lo que normalmente toma semanas.',
-    'faq-q6': '¿Qué tipo de proyectos aceptas?',
-    'faq-a6': 'Startups construyendo su primer producto, founders lanzando un sitio o app, y equipos que necesitan un sistema de diseño o prototipo rápido. Trabajo mejor en proyectos donde importan tanto la calidad del diseño como la velocidad de entrega.',
-    'faq-q7': '¿Te encargas del desarrollo o solo del diseño?',
-    'faq-a7': 'Ambos. Diseño en Figma y construyo con HTML, CSS, JavaScript y herramientas asistidas por IA. Puedes obtener archivos de diseño, un prototipo funcional o código front-end listo para producción — o los tres.',
-    'faq-q8': '¿Qué herramientas usas?',
-    'faq-a8': 'Figma para diseño y prototipado, Claude Code para desarrollo asistido por IA, Adobe Illustrator para trabajo de marca y visual, y HTML, CSS y JavaScript para desarrollo front-end.',
-    'faq-q9': '¿Cuándo es el momento ideal para incorporarte a un proyecto?',
-    'faq-a9': 'Lo antes posible. Las decisiones de diseño tomadas antes del desarrollo evitan retrabajos costosos más adelante. Puedo unirme en la etapa de idea, a mitad del proyecto, o como socia de diseño continua para un equipo existente.',
-    'faq-q10': '¿Cómo empiezo?',
-    'faq-a10': 'Envía un mensaje por el formulario de contacto o llama al +52 951 408 2852. Describe tu proyecto en pocas frases. Recibirás una respuesta en 24 horas. Las consultas iniciales son gratuitas.',
   }
-};
 
-function applyLanguage(lang) {
-  const t = translations[lang];
-  if (!t) return;
+  /* ── Case studies: reading progress + cover zoom ─────── */
+  function initCase() {
+    const bar = $('.reading-progress');
+    if (bar) tasks.add(() => {
+      const max = document.documentElement.scrollHeight - vh();
+      bar.style.setProperty('--p', max > 0 ? clamp(scrollY / max).toFixed(4) : 0);
+    });
+    const win = $('.case-cover .window');
+    if (win) tasks.add(() => {
+      if (!desktop() || reduced()) { win.style.removeProperty('--p'); return; }
+      const r = win.getBoundingClientRect();
+      win.style.setProperty('--p', clamp((vh() - r.top) / (vh() * 0.7)).toFixed(4));
+    });
+  }
 
-  document.documentElement.lang = lang;
+  function initYear() { $$('[data-year]').forEach(el => { el.textContent = new Date().getFullYear(); }); }
 
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.dataset.i18n;
-    if (t[key] !== undefined) el.textContent = t[key];
+  document.addEventListener('DOMContentLoaded', () => {
+    initLanguage();   // before splitting words, so the right language is split
+    initNav();
+    initHero();
+    initReveal();
+    initConsole();
+    initMarquee();
+    initWords();
+    initStack();
+    initSpotlight();
+    initProcess();
+    initRail();
+    initClock();
+    initScramble();
+    initFaq();
+    initPalette();
+    initFooter();
+    initCase();
+    initYear();
+    schedule();
   });
-
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.dataset.i18nHtml;
-    if (t[key] !== undefined) el.innerHTML = t[key];
-  });
-
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.dataset.i18nPlaceholder;
-    if (t[key] !== undefined) el.placeholder = t[key];
-  });
-
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.dataset.lang === lang);
-  });
-
-  localStorage.setItem('lang', lang);
-}
-
-function initLanguageSwitch() {
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.addEventListener('click', () => applyLanguage(btn.dataset.lang));
-  });
-
-  const saved = localStorage.getItem('lang');
-  if (saved && translations[saved]) applyLanguage(saved);
-}
-
-// ── INIT ────────────────────────────────────────────────────
-
-document.addEventListener('DOMContentLoaded', () => {
-  initNavbar();
-  initScrollReveal();
-  initSmoothScroll();
-  initCardTilt();
-  initActiveNavLink();
-  initHeroEntrance();
-  initCursorGlow();
-  initCounters();
-  initFAQ();
-  initLanguageSwitch();
-});
-
-// Expose for potential external use
-window.PB = {
-  reinitReveal: initScrollReveal,
-};
+})();
