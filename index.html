@@ -7,7 +7,7 @@
   <meta name="description" content="Senior Product Designer for founders. I turn complex ideas — AI, health and operations products — into clear, build-ready UX/UI. Based in Mexico, working worldwide." data-es-content="Senior Product Designer para founders. Convierto ideas complejas — productos con IA, salud y operaciones — en UX/UI claro y listo para desarrollo. Desde México para todo el mundo." />
   <link rel="canonical" href="https://www.paolabramlett.com/" />
   <meta name="author" content="Paola Bramlett" />
-  <meta name="theme-color" content="#fbfbfd" />
+  <meta name="theme-color" content="#ffffff" />
   <meta name="robots" content="index, follow, max-image-preview:large" />
 
   <meta property="og:type" content="website" />
@@ -31,9 +31,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles.css?v=3" />
-  <script>document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&amp;family=Geist:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" /></noscript>
+  <link rel="stylesheet" href="/styles.css?v=4" />
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__pb)document.documentElement.classList.remove('js')},4000)</script>
+  <link rel="preload" as="image" href="/img/work/genogram-cover.svg" media="(min-width: 901px)" />
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -313,395 +315,571 @@
   </script>
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <!-- chrome:nav -->
+  <a class="skip-link" href="#main" data-es="Saltar al contenido">Skip to content</a>
   <header class="nav">
     <nav class="wrap nav__inner" aria-label="Main">
-      <a class="nav__logo" href="/" aria-label="Paola Bramlett, home"><img class="nav__logo-mark" src="/assets/icon-32.png" alt="" width="22" height="22" />Paola Bramlett</a>
+      <a class="nav__logo" href="/" aria-label="Paola Bramlett, home" data-es-aria="Paola Bramlett, inicio"><img src="/img/logo-p.webp" alt="" width="125" height="96" />Paola Bramlett</a>
       <ul class="nav__links">
-        <li><a href="#work" data-es="Proyectos">Work</a></li>
-        <li><a href="#services" data-es="Servicios">Services</a></li>
-        <li><a href="#process" data-es="Proceso">Process</a></li>
-        <li><a href="#about" data-es="Sobre mí">About</a></li>
-        <li><a href="#faq" data-es="FAQ">FAQ</a></li>
+        <li><a href="/#work" data-es="Proyectos">Work</a></li>
+        <li><a href="/#services" data-es="Servicios">Services</a></li>
+        <li><a href="/#process" data-es="Proceso">Process</a></li>
+        <li><a href="/#about" data-es="Sobre mí">About</a></li>
+        <li><a href="/#faq" data-es="FAQ">FAQ</a></li>
       </ul>
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" data-lang="es" aria-pressed="false">ES</button>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language" data-es-aria="Idioma">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang__sep" aria-hidden="true">/</span><button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a class="btn btn--primary btn--sm" href="/#contact" data-palette-open><span class="dot dot--signal" aria-hidden="true"></span><span data-es="Empezar un proyecto">Start a project</span></a>
+        <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu" data-es-aria="Menú"><span></span><span></span></button>
       </div>
-      <a class="btn btn--accent btn--sm nav__cta" href="#contact" data-es="Empezar un proyecto">Start a project</a>
-      <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu"><span></span><span></span></button>
     </nav>
   </header>
   <div class="nav__sheet" id="nav-sheet">
-    <a href="#work" data-es="Proyectos">Work</a>
-    <a href="#services" data-es="Servicios">Services</a>
-    <a href="#process" data-es="Proceso">Process</a>
-    <a href="#about" data-es="Sobre mí">About</a>
-    <a href="#faq" data-es="FAQ">FAQ</a>
-    <a href="#contact" data-es="Empezar un proyecto">Start a project</a>
+    <a href="/#work" style="--i:0" data-es="Proyectos">Work</a>
+    <a href="/#services" style="--i:1" data-es="Servicios">Services</a>
+    <a href="/#process" style="--i:2" data-es="Proceso">Process</a>
+    <a href="/#about" style="--i:3" data-es="Sobre mí">About</a>
+    <a href="/#faq" style="--i:4" data-es="FAQ">FAQ</a>
+    <a class="btn btn--primary" href="/#contact" style="--i:5"><span data-es="Empezar un proyecto">Start a project</span><span class="arrow" aria-hidden="true">→</span></a>
   </div>
+  <!-- /chrome:nav -->
 
   <main id="main">
-    <section class="hero" id="top">
-      <div class="wrap">
-        <p class="hero__status reveal"><span class="hero__dot" aria-hidden="true"></span><span data-es="Agendando nuevos proyectos">Booking new projects</span></p>
-        <h1 class="split">
-          <span class="hero__role reveal" style="--d:80">Paola Bramlett · Senior Product Designer</span>
-          <span class="display">
-            <span class="split-line"><span style="--d:150" data-es="Productos complejos,">Complex products,</span></span>
-            <span class="split-line"><span class="gradient-text" style="--d:260" data-es="fáciles de entender.">made clear.</span></span>
-          </span>
-        </h1>
-        <p class="lead reveal" style="--d:380" data-es="Trabajo con founders para convertir ideas ambiciosas — herramientas con IA, plataformas de salud, software de operaciones — en productos que la gente entiende desde la primera vez que los usa. Del discovery a un design system listo para desarrollo y, cuando conviene, front-end funcional.">I partner with founders to turn ambitious ideas — AI tools, health platforms, operations software — into products people understand the first time they use them. From discovery to a build-ready design system and, when it helps, working front-end.</p>
-        <div class="hero__actions reveal" style="--d:480">
-          <a class="btn btn--primary" href="#contact" data-es="Empezar un proyecto">Start a project</a>
-          <a class="link-arrow" href="#work"><span data-es="Ver proyectos">See selected work</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-        </div>
-      </div>
+    <!-- S1 · Hero -->
+    <section class="hero" id="top" data-hero>
+      <div class="hero__grid" aria-hidden="true"></div>
+      <div class="hero__grid-lit" aria-hidden="true"></div>
+      <div class="aurora" aria-hidden="true"><div class="aurora__layer" data-aurora><i class="aurora__glow"></i><i class="aurora__glow"></i><i class="aurora__glow"></i><i class="aurora__glow"></i></div></div>
 
-      <div class="stage reveal" style="--d:560">
-        <div class="stage__frame" data-fx="stage">
-          <div class="stage__grid">
-            <a href="/work/genogram-tool-for-therapists/"><img src="/img/work/genogram-cover.svg" alt="Genogram tool for therapists — cover illustration" width="1600" height="1000" fetchpriority="high" /><span class="stage__label" data-es="Genogramas · En uso">Genogram tool · Live</span></a>
-            <a href="/work/kids-emotional-learning-app/"><img src="/img/work/kids-emotions-cover.svg" alt="Emotional learning app for kids — cover illustration" width="1600" height="1000" /><span class="stage__label" data-es="App de aprendizaje emocional">Emotional learning app</span></a>
-            <a href="/work/ai-fleet-maintenance-platform/"><img src="/img/work/fleet-cover.svg" alt="AI fleet maintenance platform — cover illustration" width="1600" height="1000" /><span class="stage__label" data-es="Mantenimiento de flotillas con IA">AI fleet maintenance</span></a>
+      <div class="wrap">
+        <div class="hero__top">
+          <p class="hero__meta typed" data-typed>
+            <span><b data-es="[ROL]">[ROLE]</b>Senior Product Designer</span>
+            <span><b data-es="[UBIC]">[LOC]</b>Oaxaca, MX</span>
+            <span class="hero__meta-mode"><b data-es="[MODO]">[MODE]</b><span data-es="Remoto · EN / ES">Remote · EN / ES</span></span>
+          </p>
+          <p class="chip-status reveal" style="--d:200"><span class="dot dot--signal dot--glow" aria-hidden="true"></span><span data-es="Disponible para nuevos proyectos">Available for new projects</span></p>
+        </div>
+
+        <h1 class="hero__title rise" data-rise>
+          <span class="sr-only" data-es="Paola Bramlett, Senior Product Designer:">Paola Bramlett, Senior Product Designer:</span>
+          <span class="line" style="--i:0"><span data-es="Productos complejos,">Complex products,</span></span>
+          <span class="line" style="--i:1"><span><span class="gradient-text" data-es="fáciles de entender.">made clear.</span><span class="cursor" aria-hidden="true"></span></span></span>
+        </h1>
+
+        <div class="hero__row">
+          <p class="lead hero__lead reveal" style="--d:380" data-es="Trabajo con founders para convertir ideas ambiciosas — herramientas con IA, plataformas de salud, software de operaciones — en productos que la gente entiende desde la primera vez que los usa. Estrategia, UX/UI, design systems y, cuando conviene, front-end funcional.">I partner with founders to turn ambitious ideas — AI tools, health platforms, operations software — into products people understand the first time they use them. Strategy, UX/UI, design systems and, when it helps, working front-end.</p>
+          <div class="hero__ctas reveal" style="--d:480">
+            <a class="btn btn--primary" href="#contact"><span data-es="Empezar un proyecto">Start a project</span><span class="arrow" aria-hidden="true">→</span></a>
+            <a class="btn btn--ghost" href="#work"><span data-es="Ver proyectos">See the work</span><span class="btn__kbd" aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+
+        <!-- Work console: sidebar autoplay + preview crossfade (swipe carousel on mobile) -->
+        <div class="console fade" style="--d:560" data-console>
+          <div class="window-bar">
+            <span class="window-bar__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="window-bar__title" aria-hidden="true" data-es="~/paola/work  —  seleccionados · 3 proyectos">~/paola/work  —  selected · 3 projects</span>
+            <span class="window-bar__end"><span aria-hidden="true" data-es="EN USO 1 · EN DESARROLLO 2">LIVE 1 · IN DEV 2</span><button type="button" class="console__pause" data-console-pause aria-pressed="false" hidden><span data-es="Pausa">Pause</span></button></span>
+          </div>
+          <div class="console__body">
+            <ul class="console__side">
+              <li><a class="console__item is-active" href="/work/genogram-tool-for-therapists/" data-console-item="0">
+                <span class="console__item-top"><span class="console__code">CS-01</span><span class="console__state state--live"><span class="dot dot--live" aria-hidden="true"></span><span data-es="EN USO">LIVE</span></span></span>
+                <span class="console__name" data-es="Herramienta de genogramas para terapeutas">Genogram tool for therapists</span>
+                <span class="console__sub" data-es="Salud mental · Herramienta de canvas">Mental health · Canvas tool</span>
+                <span class="console__progress" aria-hidden="true"><i></i></span>
+              </a></li>
+              <li><a class="console__item" href="/work/kids-emotional-learning-app/" data-console-item="1">
+                <span class="console__item-top"><span class="console__code">CS-02</span><span class="console__state state--dev"><span class="dot dot--dev" aria-hidden="true"></span><span data-es="EN DESARROLLO">IN DEV</span></span></span>
+                <span class="console__name" data-es="App de aprendizaje emocional">Emotional learning app</span>
+                <span class="console__sub" data-es="Niños y padres · IA">Kids &amp; parents · AI</span>
+                <span class="console__progress" aria-hidden="true"><i></i></span>
+              </a></li>
+              <li><a class="console__item" href="/work/ai-fleet-maintenance-platform/" data-console-item="2">
+                <span class="console__item-top"><span class="console__code">CS-03</span><span class="console__state state--dev"><span class="dot dot--dev" aria-hidden="true"></span><span data-es="EN DESARROLLO">IN DEV</span></span></span>
+                <span class="console__name" data-es="Mantenimiento de flotillas con IA">AI fleet maintenance</span>
+                <span class="console__sub" data-es="Logística · IA">Logistics · AI</span>
+                <span class="console__progress" aria-hidden="true"><i></i></span>
+              </a></li>
+            </ul>
+            <div class="console__stage" data-console-stage>
+              <div class="console__slide is-active" data-console-slide>
+                <a href="/work/genogram-tool-for-therapists/">
+                  <img src="/img/work/genogram-cover.svg" alt="Illustration of a clean genogram canvas mapping three generations of a family" data-es-alt="Ilustración de un canvas de genograma limpio que mapea tres generaciones de una familia" width="1600" height="1000" fetchpriority="high" />
+                  <span class="console__caption"><span class="mono state--live">CS-01 · <span data-es="En uso">Live</span></span><strong data-es="Herramienta de genogramas para terapeutas">Genogram tool for therapists</strong></span>
+                  <span class="console__open" aria-hidden="true"><span data-es="Abrir caso de estudio">Open case study</span> →</span>
+                </a>
+              </div>
+              <div class="console__slide console__slide--light" data-console-slide>
+                <a href="/work/kids-emotional-learning-app/">
+                  <img src="/img/work/kids-emotions-cover.svg" alt="Illustration of a playful level path where each stop is an emotion, next to a daily check-in card" data-es-alt="Ilustración de un camino de niveles donde cada parada es una emoción, junto a una tarjeta de check-in diario" width="1600" height="1000" loading="lazy" />
+                  <span class="console__caption"><span class="mono state--dev">CS-02 · <span data-es="En desarrollo">In dev</span></span><strong data-es="App de aprendizaje emocional">Emotional learning app</strong></span>
+                  <span class="console__open" aria-hidden="true"><span data-es="Abrir caso de estudio">Open case study</span> →</span>
+                </a>
+              </div>
+              <div class="console__slide" data-console-slide>
+                <a href="/work/ai-fleet-maintenance-platform/">
+                  <img src="/img/work/fleet-cover.svg" alt="Illustration of a fleet health dashboard with truck status and an AI failure forecast" data-es-alt="Ilustración de un dashboard de salud de flotilla con el estado de los camiones y un pronóstico de fallas con IA" width="1600" height="1000" loading="lazy" />
+                  <span class="console__caption"><span class="mono state--dev">CS-03 · <span data-es="En desarrollo">In dev</span></span><strong data-es="Mantenimiento de flotillas con IA">AI fleet maintenance</strong></span>
+                  <span class="console__open" aria-hidden="true"><span data-es="Abrir caso de estudio">Open case study</span> →</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="console__dots" data-console-dots>
+            <button type="button" aria-label="Project 1" data-es-aria="Proyecto 1" aria-current="true"><i></i></button>
+            <button type="button" aria-label="Project 2" data-es-aria="Proyecto 2"><i></i></button>
+            <button type="button" aria-label="Project 3" data-es-aria="Proyecto 3"><i></i></button>
           </div>
         </div>
       </div>
-
-      <ul class="wrap domains" aria-label="Industries">
-        <li class="chip reveal"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l1.8 5.2L17 9l-5.2 1.8L10 16l-1.8-5.2L3 9l5.2-1.8z" fill="currentColor"/></svg><span data-es="Productos con IA">AI-powered products</span></li>
-        <li class="chip reveal" style="--d:60"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 17s-6.5-3.9-6.5-8.6A3.6 3.6 0 0110 6a3.6 3.6 0 016.5 2.4C16.5 13.1 10 17 10 17z" fill="currentColor"/></svg><span data-es="Salud mental y bienestar">Mental health &amp; wellbeing</span></li>
-        <li class="chip reveal" style="--d:120"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.8"/><circle cx="7.5" cy="8.5" r="1" fill="currentColor"/><circle cx="12.5" cy="8.5" r="1" fill="currentColor"/><path d="M7 12q3 2.5 6 0" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span data-es="Niños y familias">Kids &amp; families</span></li>
-        <li class="chip reveal" style="--d:180"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M2 5h10v8H2zM12 8h3.5L18 11v2h-6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="5.5" cy="14.5" r="1.6" fill="currentColor"/><circle cx="14.5" cy="14.5" r="1.6" fill="currentColor"/></svg><span data-es="Logística y flotillas">Logistics &amp; fleet operations</span></li>
-      </ul>
     </section>
 
+    <!-- S2 · Marquee (industries) -->
+    <div class="marquee" data-marquee>
+      <div class="marquee__track">
+        <ul class="marquee__list">
+          <li data-es="Productos con IA">AI-powered products</li><li class="star" aria-hidden="true">✦</li>
+          <li data-es="Salud mental y bienestar">Mental health &amp; wellbeing</li><li class="star" aria-hidden="true">✦</li>
+          <li data-es="Niños y familias">Kids &amp; families</li><li class="star" aria-hidden="true">✦</li>
+          <li data-es="Logística y flotillas">Logistics &amp; fleets</li><li class="star" aria-hidden="true">✦</li>
+          <li>Design systems</li><li class="star" aria-hidden="true">✦</li>
+          <li data-es="MVPs 0→1">0→1 MVPs</li><li class="star" aria-hidden="true">✦</li>
+        </ul>
+        <ul class="marquee__list" aria-hidden="true">
+          <li data-es="Productos con IA">AI-powered products</li><li class="star">✦</li>
+          <li data-es="Salud mental y bienestar">Mental health &amp; wellbeing</li><li class="star">✦</li>
+          <li data-es="Niños y familias">Kids &amp; families</li><li class="star">✦</li>
+          <li data-es="Logística y flotillas">Logistics &amp; fleets</li><li class="star">✦</li>
+          <li>Design systems</li><li class="star">✦</li>
+          <li data-es="MVPs 0→1">0→1 MVPs</li><li class="star">✦</li>
+        </ul>
+      </div>
+    </div>
 
-    <section class="statement" data-fx="words" aria-label="Design philosophy">
+    <!-- S3 · Statement (scroll-lit words) -->
+    <section class="statement statement--pinned" data-statement aria-labelledby="why-label">
       <div class="statement__sticky">
         <div class="wrap">
-          <p class="eyebrow"><span data-es="Por qué importa">Why it matters</span></p>
-          <p class="statement__text" data-accent="first|moment|primer|momento" data-es="La mayoría de los productos no fracasan por cómo se ven. Fracasan porque la gente no los entiende. Yo diseño para ese primer momento — cuando alguien abre lo que construiste y decide si es para ella.">Most products don&#x27;t fail because of how they look. They fail because people don&#x27;t get them. I design for that first moment — when someone opens what you built and decides whether it&#x27;s for them.</p>
+          <p class="label" id="why-label"><span class="label__n">01</span><span class="label__rule" aria-hidden="true"></span><span data-es="Por qué importa">Why it matters</span></p>
+          <div class="statement__row">
+            <span class="statement__bar" aria-hidden="true"><i data-statement-bar></i></span>
+            <p class="statement__text" data-words data-accent="first|moment|primer|momento" data-es="La mayoría de los productos no fracasan por cómo se ven. Fracasan porque la gente no los entiende. Yo diseño para ese primer momento — cuando alguien abre lo que construiste y decide si es para ella.">Most products don’t fail because of how they look. They fail because people don’t get them. I design for that first moment — when someone opens what you built and decides whether it’s for them.</p>
+          </div>
+          <div class="statement__meter" aria-hidden="true"><span class="statement__meter-track"><i data-statement-meter></i></span><span data-statement-pct>100%</span></div>
         </div>
       </div>
     </section>
 
-
-    <section class="section" id="work">
+    <!-- S4 · Selected work (sticky stack) -->
+    <section class="section" id="work" aria-labelledby="work-title">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow reveal"><span data-es="Proyectos seleccionados">Selected work</span></p>
-          <h2 class="h2 reveal" style="--d:80" data-es="Productos reales. Restricciones reales.">Real products. Real constraints.</h2>
-          <p class="lead reveal" style="--d:160" data-es="Proyectos recientes con clientes en salud mental, educación y logística — sin nombres de clientes, por respeto a su confidencialidad.">Recent client projects across mental health, education and logistics — shared without client names to respect their confidentiality.</p>
+          <div class="section-head__title">
+            <p class="label reveal"><span class="label__n">02</span><span class="label__rule" aria-hidden="true"></span><span data-es="Proyectos seleccionados">Selected work</span></p>
+            <h2 class="h2 h2--xl reveal" style="--d:80" id="work-title" data-es-html="Productos reales.&lt;br /&gt;Restricciones reales.">Real products.<br />Real constraints.</h2>
+          </div>
+          <p class="body-lg reveal" style="--d:160" data-es="Proyectos recientes con clientes en salud mental, educación y logística — sin nombres de clientes, por respeto a su confidencialidad.">Recent client projects across mental health, education and logistics — shared without client names to respect their confidentiality.</p>
         </div>
-        <div class="work-stack">
-        <article class="work-card work-card--dark" data-fx="stack">
-          <div class="work-card__body">
-            <div class="work-card__meta"><span class="tag" data-es="Herramienta de canvas">Canvas tool</span><span class="tag" data-es="Salud mental">Mental health</span><span class="tag tag--status" data-es="En uso">Live · in use</span></div>
-            <h3><a class="work-card__link" href="/work/genogram-tool-for-therapists/"><span data-es="Una herramienta de genogramas que los terapeutas sí quieren usar">A genogram tool therapists actually want to use</span></a></h3>
-            <p data-es="Las herramientas existentes eran saturadas y lentas. Diseñé un canvas moderno que hace legible de un vistazo el sistema familiar de un paciente — hoy lo usan profesionales de la salud mental.">Existing tools were cluttered and slow. I designed a modern canvas that makes a patient&#x27;s family system readable at a glance — now used by mental health professionals.</p>
-            <div class="work-card__role">
-              <div><span data-es="Rol">Role</span><br /><strong data-es="Diseñadora UX/UI">UX/UI Designer</strong></div>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+
+        <div class="stack" data-stack>
+          <article class="case-card spot" data-stack-card>
+            <div class="case-card__info">
+              <p class="case-card__kicker"><b>CS-01</b><span data-es="/ Herramienta de genogramas">/ Genogram tool for therapists</span></p>
+              <h3><a href="/work/genogram-tool-for-therapists/" data-es="Una herramienta de genogramas que los terapeutas sí quieren usar">A genogram tool therapists actually want to use</a></h3>
+              <p class="case-card__desc" data-es="Las herramientas existentes eran saturadas y lentas. Diseñé un canvas moderno que hace legible de un vistazo el sistema familiar de un paciente.">Existing tools were cluttered and slow. I designed a modern canvas that makes a patient’s family system readable at a glance.</p>
+              <span class="case-card__spacer"></span>
+              <dl class="spec">
+                <div><dt data-es="Rol">Role</dt><dd data-es="Diseñadora UX/UI">UX/UI Designer</dd></div>
+                <div><dt data-es="Industria">Domain</dt><dd data-es="Salud mental">Mental health</dd></div>
+                <div><dt data-es="Estado">Status</dt><dd class="state--live"><span class="dot dot--live" aria-hidden="true"></span><span data-es="En uso">Live · in use</span></dd></div>
+              </dl>
+              <span class="case-card__cta" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><span class="arrow-chip">→</span></span>
             </div>
-          </div>
-          <div class="work-card__media"><img src="/img/work/genogram-cover.svg" alt="Illustration of a clean genogram canvas mapping three generations of a family" width="1600" height="1000" loading="lazy" /></div>
-        </article>
-        <article class="work-card work-card--warm" data-fx="stack">
-          <div class="work-card__body">
-            <div class="work-card__meta"><span class="tag" data-es="App">App</span><span class="tag" data-es="Niños y padres">Kids &amp; parents</span><span class="tag" data-es="IA">AI</span><span class="tag tag--status is-dev" data-es="En desarrollo">In development</span></div>
-            <h3><a class="work-card__link" href="/work/kids-emotional-learning-app/"><span data-es="Ayudar a los niños a entender sus emociones — y a los padres a entender a sus hijos">Helping kids understand their emotions — and parents understand their kids</span></a></h3>
-            <p data-es="Juegos, journaling y check-ins diarios para niños y adolescentes, más una vista para padres con IA y recomendaciones concretas para conectar. Creada junto a una terapeuta infantil, de la idea al diseño.">Games, journaling and daily check-ins for kids and teens, plus an AI-powered parent view with concrete ways to connect. Shaped with a child therapist from idea to design.</p>
-            <div class="work-card__role">
-              <div><span data-es="Rol">Role</span><br /><strong data-es="Diseñadora UX/UI">UX/UI Designer</strong></div>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="case-card__art"><img src="/img/work/genogram-cover.svg" alt="Illustration of a clean genogram canvas mapping three generations of a family" data-es-alt="Ilustración de un canvas de genograma limpio que mapea tres generaciones de una familia" width="1600" height="1000" loading="lazy" /></div>
+            <span class="case-card__dim" aria-hidden="true"></span>
+          </article>
+
+          <article class="case-card spot" data-stack-card>
+            <div class="case-card__info">
+              <p class="case-card__kicker"><b>CS-02</b><span data-es="/ App de aprendizaje emocional">/ Emotional learning app</span></p>
+              <h3><a href="/work/kids-emotional-learning-app/" data-es="Ayudar a los niños a entender sus emociones — y a los padres a entender a sus hijos">Helping kids understand their emotions — and parents understand their kids</a></h3>
+              <p class="case-card__desc" data-es="Juegos, journaling y check-ins diarios para niños, más una vista para padres con IA y formas concretas de conectar.">Games, journaling and daily check-ins for kids, plus an AI-powered parent view with concrete ways to connect.</p>
+              <span class="case-card__spacer"></span>
+              <dl class="spec">
+                <div><dt data-es="Rol">Role</dt><dd data-es="Diseñadora UX/UI">UX/UI Designer</dd></div>
+                <div><dt data-es="Industria">Domain</dt><dd data-es="Niños · Salud mental · IA">Kids · Mental health · AI</dd></div>
+                <div><dt data-es="Estado">Status</dt><dd class="state--dev"><span class="dot dot--dev" aria-hidden="true"></span><span data-es="En desarrollo">In development</span></dd></div>
+              </dl>
+              <span class="case-card__cta" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><span class="arrow-chip">→</span></span>
             </div>
-          </div>
-          <div class="work-card__media"><img src="/img/work/kids-emotions-cover.svg" alt="Illustration of a playful level path where each stop is an emotion, next to a daily check-in card" width="1600" height="1000" loading="lazy" /></div>
-        </article>
-        <article class="work-card work-card--graphite" data-fx="stack">
-          <div class="work-card__body">
-            <div class="work-card__meta"><span class="tag" data-es="Plataforma de flotillas">Fleet platform</span><span class="tag" data-es="Logística">Logistics</span><span class="tag" data-es="IA">AI</span><span class="tag tag--status is-dev" data-es="En desarrollo">In development</span></div>
-            <h3><a class="work-card__link" href="/work/ai-fleet-maintenance-platform/"><span data-es="Predecir fallas en camiones, empezando por datos que los conductores sí van a registrar">Predicting truck failures, starting with data drivers will actually log</span></a></h3>
-            <p data-es="Una plataforma de salud de flotillas que combina registros manuales rápidos con datos de herramientas conectadas, para que la IA anticipe fallas antes de que sucedan.">A fleet health platform that blends quick manual logs with data from connected tools, so AI can flag failures before they happen.</p>
-            <div class="work-card__role">
-              <div><span data-es="Rol">Role</span><br /><strong data-es="Senior Product Designer">Senior Product Designer</strong></div>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div class="case-card__art case-card__art--light"><img src="/img/work/kids-emotions-cover.svg" alt="Illustration of a playful level path where each stop is an emotion, next to a daily check-in card" data-es-alt="Ilustración de un camino de niveles donde cada parada es una emoción, junto a una tarjeta de check-in diario" width="1600" height="1000" loading="lazy" /></div>
+            <span class="case-card__dim" aria-hidden="true"></span>
+          </article>
+
+          <article class="case-card spot" data-stack-card>
+            <div class="case-card__info">
+              <p class="case-card__kicker"><b>CS-03</b><span data-es="/ Mantenimiento de flotillas con IA">/ AI fleet maintenance</span></p>
+              <h3><a href="/work/ai-fleet-maintenance-platform/" data-es="Predecir fallas en camiones, empezando por datos que los conductores sí van a registrar">Predicting truck failures, starting with data drivers will actually log</a></h3>
+              <p class="case-card__desc" data-es="Registros manuales rápidos más datos de herramientas conectadas, para que la IA anticipe fallas antes de que sucedan.">Quick manual logs plus data from connected tools, so AI can flag failures before they happen.</p>
+              <span class="case-card__spacer"></span>
+              <dl class="spec">
+                <div><dt data-es="Rol">Role</dt><dd>Senior Product Designer</dd></div>
+                <div><dt data-es="Industria">Domain</dt><dd data-es="Logística · IA">Logistics · AI</dd></div>
+                <div><dt data-es="Estado">Status</dt><dd class="state--dev"><span class="dot dot--dev" aria-hidden="true"></span><span data-es="En desarrollo">In development</span></dd></div>
+              </dl>
+              <span class="case-card__cta" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><span class="arrow-chip">→</span></span>
             </div>
-          </div>
-          <div class="work-card__media"><img src="/img/work/fleet-cover.svg" alt="Illustration of a fleet health dashboard with truck status and an AI failure forecast" width="1600" height="1000" loading="lazy" /></div>
-        </article>
+            <div class="case-card__art case-card__art--fleet"><img src="/img/work/fleet-cover.svg" alt="Illustration of a fleet health dashboard with truck status and an AI failure forecast" data-es-alt="Ilustración de un dashboard de salud de flotilla con el estado de los camiones y un pronóstico de fallas con IA" width="1600" height="1000" loading="lazy" /></div>
+            <span class="case-card__dim" aria-hidden="true"></span>
+          </article>
         </div>
       </div>
     </section>
 
-
-    <section class="section section--alt" id="services">
+    <!-- S5 · Services (bento) -->
+    <section class="section section--alt" id="services" aria-labelledby="services-title">
       <div class="wrap">
         <div class="section-head">
-          <p class="eyebrow reveal"><span data-es="Servicios">Services</span></p>
-          <h2 class="h2 reveal" style="--d:80" data-es="Una socia senior, de la primera idea a listo para desarrollo.">One senior partner, from first idea to build-ready.</h2>
-          <p class="lead reveal" style="--d:160" data-es="Pensamiento estratégico de producto y UI de alto nivel en la misma persona — nada se pierde entre una cosa y la otra.">Strategic product thinking and high-craft UI from the same person — nothing gets lost between the two.</p>
+          <div class="section-head__title">
+            <p class="label reveal"><span class="label__n">03</span><span class="label__rule" aria-hidden="true"></span><span data-es="Servicios">Services</span></p>
+            <h2 class="h2 reveal" style="--d:80" id="services-title" data-es-html="Una socia senior,&lt;br /&gt;de la primera idea a listo para desarrollo.">One senior partner,<br />from first idea to build-ready.</h2>
+          </div>
         </div>
         <div class="bento">
-          <article class="tile tile--feature reveal">
-            <div class="tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+          <article class="tile tile--feature reveal" style="--d:0">
+            <div class="tile__top">
+            <div class="tile__ui" aria-hidden="true">
+              <div class="flow"><span class="flow__line"></span><span class="flow__token"></span><span class="flow__pill" data-es="Idea">Idea</span><span class="flow__pill" data-es="Descubrir">Discover</span><span class="flow__pill" data-es="Flujos">Flows</span><span class="flow__pill flow__pill--on">MVP</span><span class="flow__pill" data-es="Lanzar">Ship</span></div>
+            </div>
+            <ul class="tile__tags">
+              <li>Discovery</li><li data-es="Flujos de usuario">User flows</li><li data-es="Arquitectura de info">IA</li><li data-es="Alcance del MVP">MVP scope</li><li>UX/UI</li>
+            </ul>
+            </div>
+            <span class="tile__code">SVC-01</span>
             <h3 data-es="Diseño de productos nuevos (0→1)">Product design for new products (0→1)</h3>
-            <p data-es="Para founders con una idea, experiencia profunda en su industria o un primer prototipo. Te ayudo a definir qué construir primero, mapear los flujos y diseñar un MVP que tu equipo pueda lanzar con confianza.">For founders with an idea, deep domain expertise, or an early prototype. I help define what to build first, map the flows, and design an MVP your team can ship with confidence.</p><ul class="tile__list"><li data-es="Discovery">Discovery</li><li data-es="Flujos de usuario">User flows</li><li data-es="Arquitectura de información">Information architecture</li><li data-es="Alcance del MVP">MVP scope</li><li data-es="UX/UI">UX/UI</li></ul>
+            <p data-es="Para founders con una idea, experiencia profunda en su industria o un primer prototipo. Defino qué construir primero, mapeo los flujos y diseño un MVP que tu equipo pueda lanzar con confianza.">For founders with an idea, deep domain expertise, or an early prototype. I define what to build first, map the flows, and design an MVP your team can ship with confidence.</p>
           </article>
-          <article class="tile reveal">
-            <div class="tile__icon"><svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2l1.8 5.2L17 9l-5.2 1.8L10 16l-1.8-5.2L3 9l5.2-1.8z" fill="currentColor"/></svg></div>
+          <article class="tile tile--side reveal" style="--d:60">
+            <div class="tile__ui" aria-hidden="true">
+              <div class="insight">
+                <span class="insight__tag" data-es="✦ INSIGHT DE IA · 92% DE CONFIANZA">✦ AI INSIGHT · 92% CONFIDENCE</span>
+                <span class="insight__text" data-es="Tu hijo registró “preocupado” 3 días seguidos. Intenta preguntarle por la escuela en la cena.">Your child logged “worried” 3 days in a row. Try asking about school at dinner.</span>
+                <span class="insight__actions"><span data-es="Probar">Try it</span><span data-es="¿Por qué?">Why?</span></span>
+              </div>
+            </div>
+            <span class="tile__code">SVC-02</span>
             <h3 data-es="UX para productos con IA">AI product UX</h3>
-            <p data-es="Interfaces donde las predicciones y recomendaciones de la IA se entienden, generan confianza y llevan a la acción.">Interfaces where AI predictions and recommendations are understandable, trustworthy and lead to action.</p>
+            <p data-es="Predicciones de IA que se entienden, generan confianza y llevan a la acción.">Make AI predictions understandable, trustworthy and actionable.</p>
           </article>
-          <article class="tile reveal">
-            <div class="tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+          <article class="tile tile--third reveal" style="--d:120">
+            <div class="tile__ui" aria-hidden="true">
+              <div class="bars"><i></i><i></i><i></i><i></i><i></i></div>
+              <div class="bars__result"><b></b><span data-es="12 pasos → 5">12 steps → 5</span></div>
+            </div>
+            <span class="tile__code">SVC-03</span>
             <h3 data-es="Rediseño UX/UI">UX/UI redesigns</h3>
-            <p data-es="Tu producto funciona pero se siente saturado o confuso. Lo simplifico: estructura más clara, menos pasos, una interfaz más tranquila.">Your product works but feels crowded or confusing. I simplify it: clearer structure, fewer steps, a calmer interface.</p>
+            <p data-es="¿Producto saturado o confuso? Estructura más clara, menos pasos, una interfaz más tranquila.">Crowded or confusing product? Clearer structure, fewer steps, a calmer UI.</p>
           </article>
-          <article class="tile reveal">
-            <div class="tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13.5" y="3.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="3.5" y="13.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.6"/><rect x="13.5" y="13.5" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.6"/></svg></div>
-            <h3 data-es="Design systems">Design systems</h3>
-            <p data-es="Librerías de componentes basadas en tokens en Figma que mantienen diseño y desarrollo alineados mientras el producto crece.">Token-based component libraries in Figma that keep design and development consistent as the product grows.</p>
+          <article class="tile tile--third reveal" style="--d:180">
+            <div class="tile__ui" aria-hidden="true">
+              <div class="swatches"><i style="--c:#6b3fa0;--i:0"></i><i style="--c:#7b5ea7;--i:1"></i><i style="--c:#e0467c;--i:2"></i><i style="--c:#0e8aa3;--i:3"></i><i style="--c:#16131f;--i:4"></i><i style="--c:#8e8a99;--i:5"></i></div>
+              <p class="swatches__tokens">--accent  --surface  --radius-lg  --space-8</p>
+            </div>
+            <span class="tile__code">SVC-04</span>
+            <h3>Design systems</h3>
+            <p data-es="Librerías basadas en tokens en Figma que mantienen diseño y código sincronizados.">Token-based libraries in Figma that keep design and code in sync.</p>
           </article>
-          <article class="tile reveal">
-            <div class="tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <article class="tile tile--third reveal" style="--d:240">
+            <div class="tile__ui" aria-hidden="true">
+              <code class="code"><span>&lt;Card</span><span>  status="live"</span><span>  onOpen={openCase}</span><span>/&gt;</span></code>
+            </div>
+            <span class="tile__code">SVC-05</span>
             <h3 data-es="Prototipos y front-end">Prototypes &amp; front-end</h3>
-            <p data-es="Prototipos navegables para validar ideas rápido, o front-end funcional con desarrollo asistido por IA cuando necesitas algo real en manos de tus usuarios.">Clickable prototypes to test ideas fast, or working front-end built with AI-assisted development when you need something real in users’ hands.</p>
+            <p data-es="Prototipos navegables, o front-end funcional con desarrollo asistido por IA.">Clickable prototypes, or working front-end built with AI-assisted dev.</p>
           </article>
-          <article class="tile tile--wide reveal">
-            <div class="tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18" stroke="currentColor" stroke-width="1.6"/></svg></div>
+          <article class="tile tile--half reveal" style="--d:0">
+            <span class="tile__code">SVC-06</span>
             <h3 data-es="Sitios de producto y landing pages">Product websites &amp; landing pages</h3>
-            <p data-es="Sitios que explican lo que haces en segundos, con interacciones cuidadas y código limpio y rápido.">Marketing sites that explain what you do in seconds, with refined interactions and clean, fast code.</p>
+            <p data-es="Sitios que explican lo que haces en segundos — movimiento cuidado, código rápido.">Sites that explain what you do in seconds — refined motion, fast code.</p>
           </article>
-          <article class="tile tile--wide reveal">
-            <div class="tile__icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 3l3 3-3 3M20 6H8a4 4 0 00-4 4v1M7 21l-3-3 3-3M4 18h12a4 4 0 004-4v-1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <article class="tile tile--half reveal" style="--d:60">
+            <span class="tile__code">SVC-07</span>
             <h3 data-es="Socia de diseño continua">Ongoing design partner</h3>
-            <p data-es="Un acuerdo mensual para equipos que necesitan diseño senior sin contratar a alguien de tiempo completo.">A monthly engagement for teams that need senior design support without a full-time hire.</p>
+            <p data-es="Un acuerdo mensual: diseño senior sin contratar a alguien de tiempo completo.">A monthly engagement: senior design without a full-time hire.</p>
           </article>
         </div>
       </div>
     </section>
 
-
-    <section class="section" id="process">
-      <div class="wrap process">
-        <div class="process__head">
-          <p class="eyebrow reveal"><span data-es="Cómo trabajo">How I work</span></p>
-          <h2 class="h2 reveal" style="--d:80" data-es="Un proceso claro, para que nunca estés adivinando.">A clear process, so you’re never guessing.</h2>
-          <p class="lead reveal" style="--d:160" data-es="Cada proyecto sigue los mismos cuatro pasos, ajustados a tu presupuesto y tiempos. Siempre sabes qué sigue y qué vas a recibir.">Every engagement follows the same four steps, scaled to your budget and timeline. You always know what’s next and what you’ll get.</p>
-        </div>
-        <ol class="steps">
-          <li class="step">
-            <span class="step__num">01</span>
-            <h3 data-es="Descubrir">Discover</h3>
-            <p data-es="Nos alineamos en el problema, los usuarios y el objetivo de negocio. Hago las preguntas importantes — incluidas las incómodas — antes de mover un pixel.">We align on the problem, the users and the business goal. I ask the important questions — including the uncomfortable ones — before any pixels.</p>
-            <p class="step__out"><strong><span data-es="Recibes:">You get:</span></strong> <span data-es="Definición del problema, prioridades, alcance">Problem statement, priorities, scope</span></p>
-          </li>
-          <li class="step">
-            <span class="step__num">02</span>
-            <h3 data-es="Definir">Define</h3>
-            <p data-es="Mapeo los flujos y la estructura del producto y decidimos juntos qué va en la primera versión y qué puede esperar.">I map the flows and structure of the product and decide, with you, what belongs in the first version and what can wait.</p>
-            <p class="step__out"><strong><span data-es="Recibes:">You get:</span></strong> <span data-es="Flujos de usuario, arquitectura de información, alcance del MVP">User flows, information architecture, MVP scope</span></p>
-          </li>
-          <li class="step">
-            <span class="step__num">03</span>
-            <h3 data-es="Diseñar">Design</h3>
-            <p data-es="UI de alta fidelidad diseñada como sistema — componentes, estados y casos límite — y validada con un prototipo navegable.">High-fidelity UI designed as a system — components, states and edge cases — and validated with a clickable prototype.</p>
-            <p class="step__out"><strong><span data-es="Recibes:">You get:</span></strong> <span data-es="Diseños en Figma, design system, prototipo">Figma designs, design system, prototype</span></p>
-          </li>
-          <li class="step">
-            <span class="step__num">04</span>
-            <h3 data-es="Entregar">Deliver</h3>
-            <p data-es="Un handoff limpio para que tus desarrolladores construyan, o front-end funcional si lo construimos juntos. Puedo acompañar la implementación.">A clean handoff your developers can build from, or a working front-end if we build it together. I can stay involved through implementation.</p>
-            <p class="step__out"><strong><span data-es="Recibes:">You get:</span></strong> <span data-es="Specs listas para desarrollo o código front-end">Dev-ready specs or front-end code</span></p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-
-    <section class="section section--alt" id="more-work" data-rail>
-      <div class="wrap rail-head">
-        <div>
-          <p class="eyebrow reveal"><span data-es="Más trabajo">More work</span></p>
-          <h2 class="h2 reveal" style="--d:80" data-es="Trabajo anterior y experimentos.">Earlier work &amp; experiments.</h2>
-        </div>
-        <div class="rail-controls">
-          <button class="rail-btn" type="button" data-rail-prev aria-label="Previous"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-          <button class="rail-btn" type="button" data-rail-next aria-label="Next"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-        </div>
-      </div>
-      <div class="rail" tabindex="0" aria-label="Earlier work and experiments">
-          <article class="rail-card">
-            <div class="rail-card__media"><img src="/img/work/exploretogether-hero-800.webp" alt="ExploreTogether mobile screens for discovering and sharing travel destinations" width="800" height="487" loading="lazy" /></div>
-            <div class="rail-card__body">
-              <span class="rail-card__kicker" data-es="UX/UI · iOS, Android y Web">UX/UI · iOS, Android &amp; Web</span>
-              <h3><a class="cover" href="/work/exploretogether/">ExploreTogether</a></h3>
-              <p data-es="Una plataforma de viajes comunitaria construida alrededor de señales de confianza, para que las recomendaciones se sientan reales y no patrocinadas.">A community travel platform built around trust signals, so recommendations feel real, not sponsored.</p>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    <!-- S6 · Process (pinned timeline) -->
+    <section class="section process process--pinned" id="process" aria-labelledby="process-title" data-process>
+      <div class="process__sticky">
+        <div class="wrap">
+          <div class="section-head">
+            <div class="section-head__title">
+              <p class="label reveal"><span class="label__n">04</span><span class="label__rule" aria-hidden="true"></span><span data-es="Proceso">Process</span></p>
+              <h2 class="h2 reveal" style="--d:80" id="process-title" data-es-html="Un proceso claro,&lt;br /&gt;para que nunca estés adivinando.">A clear process,<br />so you’re never guessing.</h2>
             </div>
-          </article>
-          <article class="rail-card">
-            <div class="rail-card__media"><img src="/img/work/eventflow-hero-800.webp" alt="EventFlow event planning screens on mobile and desktop" width="800" height="487" loading="lazy" /></div>
-            <div class="rail-card__body">
-              <span class="rail-card__kicker" data-es="Diseño de producto · Móvil y Web">Product design · Mobile &amp; Web</span>
-              <h3><a class="cover" href="/work/eventflow/">EventFlow</a></h3>
-              <p data-es="Invitaciones, RSVPs y avisos a invitados en un solo lugar — diseñado alrededor del problema real: la comunicación.">Invitations, RSVPs and guest updates in one place — designed around the real problem: communication.</p>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </article>
-          <article class="rail-card">
-            <div class="rail-card__media"><img src="/img/work/mindspace-hero-800.webp" alt="MindSpace mental health support platform on desktop and mobile" width="800" height="487" loading="lazy" /></div>
-            <div class="rail-card__body">
-              <span class="rail-card__kicker" data-es="Diseño UX · Concepto">UX design · Concept</span>
-              <h3><a class="cover" href="/work/mindspace/">MindSpace</a></h3>
-              <p data-es="Un check-in emocional guiado que ayuda a pasar de “me siento raro” a la herramienta de apoyo correcta.">A guided emotional check-in that helps people go from “I feel off” to the right support tool.</p>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </article>
-          <article class="rail-card rail-card--lab">
-            <div class="rail-card__art" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20L15 9M14 4v3M18 8h3M17.5 5.5l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 7l1 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-            <div class="rail-card__body">
-              <span class="rail-card__kicker" data-es="Lab · Construido con IA">Lab · AI-assisted build</span>
-              <h3><a class="cover" href="https://quiniela-mundial-2026.netlify.app/" target="_blank" rel="noopener"><span data-es="Quiniela Mundial 2026">World Cup 2026 pool</span></a></h3>
-              <p data-es="Una app de quiniela diseñada y lanzada con desarrollo asistido por IA.">A prediction pool app designed and shipped with AI-assisted development.</p>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Pruébalo">Try it live</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </article>
-          <article class="rail-card rail-card--lab">
-            <div class="rail-card__art" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 20L15 9M14 4v3M18 8h3M17.5 5.5l2-2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M12 7l1 1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-            <div class="rail-card__body">
-              <span class="rail-card__kicker" data-es="Lab · Prototipo de producto">Lab · Product prototype</span>
-              <h3><a class="cover" href="https://situationship-clarity-score.netlify.app/" target="_blank" rel="noopener"><span data-es="Situationship Clarity Score">Situationship Clarity Score</span></a></h3>
-              <p data-es="Un pequeño experimento de producto para probar flujo y primera impresión, construido de principio a fin.">A small product experiment to test flow and first impressions, built end to end.</p>
-              <span class="link-arrow" aria-hidden="true"><span data-es="Pruébalo">Try it live</span><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            </div>
-          </article>
-      </div>
-    </section>
-
-
-    <section class="section" id="about">
-      <div class="wrap about">
-        <div class="about__photo reveal"><img src="/img/paola-bramlett.webp" alt="Portrait of Paola Bramlett, Senior Product Designer" width="720" height="720" loading="lazy" /></div>
-        <div>
-          <p class="eyebrow reveal"><span data-es="Sobre mí">About</span></p>
-          <h2 class="h2 reveal" style="--d:80" data-es="Estrategia y oficio, en una sola persona.">Strategy and craft, in one person.</h2>
-          <div class="body reveal" style="--d:160">
-            <p data-es="Soy Paola Bramlett — Pao — Senior Product Designer desde Oaxaca, México, y trabajo con founders y equipos de producto en Estados Unidos, Canadá y Europa.">I’m Paola Bramlett — Pao — a Senior Product Designer based in Oaxaca, Mexico, working with founders and product teams in the US, Canada and Europe.</p>
-            <p data-es="Mi trabajo está donde la estrategia de producto se encuentra con el oficio de la interfaz. He diseñado para terapeutas, para niños y sus papás, y para conductores y gerentes de flotillas — personas con necesidades muy distintas y muy poca paciencia para software confuso.">My work sits where product strategy meets interface craft. I’ve designed for therapists, for children and their parents, and for truck drivers and fleet managers — people with very different needs and very little patience for confusing software.</p>
-            <p data-es="También construyo. Con Figma y herramientas de desarrollo asistido por IA como Claude Code, paso del concepto a un prototipo funcional rápido y entrego a los desarrolladores diseños que funcionan en el mundo real.">I also build. Using Figma alongside AI-assisted development tools like Claude Code, I move from concept to working prototype quickly and hand developers designs that hold up in the real world.</p>
+            <p class="body-lg reveal" style="--d:160" data-es="Cuatro pasos, ajustados a tu presupuesto y tiempos. Siempre sabes qué sigue y qué vas a recibir.">Four steps, scaled to your budget and timeline. You always know what’s next and what you’ll get.</p>
           </div>
-          <dl class="facts reveal" style="--d:220">
-            <div><dt data-es="Ubicación">Based in</dt><dd data-es="Oaxaca, México · remoto">Oaxaca, Mexico · remote</dd></div>
-            <div><dt data-es="Idiomas">Languages</dt><dd data-es="Inglés y español">English &amp; Spanish</dd></div>
-            <div><dt data-es="Enfoque">Focus</dt><dd data-es="Productos 0→1, UX con IA, design systems">0→1 products, AI UX, design systems</dd></div>
-            <div><dt data-es="Herramientas">Tools</dt><dd>Figma, Claude Code, HTML/CSS/JS</dd></div>
+          <div class="timeline" aria-hidden="true"><span class="timeline__track"><span class="timeline__fill" data-process-fill></span></span><span class="timeline__nodes"><i></i><i></i><i></i><i></i></span></div>
+          <ol class="steps" data-process-steps>
+            <li class="step">
+              <span class="step__n" data-es="01 — Descubrir">01 — Discover</span>
+              <h3 data-es="Descubrir">Discover</h3>
+              <p data-es="Nos alineamos en el problema, los usuarios y el objetivo de negocio. Las preguntas importantes — incluidas las incómodas — antes de mover un pixel.">We align on the problem, the users and the business goal. The important questions — including the uncomfortable ones — before any pixels.</p>
+              <p class="step__out"><b data-es="RECIBES">OUT</b><span data-es="Definición del problema, prioridades, alcance">Problem statement, priorities, scope</span></p>
+            </li>
+            <li class="step">
+              <span class="step__n" data-es="02 — Definir">02 — Define</span>
+              <h3 data-es="Definir">Define</h3>
+              <p data-es="Mapeo los flujos y la estructura, y decidimos juntos qué va en la primera versión y qué puede esperar.">I map the flows and structure, and decide with you what belongs in version one and what can wait.</p>
+              <p class="step__out"><b data-es="RECIBES">OUT</b><span data-es="Flujos de usuario, arquitectura de información, alcance del MVP">User flows, IA, MVP scope</span></p>
+            </li>
+            <li class="step">
+              <span class="step__n" data-es="03 — Diseñar">03 — Design</span>
+              <h3 data-es="Diseñar">Design</h3>
+              <p data-es="UI de alta fidelidad diseñada como sistema — componentes, estados, casos límite — validada con un prototipo.">High-fidelity UI designed as a system — components, states, edge cases — validated with a prototype.</p>
+              <p class="step__out"><b data-es="RECIBES">OUT</b><span data-es="Figma, design system, prototipo">Figma, design system, prototype</span></p>
+            </li>
+            <li class="step">
+              <span class="step__n" data-es="04 — Entregar">04 — Deliver</span>
+              <h3 data-es="Entregar">Deliver</h3>
+              <p data-es="Un handoff limpio para que tus desarrolladores construyan, o front-end funcional si lo construimos juntos.">A clean handoff your devs can build from, or working front-end if we build it together.</p>
+              <p class="step__out"><b data-es="RECIBES">OUT</b><span data-es="Specs listas para desarrollo o código front-end">Dev-ready specs or front-end code</span></p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- S7 · Archive & Lab (drag rail) -->
+    <section class="section section--alt" id="more-work" aria-labelledby="archive-title" data-rail-section>
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head__title">
+            <p class="label reveal"><span class="label__n">05</span><span class="label__rule" aria-hidden="true"></span><span data-es="Archivo y lab">Archive &amp; lab</span></p>
+            <h2 class="h2 h2--sm reveal" style="--d:80" id="archive-title" data-es="Trabajo anterior y experimentos.">Earlier work &amp; experiments.</h2>
+          </div>
+          <div class="rail-controls">
+            <button class="rail-btn" type="button" data-rail-prev aria-label="Previous" data-es-aria="Anterior"><span aria-hidden="true">←</span></button>
+            <button class="rail-btn" type="button" data-rail-next aria-label="Next" data-es-aria="Siguiente"><span aria-hidden="true">→</span></button>
+          </div>
+        </div>
+      </div>
+      <div class="rail" tabindex="0" role="region" aria-label="Earlier work and experiments" data-es-aria="Trabajo anterior y experimentos" data-rail>
+        <article class="rail-card">
+          <div class="rail-card__media"><img src="/img/work/exploretogether-hero-800.webp" srcset="/img/work/exploretogether-hero-800.webp 800w, /img/work/exploretogether-hero-1600.webp 1600w" sizes="(max-width: 500px) 82vw, 400px" alt="ExploreTogether mobile screens for discovering and sharing travel destinations" data-es-alt="Pantallas móviles de ExploreTogether para descubrir y compartir destinos de viaje" width="800" height="487" loading="lazy" draggable="false" /></div>
+          <div class="rail-card__body">
+            <span class="rail-card__kicker" data-es="UX/UI · iOS, Android y Web · 12 sem">UX/UI · iOS, Android &amp; Web · 12 wks</span>
+            <h3><a href="/work/exploretogether/">ExploreTogether</a></h3>
+            <p data-es="Recomendaciones de viaje basadas en señales de confianza.">Travel recommendations built on trust signals.</p>
+            <span class="rail-card__cta" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span> →</span>
+          </div>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card__media"><img src="/img/work/eventflow-hero-800.webp" srcset="/img/work/eventflow-hero-800.webp 800w, /img/work/eventflow-hero-1600.webp 1600w" sizes="(max-width: 500px) 82vw, 400px" alt="EventFlow event planning screens on mobile and desktop" data-es-alt="Pantallas de planeación de eventos de EventFlow en móvil y escritorio" width="800" height="487" loading="lazy" draggable="false" /></div>
+          <div class="rail-card__body">
+            <span class="rail-card__kicker" data-es="Diseño de producto · Móvil y Web · 10 sem">Product design · Mobile &amp; Web · 10 wks</span>
+            <h3><a href="/work/eventflow/">EventFlow</a></h3>
+            <p data-es="Invitaciones, RSVPs y avisos en un solo lugar.">Invitations, RSVPs and updates in one place.</p>
+            <span class="rail-card__cta" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span> →</span>
+          </div>
+        </article>
+        <article class="rail-card">
+          <div class="rail-card__media"><img src="/img/work/mindspace-hero-800.webp" srcset="/img/work/mindspace-hero-800.webp 800w, /img/work/mindspace-hero-1600.webp 1600w" sizes="(max-width: 500px) 82vw, 400px" alt="MindSpace mental health support platform on desktop and mobile" data-es-alt="Plataforma de apoyo en salud mental MindSpace en escritorio y móvil" width="800" height="487" loading="lazy" draggable="false" /></div>
+          <div class="rail-card__body">
+            <span class="rail-card__kicker" data-es="Concepto UX · 4 sem">UX concept · 4 wks</span>
+            <h3><a href="/work/mindspace/">MindSpace</a></h3>
+            <p data-es="Un check-in guiado de “me siento raro” al apoyo correcto.">A guided check-in from “I feel off” to support.</p>
+            <span class="rail-card__cta" aria-hidden="true"><span data-es="Ver caso de estudio">Read case study</span> →</span>
+          </div>
+        </article>
+        <article class="rail-card rail-card--lab">
+          <div class="rail-card__media"><div class="rail-card__art" style="--a:#8b5cf6" aria-hidden="true">✦</div></div>
+          <div class="rail-card__body">
+            <span class="rail-card__kicker" data-es="LAB · Construido con IA">LAB · AI-assisted build</span>
+            <h3><a href="https://quiniela-mundial-2026.netlify.app/" target="_blank" rel="noopener" data-es="Quiniela Mundial 2026">World Cup 2026 pool</a></h3>
+            <p data-es="Diseñada y lanzada de principio a fin.">Designed and shipped end to end.</p>
+            <span class="rail-card__cta" aria-hidden="true"><span data-es="Pruébalo">Try it live</span> ↗</span>
+          </div>
+        </article>
+        <article class="rail-card rail-card--lab">
+          <div class="rail-card__media"><div class="rail-card__art" style="--a:#e879f9" aria-hidden="true">✦</div></div>
+          <div class="rail-card__body">
+            <span class="rail-card__kicker" data-es="LAB · Prototipo de producto">LAB · Product prototype</span>
+            <h3><a href="https://situationship-clarity-score.netlify.app/" target="_blank" rel="noopener">Situationship Clarity Score</a></h3>
+            <p data-es="Un pequeño experimento de flujo y primera impresión.">A small experiment in flow and first impressions.</p>
+            <span class="rail-card__cta" aria-hidden="true"><span data-es="Pruébalo">Try it live</span> ↗</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- S8 · About -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="wrap about">
+        <figure class="portrait reveal" data-portrait>
+          <img src="/img/paola-bramlett.webp" alt="Portrait of Paola Bramlett, Senior Product Designer" data-es-alt="Retrato de Paola Bramlett, Senior Product Designer" width="720" height="719" loading="lazy" />
+          <div class="hud" aria-hidden="true" data-hud>
+            <span data-scramble>ID ········ PAO.BRAMLETT</span>
+            <span data-scramble data-es="ROL ······· SR. PRODUCT DESIGNER">ROLE ······ SR. PRODUCT DESIGNER</span>
+            <span data-scramble data-es="UBIC ······ OAXACA, MX">LOC ······· OAXACA, MX</span>
+            <span><span data-es="HORA ······">LOCAL ·····</span> <time data-clock>--:--</time> GMT-6</span>
+          </div>
+        </figure>
+        <div class="about__copy">
+          <p class="label reveal"><span class="label__n">06</span><span class="label__rule" aria-hidden="true"></span><span data-es="Sobre mí">About</span></p>
+          <h2 class="h2 h2--md reveal" style="--d:80" id="about-title" data-es-html="Estrategia y oficio,&lt;br /&gt;en una sola persona.">Strategy and craft,<br />in one person.</h2>
+          <p class="reveal" style="--d:140" data-es="Soy Paola Bramlett — Pao — Senior Product Designer desde Oaxaca, México, y trabajo con founders y equipos de producto en Estados Unidos, Canadá y Europa.">I’m Paola Bramlett — Pao — a Senior Product Designer based in Oaxaca, Mexico, working with founders and product teams in the US, Canada and Europe.</p>
+          <p class="reveal" style="--d:180" data-es="He diseñado para terapeutas, para niños y sus papás, y para conductores y gerentes de flotillas — personas con necesidades muy distintas y muy poca paciencia para software confuso.">I’ve designed for therapists, for children and their parents, and for truck drivers and fleet managers — people with very different needs and very little patience for confusing software.</p>
+          <p class="reveal" style="--d:220" data-es="También construyo. Figma más desarrollo asistido por IA (Claude Code) me permite pasar del concepto a un prototipo funcional rápido — y entregar a los desarrolladores diseños que funcionan en el mundo real.">I also build. Figma plus AI-assisted development (Claude Code) lets me go from concept to working prototype fast — and hand developers designs that hold up in the real world.</p>
+          <dl class="facts reveal" style="--d:260">
+            <div><dt data-es="Idiomas">Lang</dt><dd>EN · ES</dd></div>
+            <div><dt data-es="Enfoque">Focus</dt><dd data-es="0→1 · UX con IA · Sistemas">0→1 · AI UX · Systems</dd></div>
+            <div><dt data-es="Herramientas">Tools</dt><dd>Figma · Claude Code</dd></div>
           </dl>
         </div>
       </div>
     </section>
 
-
-    <section class="section section--alt" id="faq">
-      <div class="wrap">
-        <div class="section-head section-head--center">
-          <p class="eyebrow reveal">FAQ</p>
-          <h2 class="h2 reveal" style="--d:80" data-es="Lo que me preguntan los founders.">Questions founders ask me.</h2>
+    <!-- S9 · FAQ -->
+    <section class="section section--alt" id="faq" aria-labelledby="faq-title">
+      <div class="wrap faq-layout">
+        <div class="faq-layout__side">
+          <p class="label reveal"><span class="label__n">07</span><span class="label__rule" aria-hidden="true"></span>FAQ</p>
+          <h2 class="h2 h2--sm reveal" style="--d:80" id="faq-title" data-es="Lo que me preguntan los founders.">Questions founders ask me.</h2>
+          <a class="link-accent reveal" style="--d:140" href="#contact"><span data-es="¿No encuentras la tuya? Pregúntame directo">Can’t find yours? Ask me directly</span><span class="arrow" aria-hidden="true">→</span></a>
         </div>
         <div class="faq">
-        <details class="reveal">
-          <summary><span data-es="¿Cómo cotizas los proyectos?">How do you price projects?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="La mayoría de los proyectos se cotizan a precio fijo después de una llamada inicial gratuita, para que conozcas el alcance y la inversión antes de empezar. El precio depende de la complejidad y de lo que necesites — solo diseño, o diseño más front-end. Siempre te voy a recomendar la versión más ligera que te lleve a tu objetivo.">Most projects are quoted at a fixed price after a free intro call, so you know the scope and investment before we start. Pricing depends on complexity and on what you need delivered — design only, or design plus front-end. I'll always recommend the leanest version that gets you to your goal.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Cuánto tarda un proyecto típico?">How long does a typical project take?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Una landing page o un prototipo sencillo toma de 3 a 7 días. El diseño UX/UI completo de una app normalmente toma de 2 a 6 semanas. Depende del alcance y de si incluye desarrollo.">A landing page or simple prototype takes 3–7 days. A full UX/UI design for an app typically runs 2–6 weeks. Timeline depends on scope and whether development is included.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Qué hace una Senior Product Designer que no hace un diseñador UI?">What does a Senior Product Designer do that a UI designer doesn&#x27;t?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Un diseñador UI hace que las pantallas se vean bien. Como senior product designer, también ayudo a decidir qué pantallas deben existir: aclarar el problema, priorizar el MVP, mapear flujos y casos límite, y diseñar un sistema que tu equipo pueda construir y escalar. Lo visual es parte del trabajo, no todo el trabajo.">A UI designer makes screens look right. As a senior product designer, I also help decide which screens should exist: clarifying the problem, prioritizing the MVP, mapping flows and edge cases, and designing a system your team can build and grow. Great visuals are part of the job, not the whole job.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Diseñas productos con inteligencia artificial?">Can you design AI-powered products?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Sí. He diseñado productos donde la IA convierte datos de usuarios en recomendaciones puntuales — para padres que quieren conectar con sus hijos y para gerentes de flotillas que quieren evitar fallas en sus camiones. Lo difícil casi nunca es el modelo: es recolectar buenos datos sin fricción y presentar resultados en los que la gente confíe y actúe.">Yes. I've designed products where AI turns user data into specific recommendations — for parents trying to connect with their kids, and for fleet managers trying to prevent truck failures. The hard part is rarely the model: it's collecting good input without friction, and presenting output people trust and act on.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Trabajas con clientes fuera de México?">Do you work with clients outside Mexico?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Sí. La mayoría de mis clientes están en Estados Unidos, Canadá y Europa. Todo el trabajo es remoto, en inglés o español, en cualquier zona horaria.">Yes. Most clients are in the US, Canada, and Europe. All work is done remotely, in English or Spanish, across time zones.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿También desarrollas o solo diseñas?">Do you handle development or just design?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Ambas. Diseño en Figma y construyo con HTML, CSS, JavaScript y herramientas de desarrollo asistido por IA como Claude Code (lo que algunos llaman vibe coding). Puedes recibir archivos de diseño, un prototipo funcional o front-end listo para producción — o los tres.">Both. I design in Figma and build with HTML, CSS, JavaScript and AI-assisted development tools like Claude Code (what some people call vibe coding). You can get design files, a working prototype, or production-ready front-end — or all three.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Qué proyectos son el mejor fit?">What kinds of projects are the best fit?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Founders construyendo su primer producto o MVP, expertos en su industria — como terapeutas o líderes de operaciones — que quieren convertir su conocimiento en software, y equipos cuyo producto se volvió difícil de usar. Hago mi mejor trabajo cuando el problema es complejo y la claridad importa.">Founders building a first product or MVP, domain experts — like therapists or operations leaders — turning their knowledge into software, and teams whose product has become hard to use. I do my best work when the problem is complex and clarity matters.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Qué herramientas usas?">What tools do you use?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Figma para diseño de producto, prototipos y design systems; Claude Code para desarrollo asistido por IA; Adobe Illustrator para marca y trabajo visual; y HTML, CSS y JavaScript para front-end.">Figma for product design, prototyping and design systems; Claude Code for AI-assisted development; Adobe Illustrator for brand and visual work; and HTML, CSS and JavaScript for front-end builds.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Cuándo es el mejor momento para integrarte al proyecto?">When is the right time to bring you in?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Lo antes posible. Las decisiones de diseño que se toman antes de desarrollar evitan retrabajo costoso después. Me puedo integrar desde la idea, a mitad del proyecto o como socia de diseño continua para un equipo existente.">As early as possible. Design decisions made before development starts prevent expensive rework later. I can join at the idea stage, mid-project, or as an ongoing design partner for an existing team.</p></div>
-        </details>
-        <details class="reveal">
-          <summary><span data-es="¿Cómo empezamos?">How do I get started?</span><span class="faq__icon" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
-          <div class="faq__a"><p data-es-html="Mándame un mensaje con el formulario de abajo o por &lt;a href=&quot;https://wa.link/8polhi&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WhatsApp (+52 951 408 2852)&lt;/a&gt; con unas líneas sobre tu proyecto. Te respondo en menos de 24 horas y la primera llamada es gratis.">Send a message through the form below or on <a href="https://wa.link/8polhi" target="_blank" rel="noopener">WhatsApp (+52 951 408 2852)</a> with a few sentences about your project. I reply within 24 hours, and the first call is free.</p></div>
-        </details>
+          <details name="faq" class="reveal" style="--d:0">
+            <summary><span class="faq__n">01</span><span class="faq__q" data-es="¿Cómo cotizas los proyectos?">How do you price projects?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="La mayoría de los proyectos se cotizan a precio fijo después de una llamada inicial gratuita, para que conozcas el alcance y la inversión antes de empezar. El precio depende de la complejidad y de lo que necesites — solo diseño, o diseño más front-end. Siempre te voy a recomendar la versión más ligera que te lleve a tu objetivo.">Most projects are quoted at a fixed price after a free intro call, so you know the scope and investment before we start. Pricing depends on complexity and on what you need delivered — design only, or design plus front-end. I'll always recommend the leanest version that gets you to your goal.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:40">
+            <summary><span class="faq__n">02</span><span class="faq__q" data-es="¿Cuánto tarda un proyecto típico?">How long does a typical project take?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Una landing page o un prototipo sencillo toma de 3 a 7 días. El diseño UX/UI completo de una app normalmente toma de 2 a 6 semanas. Depende del alcance y de si incluye desarrollo.">A landing page or simple prototype takes 3–7 days. A full UX/UI design for an app typically runs 2–6 weeks. Timeline depends on scope and whether development is included.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:80">
+            <summary><span class="faq__n">03</span><span class="faq__q" data-es="¿Qué hace una Senior Product Designer que no hace un diseñador UI?">What does a Senior Product Designer do that a UI designer doesn&#x27;t?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Un diseñador UI hace que las pantallas se vean bien. Como senior product designer, también ayudo a decidir qué pantallas deben existir: aclarar el problema, priorizar el MVP, mapear flujos y casos límite, y diseñar un sistema que tu equipo pueda construir y escalar. Lo visual es parte del trabajo, no todo el trabajo.">A UI designer makes screens look right. As a senior product designer, I also help decide which screens should exist: clarifying the problem, prioritizing the MVP, mapping flows and edge cases, and designing a system your team can build and grow. Great visuals are part of the job, not the whole job.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:120">
+            <summary><span class="faq__n">04</span><span class="faq__q" data-es="¿Diseñas productos con inteligencia artificial?">Can you design AI-powered products?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Sí. He diseñado productos donde la IA convierte datos de usuarios en recomendaciones puntuales — para padres que quieren conectar con sus hijos y para gerentes de flotillas que quieren evitar fallas en sus camiones. Lo difícil casi nunca es el modelo: es recolectar buenos datos sin fricción y presentar resultados en los que la gente confíe y actúe.">Yes. I've designed products where AI turns user data into specific recommendations — for parents trying to connect with their kids, and for fleet managers trying to prevent truck failures. The hard part is rarely the model: it's collecting good input without friction, and presenting output people trust and act on.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:160">
+            <summary><span class="faq__n">05</span><span class="faq__q" data-es="¿Trabajas con clientes fuera de México?">Do you work with clients outside Mexico?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Sí. La mayoría de mis clientes están en Estados Unidos, Canadá y Europa. Todo el trabajo es remoto, en inglés o español, en cualquier zona horaria.">Yes. Most clients are in the US, Canada, and Europe. All work is done remotely, in English or Spanish, across time zones.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:200">
+            <summary><span class="faq__n">06</span><span class="faq__q" data-es="¿También desarrollas o solo diseñas?">Do you handle development or just design?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Ambas. Diseño en Figma y construyo con HTML, CSS, JavaScript y herramientas de desarrollo asistido por IA como Claude Code (lo que algunos llaman vibe coding). Puedes recibir archivos de diseño, un prototipo funcional o front-end listo para producción — o los tres.">Both. I design in Figma and build with HTML, CSS, JavaScript and AI-assisted development tools like Claude Code (what some people call vibe coding). You can get design files, a working prototype, or production-ready front-end — or all three.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:240">
+            <summary><span class="faq__n">07</span><span class="faq__q" data-es="¿Qué proyectos son el mejor fit?">What kinds of projects are the best fit?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Founders construyendo su primer producto o MVP, expertos en su industria — como terapeutas o líderes de operaciones — que quieren convertir su conocimiento en software, y equipos cuyo producto se volvió difícil de usar. Hago mi mejor trabajo cuando el problema es complejo y la claridad importa.">Founders building a first product or MVP, domain experts — like therapists or operations leaders — turning their knowledge into software, and teams whose product has become hard to use. I do my best work when the problem is complex and clarity matters.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:280">
+            <summary><span class="faq__n">08</span><span class="faq__q" data-es="¿Qué herramientas usas?">What tools do you use?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Figma para diseño de producto, prototipos y design systems; Claude Code para desarrollo asistido por IA; Adobe Illustrator para marca y trabajo visual; y HTML, CSS y JavaScript para front-end.">Figma for product design, prototyping and design systems; Claude Code for AI-assisted development; Adobe Illustrator for brand and visual work; and HTML, CSS and JavaScript for front-end builds.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:320">
+            <summary><span class="faq__n">09</span><span class="faq__q" data-es="¿Cuándo es el mejor momento para integrarte al proyecto?">When is the right time to bring you in?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Lo antes posible. Las decisiones de diseño que se toman antes de desarrollar evitan retrabajo costoso después. Me puedo integrar desde la idea, a mitad del proyecto o como socia de diseño continua para un equipo existente.">As early as possible. Design decisions made before development starts prevent expensive rework later. I can join at the idea stage, mid-project, or as an ongoing design partner for an existing team.</p></div>
+          </details>
+          <details name="faq" class="reveal" style="--d:360">
+            <summary><span class="faq__n">10</span><span class="faq__q" data-es="¿Cómo empezamos?">How do I get started?</span><span class="faq__icon" aria-hidden="true"><svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M1 6h10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path class="v" d="M6 1v10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span></summary>
+            <div class="faq__a"><p data-es-html="Mándame un mensaje con el formulario de abajo o por &lt;a href=&quot;https://wa.link/8polhi&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;WhatsApp (+52 951 408 2852)&lt;/a&gt; con unas líneas sobre tu proyecto. Te respondo en menos de 24 horas y la primera llamada es gratis.">Send a message through the form below or on <a href="https://wa.link/8polhi" target="_blank" rel="noopener">WhatsApp (+52 951 408 2852)</a> with a few sentences about your project. I reply within 24 hours, and the first call is free.</p></div>
+          </details>
         </div>
       </div>
     </section>
 
-
-    <section class="section section--dark" id="contact">
-      <div class="wrap contact">
-        <div>
-          <p class="eyebrow reveal"><span data-es="Contacto">Contact</span></p>
-          <h2 class="h2 reveal" style="--d:80" data-es-html="¿Tienes un producto en mente?&lt;br /&gt;Hagámoslo claro.">Have a product in mind?<br />Let’s make it clear.</h2>
-          <p class="lead reveal" style="--d:160;margin-top:1.25rem" data-es="Cuéntame qué estás construyendo y dónde estás atorado. Te respondo en menos de 24 horas con los siguientes pasos — la primera llamada es gratis.">Tell me what you’re building and where you’re stuck. I’ll reply within 24 hours with next steps — the first call is free.</p>
-          <div class="contact__links reveal" style="--d:220">
-            <a href="mailto:paolabramlett@gmail.com">paolabramlett@gmail.com <span>Email</span></a>
+    <!-- S10 · Contact (command palette) -->
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <span class="contact__glow" aria-hidden="true"></span>
+      <div class="wrap contact__grid">
+        <div class="contact__intro">
+          <p class="label reveal"><span class="label__n">08</span><span class="label__rule" aria-hidden="true"></span><span data-es="Contacto">Contact</span></p>
+          <h2 class="h2 contact__title reveal" style="--d:80" id="contact-title" data-es-html="¿Tienes un producto&lt;br /&gt;en mente?&lt;br /&gt;Hagámoslo claro.">Have a product<br />in mind? Let’s<br />make it clear.</h2>
+          <p class="body-lg reveal" style="--d:140" data-es="Cuéntame qué estás construyendo y dónde estás atorado. Te respondo en menos de 24 horas — la primera llamada es gratis.">Tell me what you’re building and where you’re stuck. I reply within 24 hours — the first call is free.</p>
+          <div class="contact__links reveal" style="--d:200">
+            <a href="mailto:paolabramlett@gmail.com">paolabramlett@gmail.com <span data-es="Correo">Email</span></a>
             <a href="https://wa.link/8polhi" target="_blank" rel="noopener">+52 951 408 2852 <span>WhatsApp</span></a>
             <a href="https://www.linkedin.com/in/paolabramlett" target="_blank" rel="me noopener">linkedin.com/in/paolabramlett <span>LinkedIn</span></a>
           </div>
         </div>
-        <form class="form reveal" style="--d:120" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/" novalidate>
+        <div class="contact__palette" data-palette-home>
+        <form class="palette reveal" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thanks/" novalidate aria-labelledby="palette-title" data-palette>
           <input type="hidden" name="form-name" value="contact" />
-          <p class="hp"><label>Don’t fill this out: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
-          <div class="field"><label for="name" data-es="Nombre">Name</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" data-es-placeholder="Tu nombre" /></div>
-          <div class="field"><label for="email" data-es="Correo">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" data-es-placeholder="tu@empresa.com" /></div>
-          <div class="field"><label for="project" data-es="Proyecto">Project</label><input id="project" name="project" type="text" placeholder="e.g. MVP for an AI health app" data-es-placeholder="Ej. MVP para una app de salud con IA" /></div>
-          <div class="field"><label for="message" data-es="Mensaje">Message</label><textarea id="message" name="message" required placeholder="Where are you now, and what do you need?" data-es-placeholder="¿En qué punto estás y qué necesitas?"></textarea></div>
-          <button class="btn btn--primary" type="submit" data-es="Enviar mensaje">Send message</button>
-          <p class="form__note" role="status" aria-live="polite"></p>
+          <input type="hidden" name="needs" value="" data-needs />
+          <p class="hp" aria-hidden="true"><label>Don’t fill this out: <input type="text" name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+          <div class="palette__head">
+            <span class="palette__prompt" aria-hidden="true">›</span>
+            <span id="palette-title" data-es="empezar un proyecto">start a project</span>
+            <span class="palette__caret" aria-hidden="true"></span>
+            <span class="kbd" aria-hidden="true" data-kbd>⌘ K</span>
+            <button type="button" class="palette__close" data-palette-close aria-label="Close" data-es-aria="Cerrar"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 2l10 10M12 2L2 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+          </div>
+          <div class="palette__body">
+            <div class="field"><label for="name" data-es="Nombre">Name</label><input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name" data-es-placeholder="Tu nombre" /></div>
+            <div class="field"><label for="email" data-es="Correo">Email</label><input id="email" name="email" type="email" autocomplete="email" required placeholder="you@company.com" data-es-placeholder="tu@empresa.com" /></div>
+            <div class="field"><label for="project" data-es="Proyecto">Project</label><input id="project" name="project" type="text" placeholder="e.g. MVP for an AI health app" data-es-placeholder="Ej. MVP para una app de salud con IA" /></div>
+            <fieldset class="chips">
+              <legend class="palette__legend" data-es="¿Qué necesitas?">What do you need?</legend>
+              <button type="button" class="chip" aria-pressed="false" data-value="0→1 product" data-es="Producto 0→1">0→1 product</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Redesign" data-es="Rediseño">Redesign</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Design system">Design system</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Front-end">Front-end</button>
+              <button type="button" class="chip" aria-pressed="false" data-value="Not sure yet" data-es="Aún no sé">Not sure yet</button>
+            </fieldset>
+            <div class="field field--area"><label class="sr-only" for="message" data-es="Mensaje">Message</label><textarea id="message" name="message" required rows="4" placeholder="Where are you now, and what do you need?" data-es-placeholder="¿En qué punto estás y qué necesitas?"></textarea></div>
+            <p class="form__note" role="status" aria-live="polite"></p>
+          </div>
+          <div class="palette__foot">
+            <p class="palette__hints" aria-hidden="true" data-es="↑↓ navegar   ⇥ siguiente   esc borrar">↑↓ navigate   ⇥ next field   esc clear</p>
+            <button class="btn btn--primary send-btn" type="submit">
+              <span class="send-btn__idle"><span data-es="Enviar mensaje">Send message</span> <span class="kbd" aria-hidden="true">⏎</span></span>
+              <span class="send-btn__done"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg><span data-es="Mensaje enviado">Message sent</span></span>
+            </button>
+          </div>
         </form>
+        </div>
       </div>
     </section>
   </main>
 
-
-  <footer class="footer">
-    <div class="wrap footer__inner">
-      <strong style="color:var(--ink);font-weight:600">Paola Bramlett <span data-es="· Senior Product Designer">· Senior Product Designer</span></strong>
-      <nav aria-label="Footer">
-        <a href="#work" data-es="Proyectos">Work</a>
-        <a href="#services" data-es="Servicios">Services</a>
-        <a href="#contact" data-es="Contacto">Contact</a>
-        <a href="https://www.linkedin.com/in/paolabramlett" rel="me noopener" target="_blank">LinkedIn</a>
-        <a href="https://github.com/paolabramlett" rel="me noopener" target="_blank">GitHub</a>
-        <a href="https://www.instagram.com/paolabramlett" rel="me noopener" target="_blank">Instagram</a>
-      </nav>
-      <div class="footer__legal">
-        <span>© <span data-year>2026</span> Paola Bramlett. <span data-es="Todos los derechos reservados.">All rights reserved.</span></span>
-        <span data-es="Oaxaca, México · Trabajo con clientes de todo el mundo">Oaxaca, Mexico · Working worldwide</span>
+  <!-- chrome:footer -->
+  <footer class="footer" data-footer>
+    <div class="wrap footer__top">
+      <div class="footer__brand">
+        <strong>Paola Bramlett</strong>
+        <span data-es="Senior Product Designer · Oaxaca, MX">Senior Product Designer · Oaxaca, MX</span>
       </div>
+      <nav class="footer__links" aria-label="Footer" data-es-aria="Pie de página">
+        <a href="/#work" data-es="Proyectos">Work</a>
+        <a href="/#services" data-es="Servicios">Services</a>
+        <a href="/#contact" data-es="Contacto">Contact</a>
+        <a href="https://www.linkedin.com/in/paolabramlett" rel="me noopener" target="_blank">LinkedIn ↗</a>
+        <a href="https://github.com/paolabramlett" rel="me noopener" target="_blank">GitHub ↗</a>
+        <a href="https://www.instagram.com/paolabramlett" rel="me noopener" target="_blank">Instagram ↗</a>
+      </nav>
+    </div>
+    <div class="footer__mark" aria-hidden="true"><span class="footer__word">BRAMLETT</span></div>
+    <div class="wrap footer__bottom">
+      <span>© <span data-year>2026</span> Paola Bramlett</span>
+      <span data-es="Hecho con Figma + Claude Code">Built with Figma + Claude Code</span>
+      <span class="footer__status">Oaxaca <time data-clock>GMT-6</time> · <span class="dot" aria-hidden="true"></span> <span data-presence>Online</span></span>
     </div>
   </footer>
+  <dialog class="palette-modal" id="palette-modal" aria-modal="true" aria-labelledby="palette-title"></dialog>
+  <!-- /chrome:footer -->
 
-  <script src="/script.js?v=3" defer></script>
+  <script src="/script.js?v=4" defer></script>
 </body>
 </html>
