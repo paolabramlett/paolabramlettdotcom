@@ -1,0 +1,143 @@
+[build]
+  publish = "."
+
+# Old pages and anchors people may have bookmarked (pre-2026 site)
+[[redirects]]
+  from = "/labs"
+  to = "/#more-work"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy1.html"
+  to = "/work/exploretogether/"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy1"
+  to = "/work/exploretogether/"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy2.html"
+  to = "/work/eventflow/"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy2"
+  to = "/work/eventflow/"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy3.html"
+  to = "/#work"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy3"
+  to = "/#work"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy4.html"
+  to = "/work/mindspace/"
+  status = 301
+
+[[redirects]]
+  from = "/casestudy4"
+  to = "/work/mindspace/"
+  status = 301
+
+[[redirects]]
+  from = "/about.html"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/about"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/contact.html"
+  to = "/#contact"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/#contact"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio.html"
+  to = "/#work"
+  status = 301
+
+[[redirects]]
+  from = "/portfolio"
+  to = "/#work"
+  status = 301
+
+[[redirects]]
+  from = "/resume.html"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/resume"
+  to = "/#about"
+  status = 301
+
+[[redirects]]
+  from = "/blog.html"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/blog"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/websites.html"
+  to = "/services/website-design/"
+  status = 301
+
+[[redirects]]
+  from = "/websites"
+  to = "/services/website-design/"
+  status = 301
+
+# Section roots without their own page
+[[redirects]]
+  from = "/services"
+  to = "/#services"
+  status = 301
+
+[[redirects]]
+  from = "/es/servicios"
+  to = "/es/#services"
+  status = 301
+
+# The optional page generator is not part of the site
+[[redirects]]
+  from = "/tools/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"
+
+[[headers]]
+  for = "/img/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

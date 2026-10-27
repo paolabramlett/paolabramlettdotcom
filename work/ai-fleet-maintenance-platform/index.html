@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title data-es="Plataforma de mantenimiento de flotillas con IA: caso de estudio | Paola Bramlett">AI Fleet Maintenance Platform: Product Design Case Study | Paola Bramlett</title>
+  <meta name="description" content="How I designed a fleet health platform where drivers and managers log maintenance in the fewest steps, so AI can predict truck failures and recommend how to prevent them." data-es-content="Cómo diseñé una plataforma de salud de flotillas donde conductores y gerentes registran mantenimiento en los mínimos pasos, para que la IA anticipe fallas y recomiende cómo evitarlas." />
+  <link rel="canonical" href="https://www.paolabramlett.com/work/ai-fleet-maintenance-platform/" />
+  <meta name="author" content="Paola Bramlett" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Paola Bramlett" />
+  <meta property="og:title" content="AI Fleet Maintenance Platform: Product Design Case Study | Paola Bramlett" />
+  <meta property="og:description" content="How I designed a fleet health platform where drivers and managers log maintenance in the fewest steps, so AI can predict truck failures and recommend how to prevent them." />
+  <meta property="og:url" content="https://www.paolabramlett.com/work/ai-fleet-maintenance-platform/" />
+  <meta property="og:image" content="https://www.paolabramlett.com/img/mockups/case-fleet-1536.webp" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale:alternate" content="es_MX" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AI Fleet Maintenance Platform: Product Design Case Study | Paola Bramlett" />
+  <meta name="twitter:description" content="How I designed a fleet health platform where drivers and managers log maintenance in the fewest steps, so AI can predict truck failures and recommend how to prevent them." />
+  <meta name="twitter:image" content="https://www.paolabramlett.com/img/mockups/case-fleet-1536.webp" />
+
+  <link rel="icon" href="/assets/icon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/icon-180.png" />
+  <link rel="alternate" type="text/plain" title="LLM summary" href="/llms.txt" />
+
+  <!-- head:assets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" media="print" onload="this.media='all'" />
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&amp;family=Montserrat:wght@600;700&amp;display=swap" /></noscript>
+  <link rel="stylesheet" href="/styles.css?v=5" />
+  <script>document.documentElement.classList.add('js');setTimeout(function(){if(!window.__pb)document.documentElement.classList.remove('js')},4000)</script>
+  <!-- /head:assets -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.paolabramlett.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Work",
+          "item": "https://www.paolabramlett.com/#work"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Predicting truck failures starts with data drivers will actually log.",
+          "item": "https://www.paolabramlett.com/work/ai-fleet-maintenance-platform/"
+        }
+      ]
+    },
+    {
+      "@type": "CreativeWork",
+      "@id": "https://www.paolabramlett.com/work/ai-fleet-maintenance-platform/#case-study",
+      "name": "Predicting truck failures starts with data drivers will actually log.",
+      "headline": "AI Fleet Maintenance Platform: Product Design Case Study",
+      "description": "How I designed a fleet health platform where drivers and managers log maintenance in the fewest steps, so AI can predict truck failures and recommend how to prevent them.",
+      "url": "https://www.paolabramlett.com/work/ai-fleet-maintenance-platform/",
+      "image": "https://www.paolabramlett.com/img/mockups/case-fleet-1536.webp",
+      "inLanguage": "en",
+      "genre": "Product design case study",
+      "keywords": "Fleet management software, Predictive maintenance, AI product design, B2B UX",
+      "author": {
+        "@id": "https://www.paolabramlett.com/#paola"
+      },
+      "creator": {
+        "@type": "Person",
+        "@id": "https://www.paolabramlett.com/#paola",
+        "name": "Paola Bramlett",
+        "alternateName": "Pao Bramlett",
+        "jobTitle": "Senior Product Designer",
+        "description": "Senior Product Designer based in Oaxaca, Mexico. Designs 0→1 products, AI product experiences, UX/UI and design systems for startups and founders worldwide.",
+        "url": "https://www.paolabramlett.com/",
+        "image": "https://www.paolabramlett.com/img/paola-bramlett.webp",
+        "email": "mailto:paolabramlett@gmail.com",
+        "telephone": "+52 951 408 2852",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Oaxaca de Juárez",
+          "addressRegion": "Oaxaca",
+          "addressCountry": "MX"
+        },
+        "knowsLanguage": [
+          "en",
+          "es"
+        ],
+        "knowsAbout": [
+          "Product design",
+          "UX design",
+          "UI design",
+          "AI product design",
+          "Design systems",
+          "MVP design",
+          "Rapid prototyping",
+          "Figma",
+          "AI-assisted development",
+          "Mental health software",
+          "Fleet management software"
+        ],
+        "sameAs": [
+          "https://www.linkedin.com/in/paolabramlett",
+          "https://github.com/paolabramlett",
+          "https://www.instagram.com/paolabramlett"
+        ]
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "@id": "https://www.paolabramlett.com/#website",
+        "name": "Paola Bramlett",
+        "url": "https://www.paolabramlett.com/"
+      },
+      "dateModified": "2026-09-28"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <!-- chrome:nav -->
+  <a class="skip-link" href="#main" data-es="Saltar al contenido">Skip to content</a>
+  <header class="nav">
+    <nav class="wrap nav__inner" aria-label="Main" data-es-aria="Principal">
+      <a class="nav__logo" href="/" aria-label="Paola Bramlett, home" data-es-aria="Paola Bramlett, inicio"><img src="/img/logo-p.webp" alt="" width="125" height="96" />Paola Bramlett</a>
+      <ul class="nav__links">
+        <li class="nav__dd"><button type="button" class="nav__dd-btn" aria-expanded="false" aria-controls="nav-services"><span data-es="Servicios">Services</span><svg viewBox="0 0 10 10" fill="none" aria-hidden="true"><path d="M2 3.5l3 3 3-3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <div class="nav__menu" id="nav-services"><a href="/services/website-design/" data-es-html="Sitios web&lt;span&gt;Landing pages y sitios para negocios&lt;/span&gt;">Websites<span>Landing pages and business sites</span></a><a href="/services/web-app-design-development/" data-es-html="Web apps&lt;span&gt;Portales, reservas, dashboards&lt;/span&gt;">Web apps<span>Portals, bookings, dashboards</span></a><a href="/services/first-app-mvp/" data-es-html="Primera app / MVP&lt;span&gt;De la idea al lanzamiento&lt;/span&gt;">First app / MVP<span>From idea to launch</span></a><a href="/services/finish-your-ai-built-app/" data-es-html="Termina tu app hecha con IA&lt;span&gt;Lovable, Bolt y herramientas similares&lt;/span&gt;">Finish your AI-built app<span>Lovable, Bolt and similar tools</span></a></div></li>
+        <li><a href="/#work" data-es="Proyectos">Work</a></li>
+        <li><a href="/#how-it-works" data-es="Cómo trabajo">How it works</a></li>
+        <li><a href="/#about" data-es="Sobre mí">About</a></li>
+        <li><a href="/#faq" data-es="Preguntas">FAQ</a></li>
+      </ul>
+      <div class="nav__actions">
+        <div class="lang" role="group" aria-label="Language" data-es-aria="Idioma"><button type="button" data-lang="en" aria-pressed="true">EN</button><span class="lang__sep" aria-hidden="true">/</span><button type="button" data-lang="es" aria-pressed="false">ES</button></div>
+        <a class="btn btn--primary btn--sm" href="/#contact" data-es="Empieza un proyecto">Start a project</a>
+        <button class="nav__menu-btn" type="button" aria-expanded="false" aria-controls="nav-sheet" aria-label="Menu" data-es-aria="Menú"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+  <div class="nav__sheet" id="nav-sheet">
+    <p class="nav__sheet-label" style="--i:0" data-es="Servicios">Services</p>
+    <a class="small" href="/services/website-design/" style="--i:1" data-es="Sitios web">Websites</a>
+    <a class="small" href="/services/web-app-design-development/" style="--i:2" data-es="Web apps">Web apps</a>
+    <a class="small" href="/services/first-app-mvp/" style="--i:3" data-es="Primera app / MVP">First app / MVP</a>
+    <a class="small" href="/services/finish-your-ai-built-app/" style="--i:4" data-es="Termina tu app hecha con IA">Finish your AI-built app</a>
+    <p class="nav__sheet-label" style="--i:5" aria-hidden="true">&nbsp;</p>
+    <a class="big" href="/#work" style="--i:6" data-es="Proyectos">Work</a>
+    <a class="big" href="/#how-it-works" style="--i:7" data-es="Cómo trabajo">How it works</a>
+    <a class="big" href="/#about" style="--i:8" data-es="Sobre mí">About</a>
+    <a class="big" href="/#faq" style="--i:9" data-es="Preguntas">FAQ</a>
+    <a class="btn btn--primary" href="/#contact" style="--i:10" data-es="Empieza un proyecto">Start a project</a>
+  </div>
+  <!-- /chrome:nav -->
+
+  <main id="main">
+    <div class="reading-progress" aria-hidden="true"></div>
+    <section class="case-hero">
+      <div class="aurora" aria-hidden="true"><div class="aurora__layer"><i class="aurora__glow"></i><i class="aurora__glow"></i></div></div>
+      <div class="wrap">
+        <div class="case-hero__top reveal"><nav data-es-aria="Ruta" aria-label="Breadcrumb" class="crumbs"><a href="/" data-es="Inicio">Home</a><span aria-hidden="true" class="sep">/</span><a href="/#work" data-es="Proyectos">Work</a><span aria-hidden="true" class="sep">/</span><span data-es="Mantenimiento de flotillas con IA" aria-current="page">AI fleet maintenance</span></nav><p class="status status--dev"><span class="dot dot--dev" aria-hidden="true"></span><span data-es="En desarrollo">In development</span></p></div>
+        
+        <h1 class="rise"><span class="line"><span data-es="Predecir fallas empieza con datos que los conductores sí van a registrar.">Predicting truck failures starts with data drivers will actually log.</span></span></h1>
+        <p class="lead reveal" style="--d:160" data-es="Una plataforma para gestionar flotillas de camiones con una vista clara de la salud de cada unidad. Combina registros manuales de mantenimiento y reparaciones con datos de herramientas conectadas, para que la IA anticipe fallas antes de que sucedan, y recomiende acciones puntuales para evitarlas.">A platform for managing trucking fleets with a clear view of each truck’s health. It combines manual maintenance and repair logs with data from connected tools, so AI can predict likely failures before they happen, and recommend specific actions to prevent them.</p>
+        
+        <dl class="case-meta reveal" style="--d:240"><div><dt data-es="Rol">Role</dt><dd data-es="Senior Product Designer">Senior Product Designer</dd></div><div><dt data-es="Producto">Product</dt><dd data-es="App de gestión de flotillas">Fleet management app</dd></div><div><dt data-es="Industria">Industry</dt><dd data-es="Logística · IA">Logistics · AI</dd></div><div><dt data-es="Estado">Status</dt><dd class="is-dev" data-es="En desarrollo">In development</dd></div></dl>
+      </div>
+    <div class="case-cover wrap">
+      <figure class="fade"><img src="/img/mockups/case-fleet-1536.webp" srcset="/img/mockups/case-fleet-800.webp 800w, /img/mockups/case-fleet-1536.webp 1536w" sizes="(max-width: 1248px) calc(100vw - 48px), 1200px" alt="Concept visualization of a fleet maintenance dashboard on a tablet, with truck health and an alert" data-es-alt="Visualización de concepto de un dashboard de mantenimiento de flotillas en una tablet, con el estado de los camiones y una alerta" width="1536" height="1024" fetchpriority="high"><figcaption data-es="Visualización de concepto · pantallas reales bajo NDA">Concept visualization · real screens under NDA</figcaption></figure>
+    </div></section>
+    
+    <div class="wrap case-body">
+      <section class="case-section">
+        <div class="case-label reveal"><h2 data-es="El problema">The problem</h2></div>
+        <div class="prose reveal" style="--d:80" data-es-html="<p>Las predicciones son tan buenas como los datos detrás de ellas, y muchos de esos datos dependen de que alguien los capture a mano: cada mantenimiento, cada reparación.</p><p>Esas personas están ocupadas. Los conductores están en carretera; los gerentes son responsables de toda una flotilla. <strong>Cada paso extra al registrar una reparación es un motivo para saltárselo, y cada registro que falta hace menos útil a la IA.</strong></p>"><p>Predictions are only as good as the data behind them, and much of that data depends on people entering it by hand: every maintenance event, every repair.</p><p>Those people are busy. Drivers are on the road; managers are responsible for an entire fleet. <strong>Every extra step in logging a repair is a reason to skip it, and every skipped log makes the AI less useful.</strong></p></div>
+      </section>
+      <section class="case-section">
+        <div class="case-label reveal"><h2 data-es="El reto de diseño">The design challenge</h2></div>
+        <div class="prose reveal" style="--d:80" data-es-html="<p>Hacer que la captura manual sea lo más ligera posible para un usuario ocupado, con <strong>la menor cantidad de pasos</strong>, sin perder los datos que el producto necesita para predecir bien.</p>"><p>Make manual input as light as possible for a busy user, with <strong>the fewest possible steps</strong>, without losing the data the product needs to make good predictions.</p></div>
+      </section>
+      <section class="case-section">
+        <div class="case-label reveal"><h2 data-es="Decisiones clave">Key decisions</h2></div>
+        <div class="decisions">
+          <article class="decision reveal" style="--d:0">
+            
+            <h3 data-es="Mínimos pasos, máxima señal">Minimum steps, maximum signal</h3>
+            <p data-es="El registro manual está diseñado alrededor de lo mínimo que un conductor o gerente necesita hacer, sin dejar de capturar lo que importa para las predicciones.">Manual logging is designed around the least a driver or fleet manager needs to do, while still capturing what matters for predictions.</p>
+          </article>
+          <article class="decision reveal" style="--d:80">
+            
+            <h3 data-es="Que las herramientas conectadas hagan el trabajo pesado">Let connected tools do the heavy lifting</h3>
+            <p data-es="Las integraciones mandan datos directo a la app, para que la captura manual solo llene huecos en lugar de cargar con todo.">Integrations send data directly into the app, so manual input fills the gaps instead of carrying the whole load.</p>
+          </article>
+          <article class="decision reveal" style="--d:160">
+            
+            <h3 data-es="La salud de cada camión, de un vistazo">Truck health at a glance</h3>
+            <p data-es="El estado de cada unidad se ve con claridad, para que los gerentes sepan dónde poner atención primero.">Each truck’s condition is visible clearly, so managers know where to look first.</p>
+          </article>
+          <article class="decision reveal" style="--d:240">
+            
+            <h3 data-es="De la predicción a la recomendación">From prediction to recommendation</h3>
+            <p data-es="Lo que dice la IA se presenta como recomendaciones puntuales para evitar fallas, no solo alertas, para que el siguiente paso siempre sea claro.">AI output is framed as specific recommendations to avoid failures, not just alerts, so the next step is always clear.</p>
+          </article>
+        </div>
+      </section>
+      <section class="case-section case-section--full">
+        <blockquote data-words-host="" class="quote-band reveal"><p data-words="" data-es="Ni el mejor modelo predictivo puede arreglar datos que nadie captura.">The best predictive model in the world can’t fix data nobody enters.</p><span data-es="Por qué la experiencia de captura era lo más importante">Why the input experience mattered most</span></blockquote>
+      </section>
+      <section class="case-section">
+        <div class="case-label reveal"><h2 data-es="Resultado">Outcome</h2></div>
+        <div>
+          <div class="outcome"><div class="reveal" style="--d:0"><strong data-es="En desarrollo">In development</strong><span data-es="La plataforma se está construyendo.">The platform is being built now.</span></div><div class="reveal" style="--d:60"><strong data-es="Diseñada para el campo">Designed for the field</strong><span data-es="Flujos de captura pensados para la carga real de trabajo de conductores y gerentes.">Input flows built around the real workload of drivers and fleet managers.</span></div><div class="reveal" style="--d:120"><strong data-es="IA accionable">Actionable AI</strong><span data-es="Predicciones que vienen con un siguiente paso claro y concreto.">Predictions that come with a clear, specific next step.</span></div></div>
+          <p class="note reveal" data-es="No muestro pantallas del producto por confidencialidad con el cliente. La portada es una visualización de concepto, y con gusto te muestro el trabajo real en una llamada.">Product screens aren’t shown here to respect the client’s confidentiality. The cover is a concept visualization, and I’m happy to walk you through the real work on a call.</p>
+        </div>
+      </section>
+      <a class="next-case reveal" href="/work/exploretogether/">
+        <div><small data-es="Siguiente caso">Next case study</small><strong data-es="Recomendaciones de viaje en las que sí puedes confiar.">Travel recommendations you can actually trust.</strong></div>
+        <span class="next-case__arrow" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" /></svg></span>
+      </a>
+    </div>
+
+    <section class="section cta-band">
+      <div class="wrap">
+        <h2 class="h2 reveal" data-es="¿Estás construyendo algo complejo?">Building something complex?</h2>
+        <p class="lead reveal" style="--d:80" data-es="Hagámoslo claro. La primera llamada es gratis.">Let’s make it clear. The first call is free.</p>
+        <div class="reveal" style="--d:160"><a class="btn btn--primary" href="/#contact"><span data-es="Empezar un proyecto">Start a project</span></a></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- chrome:footer -->
+  <footer class="footer">
+    <div class="wrap footer__top">
+      <div class="footer__brand">
+        <strong>Paola Bramlett</strong>
+        <span data-es="Senior Product Designer · Oaxaca, México">Senior Product Designer · Oaxaca, MX</span>
+      </div>
+      <nav class="footer__nav" aria-label="Footer" data-es-aria="Pie de página">
+        <div class="footer__col">
+          <h2 data-es="Servicios">Services</h2>
+          <a href="/services/website-design/" data-es="Sitios web">Websites</a>
+          <a href="/services/web-app-design-development/" data-es="Web apps">Web apps</a>
+          <a href="/services/first-app-mvp/" data-es="Primera app / MVP">First app / MVP</a>
+          <a href="/services/finish-your-ai-built-app/" data-es="Termina tu app hecha con IA">Finish your AI-built app</a>
+        </div>
+        <div class="footer__col">
+          <h2 data-es="Sitio">Site</h2>
+          <a href="/#work" data-es="Proyectos">Work</a>
+          <a href="/#about" data-es="Sobre mí">About</a>
+          <a href="/#contact" data-es="Contacto">Contact</a>
+        </div>
+        <div class="footer__col">
+          <h2>Social</h2>
+          <a href="https://www.linkedin.com/in/paolabramlett" rel="me noopener" target="_blank">LinkedIn ↗</a>
+          <a href="https://github.com/paolabramlett" rel="me noopener" target="_blank">GitHub ↗</a>
+          <a href="https://www.instagram.com/paolabramlett" rel="me noopener" target="_blank">Instagram ↗</a>
+        </div>
+      </nav>
+    </div>
+    <div class="wrap footer__bottom">
+      <span>© <span data-year>2026</span> Paola Bramlett. <span data-es="Todos los derechos reservados.">All rights reserved.</span></span>
+      <span data-es="Oaxaca, México · Trabajo con clientes de todo el mundo">Oaxaca, Mexico · Working worldwide</span>
+    </div>
+  </footer>
+  <!-- /chrome:footer -->
+
+  <script src="/script.js?v=5" defer></script>
+</body>
+</html>
