@@ -1,6 +1,6 @@
 # Paola Bramlett: websites, web apps and first apps, designed and built
 
-> Paola Bramlett ("Pao") is a senior product designer with 7+ years of experience who also codes. From Oaxaca, Mexico, she designs, builds and launches websites, web apps and first apps (MVPs) for businesses and founders in any industry, and stays after launch with a hosting and care plan. One person from the idea to the live product, in English or Spanish. AI builders like Lovable and Bolt are a great start; she takes those projects to the finish line.
+> Paola Bramlett ("Pao") is a senior product designer with 7+ years of experience who also codes. From Oaxaca, Mexico, she designs, builds and launches websites, web apps and first apps (MVPs) for businesses and founders in any industry, and stays after launch with a care plan. One person from the idea to the live product, in English or Spanish. AI builders like Lovable and Bolt are a great start; she audits those projects and moves them to the technology they need, free from the tools' plans (sometimes rebuilding parts), so clients end up with a working, independent and scalable product.
 
 ## Services
 - [Website design and development](https://www.paolabramlett.com/services/website-design/): landing pages and business websites for any industry, with SEO and GEO so search engines and AI assistants can find and understand the business. Contact forms, WhatsApp and Stripe payments when needed. Spanish: https://www.paolabramlett.com/es/servicios/disenio-de-sitios-web/
@@ -12,14 +12,15 @@
 ## How pricing and timelines work
 - No public prices. Every project gets a fixed-price quote after a free call, so the client knows scope, timeline and full investment before starting.
 - A landing page or simple prototype: 3–7 days. Full UX/UI design for an app: usually 2–6 weeks. Web apps: timeline defined on the free call.
-- Optional annual hosting and care plan on Netlify: hosting, bug fixes and small data changes (like a phone number or opening hours). New content is quoted separately.
-- Clients own their code, domain and accounts.
+- Websites: optional annual hosting and care plan on Netlify: hosting, bug fixes and small data changes (like a phone number or opening hours). New content is quoted separately.
+- Web apps, first apps and finished AI-built apps: care plan quoted per project.
+- Clients' code and domain are theirs.
 
 ## Process
 1. Free call: idea, goals and budget, no commitment.
 2. Plan and quote: scope, timeline and fixed price.
 3. Design and build: design reviewed and approved, then built, with check-ins.
-4. Launch and care: go live, then hosting and care.
+4. Launch and care: go live, then ongoing care.
 
 ## Case studies
 - [Genogram tool for therapists](https://www.paolabramlett.com/work/genogram-tool-for-therapists/): a modern canvas that makes a patient's family system readable at a glance; live and used by mental health professionals. Role: UX/UI Designer.
