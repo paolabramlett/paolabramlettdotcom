@@ -1,5 +1,5 @@
-# robots.txt — paolabramlett.com
-# Last updated: 2026-09-28
+# robots.txt for paolabramlett.com
+# Last updated: 2026-10-27
 # All crawlers welcome, including AI search and assistant crawlers.
 
 User-agent: *
