@@ -631,18 +631,6 @@
     }
   }
 
-  /* ── Footer: giant wordmark rises from a mask ────────── */
-  function initFooter() {
-    const footer = $('[data-footer]');
-    const word = footer && $('.footer__word', footer);
-    if (!word) return;
-    tasks.add(() => {
-      if (reduced()) { word.style.removeProperty('--p'); return; }
-      const r = footer.getBoundingClientRect();
-      word.style.setProperty('--p', clamp((vh() - r.top) / (r.height * 0.85)).toFixed(4));
-    });
-  }
-
   /* ── Case studies: reading progress + cover zoom ─────── */
   function initCase() {
     const bar = $('.reading-progress');
@@ -676,7 +664,6 @@
     initScramble();
     initFaq();
     initPalette();
-    initFooter();
     initCase();
     initYear();
     schedule();
